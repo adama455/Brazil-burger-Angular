@@ -1,0 +1,40 @@
+.cmde{
+    background-color: #BA631F;
+    border-radius: 10;
+    padding: 1em;
+    
+}
+.cmde p{
+    font-size: 1em;
+}
+.cmde .btn{
+    color: #BA631F;
+}
+.descrip,.image, .complement{
+    box-shadow: lightgray 4px 4px 20px;
+    box-sizing: border-box;
+}
+.complement{
+    height: 24vh;
+}
+.image:hover{
+    animation: zoominoutsinglefeatured 1s ;
+    box-shadow:#BA631F 
+  }
+  
+  @keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.1,1.1);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+/* .image{
+    box-shadow: lightgray 4px 4px 20px;
+    box-sizing: border-box;
+} */

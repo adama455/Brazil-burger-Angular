@@ -1,0 +1,70 @@
+.card{
+    box-shadow: lightgray 4px 4px 20px;
+    padding: 10px 30px;
+  }
+  .card-body{
+    padding: 0;
+  }
+  .panier{
+    color: aliceblue;
+    font-size: 14px;
+    font-weight: 500; 
+    box-shadow: lightgray 3px 3px 7px;
+    background-color: transparent;
+    box-sizing: border-box;
+    padding: 6px 18px;
+    border: none;
+  }
+  .detail{
+    color: #BA631F;
+    font-size: 14px;
+    font-weight: 500; 
+    box-shadow: lightgray 3px 3px 7px;
+    box-sizing: border-box;
+    padding: 6px 18px;
+    border: none;
+  }
+  i{
+    color: #BA631F;
+  }
+  .panier:active{
+    transform: translate(2px, 2px);
+    box-shadow: lightgray 0 0 5px;
+  }
+  .detail:active{
+    transform: translate(2px, 2px);
+    box-shadow: lightgray 0 0 5px;
+  }
+  i:hover{
+    color: white;
+    transform: translate(2px, 2px);
+  }
+  .panier:hover{
+    background-color: #BA631F;
+    transform: translate(2px, 2px);
+    box-shadow: lightgray 0 0 5px;
+  }
+  p {
+      font-weight: 300;
+      font-size: 16px;
+    }
+  .card img{
+    cursor: pointer;
+  }
+  .card img:hover{
+    cursor: pointer;
+    animation: zoominoutsinglefeatured 1s ;
+    box-shadow:#BA631F 
+  }
+  
+  @keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+  }

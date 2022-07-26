@@ -1,0 +1,22 @@
+
+<h2 class="text-center">MES MENUS:</h2>
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+    <div class="col mb-3" *ngFor="let menu of menus">
+        <div class="card" style="width:19rem;" >
+            <h5 class="card-title fw-bold">{{ menu.nom | uppercase }}</h5>
+            <img src="{{menu.image}}" alt="..." (click)="detailM()" routerLink="menu/id" >
+            <div class="card-body mt-2">
+                <p class="card-text">{{ menu.description }}</p>
+                <div class="row">
+                    <p class="col-6 fs-4 fw-bold">Prix:</p>
+                    <p class=" col-6 card-text fs-4">{{menu.prix}} f cfa</p>
+                </div>
+                <div class="row d-flex justify-content-between" >
+                    <a href="#!" class="btn panier col-3"><i class="fa-solid fa-cart-arrow-down "></i></a>
+                    <a href="#!" class="btn btn-warning col-4 detail " (click)="detailM()" >Détail</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

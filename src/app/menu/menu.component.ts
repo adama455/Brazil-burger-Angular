@@ -1,0 +1,37 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IMenu } from '../catalogue.model';
+import { CatalogueService } from '../services/catalogue.service';
+
+@Component({
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css']
+})
+export class MenuComponent implements OnInit {
+
+  menus!:IMenu[];
+  @Input() details!:IMenu;
+
+
+  constructor(private produitService : CatalogueService, private route: Router) {
+  
+  }
+
+  ngOnInit(): void {
+    this.showMenu();
+
+  }
+
+  showMenu() {
+    // this.produitService.getProduits;
+    this.menus = this.produitService.getMenus();
+    console.log(this.menus);
+    
+  } 
+
+  detailM(){
+    this.route.navigateByUrl(`menu/${this.details.id}`);
+  }
+
+}

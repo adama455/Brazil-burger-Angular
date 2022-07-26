@@ -1,0 +1,20 @@
+<h2 class="text-center">MES BURGERS:</h2>
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+    <div class="col mb-3" *ngFor="let burger of burgers">
+        <div class="card" style="width:19rem;" >
+            <h5 class="card-title fw-bold">{{ burger.nom | uppercase }}</h5>
+            <img src="{{burger.image}}" alt="..." (click)="detailB()" routerLink="burger/id" >
+            <div class="card-body mt-2">
+                <p class="card-text">{{ burger.description }}</p>
+                <div class="row">
+                    <p class="col-6 fs-4 fw-bold">Prix:</p>
+                    <p class=" col-6 card-text fs-4">{{burger.prix}} f cfa</p>
+                </div>
+                <div class="row d-flex justify-content-between" >
+                    <a href="#!" class="btn panier col-3"><i class="fa-solid fa-cart-arrow-down "></i></a>
+                    <a href="#!" class="btn btn-warning col-4 detail" (click)="detailB()">Détail</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

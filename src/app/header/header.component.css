@@ -1,0 +1,15 @@
+.call-action{
+    padding: 2rem 7rem;
+    background-color: #BA631F;
+    color: aliceblue;
+    font-size: 2rem;
+    font-weight: bolder;
+    border: none;
+}
+.call-action:active{
+    transform: translate(3px, 3px);
+    box-shadow: rgb(253, 253, 253) 0 0 15px;
+}
+.card::after{
+    
+}
