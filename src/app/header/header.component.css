@@ -1,15 +1,34 @@
 .call-action{
     padding: 2rem 7rem;
     background-color: #BA631F;
+    opacity: 0.8;
     color: aliceblue;
     font-size: 2rem;
     font-weight: bolder;
     border: none;
+    border-radius: 2em;
+    border-left: solid 6px white;
+    border-right: solid 6px white;
+    top: 65%; 
+    z-index: 2;
+}
+.card::after{
+    content: "adama";
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6 );
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+h1{
+    top: 35%; 
+    color: aliceblue;
+    font-weight: bolder;
+    z-index: 2;
 }
 .call-action:active{
     transform: translate(3px, 3px);
     box-shadow: rgb(253, 253, 253) 0 0 15px;
-}
-.card::after{
-    
 }

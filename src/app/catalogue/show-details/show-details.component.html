@@ -1,18 +1,21 @@
-<div class="card w-100 " style="width: 18rem; height: 48rem;margin-top:13vh">
-    <h5 class="card-title text-center display-5 fw-bold">Détail Menu</h5>
+<div class="card w-75 m-auto " style="height: 46rem;">
+    <div class="header">
+        <h5 class="card-title text-center display-6 mt-4 fw-bold" [appMouvement]="maCouleur">DETAILS MENU {{detail.nom}}</h5>
+        <span class="close" ><i class="fa-solid fa-xmark fs-3" routerLink="catalogue"></i></span>
+    </div>
     <div class="card-body w-100" >
-            <div class="detail w-100 d-flex justify-content-center">
-                
-                <div class="descrip col-4 p-3">
-                    <h3 class="fw-3">MENU 1</h3>
-                    <p class="text-wrap">
-
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                        Eligendi et sint maxime repudiandae. Optio, 
-                        tenetur aliquid adipisci commodi consequuntur minima 
-                        mollitia quas iusto ducimus. 
-                        Explicabo exercitationem molestias cum reiciendis non?
-                    </p>
+        <div class="detail w-100 d-flex justify-content-center">
+            
+            <div class="descrip col-4 p-3">
+                <h3 class="fw-bold">{{detail.nom}}</h3>
+                <p class="text-wrap">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                    Eligendi et sint maxime repudiandae. Optio, 
+                    tenetur aliquid adipisci commodi consequuntur minima 
+                    mollitia quas iusto ducimus. 
+                    Explicabo exercitationem molestias cum reiciendis non?
+                </p>
+                    <span class="fw-bold fs-2 total" >Total: {{detail.prix}} F CFA</span>
                 </div>
 
                 <div class="image mx-5 col-4 card">
@@ -30,60 +33,82 @@
                     <div class="frites col-6  px-5 py-3">
                         <h3 class="text-decoration-underline fw-bold mx-5 ">Frites:</h3>
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdVsc44_IwnVMFK20iIyfq5X1y2MGuUH3aX-hTNa0B4pMGbo5Jp19PQfUfMfn5w6s8Dj8&usqp=CAU" alt="" class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" checked />
+                                </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdVsc44_IwnVMFK20iIyfq5X1y2MGuUH3aX-hTNa0B4pMGbo5Jp19PQfUfMfn5w6s8Dj8&usqp=CAU" alt="" class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdVsc44_IwnVMFK20iIyfq5X1y2MGuUH3aX-hTNa0B4pMGbo5Jp19PQfUfMfn5w6s8Dj8&usqp=CAU" alt="" class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdVsc44_IwnVMFK20iIyfq5X1y2MGuUH3aX-hTNa0B4pMGbo5Jp19PQfUfMfn5w6s8Dj8&usqp=CAU" alt="" class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdVsc44_IwnVMFK20iIyfq5X1y2MGuUH3aX-hTNa0B4pMGbo5Jp19PQfUfMfn5w6s8Dj8&usqp=CAU" alt="" class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdVsc44_IwnVMFK20iIyfq5X1y2MGuUH3aX-hTNa0B4pMGbo5Jp19PQfUfMfn5w6s8Dj8&usqp=CAU" alt="" class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    
                     <div class="  boissons col-6 px-5 py-3">
                         <h3 class="text-decoration-underline fw-bold mx-5">Boissons:</h3>
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://rapidos.sn/wp-content/uploads/2020/04/3x.jpg" alt=""class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://rapidos.sn/wp-content/uploads/2020/04/3x.jpg" alt=""class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://rapidos.sn/wp-content/uploads/2020/04/3x.jpg" alt=""class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://rapidos.sn/wp-content/uploads/2020/04/3x.jpg" alt=""class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://rapidos.sn/wp-content/uploads/2020/04/3x.jpg" alt=""class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
-                            <div class="col-2">
+                            <div class="col-2 d-flex flex-column align-items-center">
                                 <img src="https://rapidos.sn/wp-content/uploads/2020/04/3x.jpg" alt=""class="col-12">
-                                
+                                <div class="checkbox checkbox-primary checkbox-circle">
+                                    <input id="chkPrimary" type="checkbox" />
+                                </div>
                             </div>
                         </div>
 
@@ -93,4 +118,3 @@
             </div>
     </div>
 </div>
-

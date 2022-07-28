@@ -13,11 +13,11 @@ export interface IMenu{
     image:string,
     description: string,
     prix:number,
-    // burger:IBurger[],
+    burger:IBurger[],
 }
 export interface ICatalogue{
-    menu:IMenu[],
-    burger:IBurger[]
+    menus:IMenu[],
+    burgers:IBurger[]
 }
 
 // interface IBurger{

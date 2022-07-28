@@ -1,38 +1,13 @@
-<div class="catalogue mx-1">
-    <app-header></app-header>
+<div class="catalogue">
     <app-filter></app-filter>
-    <app-produit-card></app-produit-card>
+
+    <h2 class="text-center py-2 mt-5 mb-3 text-white fw-bold">MES MENUS:</h2>
+    <div class="row d-flex justify-content-between g-5">
+        <app-card-produit *ngFor="let menu of menus" [produit]="menu" class="col col-sm-4 col-md-3"></app-card-produit>
+    </div>
+
+    <h2 class="text-center py-2 mt-5 mb-3 text-white fw-bold ">MES BURGERS:</h2>
+    <div class="row d-flex justify-content-between g-5">
+        <app-card-produit *ngFor="let burger of burgers" [produit]="burger" class="col col-sm-4 col-md-3"></app-card-produit>
+    </div>
 </div>
-
-
-<!--<div class="container-fluid">
-
-    
-
-    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
-        <div class="col mb-3" *ngFor="let menu of menus">
-            <div class="card" style="width:19rem;" >
-                <h5 class="card-title">{{ menu.nom | uppercase}}</h5>
-                <img src="{{menu.image}}" alt="..." class="">
-                <div class="card-body mt-2">
-                    <p class="card-text">{{ menu.description | lowercase}}</p>
-                    <p class="card-text fs-3">{{ menu.prix}} F CFA</p>
-                    <a href="#!" class="btn"><i class="fa-solid fa-cart-arrow-down"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
-        <div class="col mb-3" *ngFor="let burger of burgers">
-            <div class="card" style="width:19rem;" >
-                <h5 class="card-title">{{ burger.nom | uppercase }}</h5>
-                <img src="{{burger.image}}" alt="...">
-                <div class="card-body mt-2">
-                    <p class="card-text">{{ burger.description }}</p>
-                    <p class="card-text fs-3">{{ burger.prix}} F CFA</p>
-                    <a href="#!" class="btn"><i class="fa-solid fa-cart-arrow-down"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->

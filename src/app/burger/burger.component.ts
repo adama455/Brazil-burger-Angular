@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IBurger } from '../catalogue.model';
-import { CatalogueService } from '../services/catalogue.service';
+// import { CatalogueService } from '../services/catalogue.service';
 
 @Component({
   selector: 'app-burger',
@@ -13,24 +13,23 @@ export class BurgerComponent implements OnInit {
   @Input() details!:IBurger;
 
 
-  constructor(private produitService : CatalogueService, private route: Router) {
+  constructor( private route: Router) {
   
   }
 
   ngOnInit(): void {
-    this.showBurger();
     // const snapId = +this.rout.snapshot.params['id'];
 
   }
 
-  showBurger() {
-    // this.produitService.getProduits;
-    this.burgers = this.produitService.getBurgers();
-    console.log(this.burgers);
+  // showBurger() {
+  //   // this.produitService.getProduits;
+  //   this.burgers = this.produitService.getBurgers();
+  //   return this.burgers;
     
-  } 
+  // } 
 
-  detailB(){
-    this.route.navigateByUrl(`burger/${this.details.id}`);
-  }
+  // detailB(){
+  //   this.route.navigateByUrl(`burger/${this.details.id}`);
+  // }
 }

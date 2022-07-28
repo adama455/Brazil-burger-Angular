@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IMenu } from '../catalogue.model';
-import { CatalogueService } from '../services/catalogue.service';
+// import { CatalogueService } from '../services/catalogue.service';
 
 @Component({
   selector: 'app-menu',
@@ -14,24 +14,22 @@ export class MenuComponent implements OnInit {
   @Input() details!:IMenu;
 
 
-  constructor(private produitService : CatalogueService, private route: Router) {
+  constructor(private route: Router) {
   
   }
 
   ngOnInit(): void {
-    this.showMenu();
-
-  }
-
-  showMenu() {
-    // this.produitService.getProduits;
-    this.menus = this.produitService.getMenus();
-    console.log(this.menus);
     
-  } 
-
-  detailM(){
-    this.route.navigateByUrl(`menu/${this.details.id}`);
   }
+  // showMenu() {
+  //   // this.produitService.getProduits;
+  //   this.menus = this.produitService.getMenus();
+  //   return this.menus;
+    
+  // } 
+
+  // detailM(){
+  //   this.route.navigateByUrl(`menu/${this.details.id}`);
+  // }
 
 }

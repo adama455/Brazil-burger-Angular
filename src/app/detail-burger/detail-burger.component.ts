@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IBurger, IMenu } from '../catalogue.model';
 
 @Component({
   selector: 'app-detail-burger',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail-burger.component.css']
 })
 export class DetailBurgerComponent implements OnInit {
+@Input() produit!:IBurger|IMenu
 
   constructor() { }
 

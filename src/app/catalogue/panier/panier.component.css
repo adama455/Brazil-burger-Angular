@@ -1,0 +1,99 @@
+.container{
+    height: 75vh;
+}
+.entete{
+    height: 75vh;
+    box-shadow: rgb(25, 24, 24) 0 0 5px;
+}
+.contenu-panier{
+    overflow-x: scroll;
+
+}
+.column-img{
+margin-top: auto;
+margin-bottom: auto;
+}
+/* .card-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+} */
+.left-card{
+    border-top: none ;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid;
+    border-radius: 0;
+    height: 10vh;
+    
+}
+.right-card{
+    box-shadow: rgb(224, 221, 221) 0 0 5px;
+
+
+}
+.action{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top:20% ;
+    right: 0%;
+    width: 43%;
+}
+.delet{
+    display: flex;
+    justify-content: end;
+}
+.delet i{
+    padding-right: 4%;
+    color: red;   
+}
+.form-control{
+    /* top: 25%;
+    right: 28%; */
+    
+}
+input{
+    width: 100%;
+}
+.total{
+    height: 12vh;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 1em;
+
+}
+.line {
+    border: none;
+    border-top: 3px double #333;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+}
+.liv{
+background-color: bisque;
+}
+hr{
+    margin: 0;
+}
+select{
+    border: none;
+    background-color: #fff;
+    box-shadow: rgb(78, 76, 76) 0 0 5px;
+    width: 92%;
+    border-radius: 5px;
+}
+
+.line:after {
+    background: #fff;
+    content: '§';
+    padding: 0 4px;
+    position: relative;
+    top: -13px;
+}
+.mode-liv {
+}
+.check1, .check2{
+    width: 56%;
+}

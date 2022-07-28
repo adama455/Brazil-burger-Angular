@@ -1,0 +1,20 @@
+
+    <div class="card">
+        <h5 class="card-title fw-bold">{{ produit.nom | uppercase }}</h5>
+        <img src="{{'data:image/jpg;base64, '+produit.image}}" alt="..."  (click)="showDetails()">
+        <div class="card-body mt-2">
+            <p class="card-text" >{{ produit.description }}</p>
+            <div class="row">
+                <p class="col-6 fs-4 fw-bold">Prix:</p>
+                <p class=" col-6 card-text prix fs-4 ">{{produit.prix}} F CFA</p>
+            </div>
+            <div class="row d-flex justify-content-between" >
+                <a (click)="addCart(produit)" class="btn panier col-3 d-flex justify-content-center align-items-center ">
+                    <i *ngIf="disabled" class="fa-solid fa-cart-arrow-down fs-4"></i>
+                    <i *ngIf="!disabled" class="fas fa-check-double text-success fs-4"></i>
+                </a>
+                <a  class="btn btn-warning col-4 detail" (click)="showDetails()">Détail</a>
+            </div>
+        </div>
+    </div>
+

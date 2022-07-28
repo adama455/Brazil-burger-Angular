@@ -1,0 +1,10 @@
+h2{
+    background-color: #BA631F;
+    border-left: solid 2px rgb(194, 187, 187);
+    border-right: solid 2px rgb(194, 187, 187);
+    box-shadow: rgb(18, 16, 16) 0 0 15px;
+
+}
+.catalogue{
+    margin: 0 10%;
+}
