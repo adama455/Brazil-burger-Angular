@@ -3,50 +3,63 @@
             <!-- ======================Entête du panier =========================-->
 
         <div class="d-flex justify-content-between ">
-            <h2 class="fw-bold">BRAZIL BURGER</h2>
+            <h2 class="fw-bold animate__animated animate__bounce"> BRAZIL BURGER</h2>
             <div class="me-4">
                 <i class="fas fa-shopping-cart fs-2 "></i>
             </div>
         </div>
-     <hr class="line">
+     <hr class="line mb-4">
         <div class="contenu-panier">
             <div class="row gy-5">
                 <div class="col-md-7">
                     <!-- ======================Partie gauche du panier =========================-->
-                    <div class="card left-card mb-2 position-relative fs-6 " *ngFor="let item of (items$ |async)">
-                        <div class="row no-gutters">
-                            <div class="col-md-1  column-img">
-                                <img src="https://w7.pngwing.com/pngs/201/77/png-transparent-delicious-beef-burger-delicious-beef-burger-tomato-bread.png"    class="card-img " titlealt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title ">{{item.nom}}</h5>
-                                    <p>{{item.prix}}</p>
-                                    
+                    <!--<div class="card left-card mb-2 position-relative fs-6 " *ngFor="let item of (items$ |async)">
+                            <div class="row no-gutters">
+                                <div class="col-md-1  column-img">
+                                    <img src="https://w7.pngwing.com/pngs/201/77/png-transparent-delicious-beef-burger-delicious-beef-burger-tomato-bread.png"    class="card-img " titlealt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title ">{{item.nom}}</h5>
+                                        <p>{{item.prix}}</p>
+                                        
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row action ms-5">
-                            <div class="col-md-4">
-                                <div class="form-control">
-                                    <input type="number" min="1" max="10" name="points" value="1">
-                                </div>
-                            </div>
-                            <div class="col-md-6 fs-5">
-                                1000 Fcfa
-                            </div>
-                            <div class="col-md-2 delet">
-                                <i class="fas fa-minus-circle  fs-5 "></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="row action ms-5">
+                                <div class="col-md-4">
 
+                                    <form class="form-control">
+                                        <label for="">Qté</label>
+                                        <input type="number" min="1" max="30" name="points" value="qte">
+                                    </form>
+                                </div>
+                                <div class="col-md-6 fs-5">
+                                    1000 Fcfa
+                                </div>
+                                <div class="col-md-2 delet">
+                                    <i (click)="removeToPanier(item)" class="fas fa-minus-circle  fs-5 "></i>
+                                </div>
+                            </div>
+                        </div>-->
+                    <app-commande-ligne *ngFor="let item of (items$ |async)" [line]="item"></app-commande-ligne>
+                </div>
                 <!-- ======================Partie droite du panier =========================-->
                 <div class="col-md-5">
-                    <div class="card grand-card right-card mx-3 p-4 fs-4">
-                        <div class="card card1 right-card mx-3 p-4 fs-4">
-                            <h6 class="fw-bold">OPTION COMMANDE</h6>
+                    <div class="card grand-card right mx-3 py-2 fs-4">
+                        <div class="total d-flex mx-3 mb-5">
+                         <hr class="line pb-3">
+                            <h2 class=" fw-bold pb-3">Résumé du panier:</h2>
+                            <div class="total-content d-block justify-content-between">
+                                <div class="btn-total mb-3 border border-primary border-2 d-flex">
+                                    <span class="btn-total bg-warning fs-3 fw-bold col-4 border  text-white text-center">Prix <br> Total</span>
+                                    <p class=" col-7 fw-bold fs-3 my-auto text-center">{{total}}</p> 
+                                </div>
+                            </div>      
+                            <hr class="line mb-4">
+                        </div>
+                        <div class="card1 right-card mx-3 mt-5 pt-3 fs-4">
+                            <h6 class="fw-bold ps-2">OPTION COMMANDE</h6>
                             <form action="" class="mode-liv card ">
                                 <div class="d-flex justify-content-between align-items-center check1">
                                     <input type="checkbox" name="emporter" id="" class="w-25 h-50"> Emporter
@@ -65,20 +78,13 @@
                                     </select>
                                 </div>
                             </form>
+                            <button class=" btn w-100 fs-3 fw-bold mt-3 py-4 btn-liv btn-primary" type="submit">
+                                <marquee scrollamount="25" > COMMANDEZ-LIVRAISON</marquee>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ======================footer du panier =========================-->
-         <div class="total d-flex">
-            <hr class="line">
-            <div class="total-content d-flex justify-content-between">
-                <p class="fw-bold fs-3 my-auto">Total: 24 000</p> 
-                <button class="btn btn-primary" type="submit">COMMANDEZ-LIVRAISON</button>
-            </div>      
-            <hr class="line">
-         </div>
-
             
         </div>
     </div>

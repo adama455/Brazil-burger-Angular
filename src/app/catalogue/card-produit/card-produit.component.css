@@ -57,6 +57,7 @@
     animation: zoominoutsinglefeatured 1s ;
     box-shadow:#BA631F 
   }
+
   
   @keyframes zoominoutsinglefeatured {
     0% {

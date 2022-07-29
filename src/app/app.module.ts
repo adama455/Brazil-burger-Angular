@@ -21,6 +21,7 @@ import { FriteComponent } from './frite/frite.component';
 import { BoissonComponent } from './boisson/boisson.component';
 import { MouvementDirective } from './directives/mouvement.directive';
 import { PanierComponent } from './catalogue/panier/panier.component';
+import { CommandeLigneComponent } from './catalogue/panier/commande-ligne/commande-ligne.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { PanierComponent } from './catalogue/panier/panier.component';
     BoissonComponent,
     MouvementDirective,
     PanierComponent,
+    CommandeLigneComponent,
   ],
   imports: [
     BrowserModule,

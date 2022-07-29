@@ -22,6 +22,7 @@ export class CardProduitComponent implements OnInit {
   // tableau==================
   items$?:Observable<any> = this.panier.items$;
   
+  
   ngOnInit(): void {
     // this.addCart();
     this.disabled=true;
@@ -31,11 +32,19 @@ export class CardProduitComponent implements OnInit {
     this.route.navigateByUrl(`produit/${this.produit.id}`)
   }
 
-  transform (imgPro: any){
-    return this.sanitizer.bypassSecurityTrustResourceUrl("data:image/png;base64"+imgPro); 
+  transform (param: any){
+    return this.sanitizer.bypassSecurityTrustResourceUrl("data:image/jpg;base64, "+param); 
   }
+  // Ajouter panier=====================
   addCart(prod:any){
-    this.panier.addToPanier(prod) ;
-    // this.disabled=false;
+    this.panier.putToPanier(prod) ;
+    this.disabled=false;
+    
+    this.panier.getPrix(prod);
   }
+
+  // isBurger(prod){
+    
+  // }
+
 }

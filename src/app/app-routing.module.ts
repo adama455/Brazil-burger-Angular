@@ -17,7 +17,7 @@ const routes: Routes = [
   { path:'produit/:id', component: ShowDetailsComponent},
   { path:'burger/:id', component: DetailBurgerComponent},
   { path:'burger', component: BurgerComponent},
-  { path:'panier', component: PanierComponent},
+  { path:'paniers', component: PanierComponent},
   { path:'', component: HeaderComponent},
   { path:'catalogue', component: CatalogueComponent},
   // { path:'', component: HeaderComponent}

@@ -8,12 +8,34 @@ import { PanierService } from 'src/app/services/panier/panier.service';
 })
 export class PanierComponent implements OnInit {
 
-  constructor(private panier:PanierService) { }
+
+  constructor(private panier:PanierService ) { }
   
   // tableau================================
-  items$=this.panier.items$
+  items$=this.panier.items$;
+  // Somme total==========================
+  total:number=this.panier.getPrixTotal();
+  
+  // // quantité===========
+  // qte:number=1;
+  // plus(){
+  //   this.qte=this.qte++;
+  // }
+  // moins(e:Event){
+  //   if (this.qte<=1) {
+  //     this.qte=this.qte--; 
+  //   }
+  // }
+  
+  // removeToPanier(prod:any){
+  //   this.panier.putToPanier(prod,"out")
+  // }
+
+
+
 
   ngOnInit(): void {
-  }
 
+  }
+  
 }

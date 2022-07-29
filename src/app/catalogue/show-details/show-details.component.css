@@ -48,6 +48,13 @@
     cursor: pointer;
 
 }
+.cmde{
+    position: relative;
+  }
+  .panier{
+    position: absolute;
+    color: #ba631f;
+  }
 
 /* .image{
     box-shadow: lightgray 4px 4px 20px;

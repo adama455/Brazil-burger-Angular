@@ -6,6 +6,7 @@ import { IBurger, IMenu } from 'src/app/catalogue.model';
   providedIn: 'root'
 })
 export class PanierService {
+  prix:number=0;
   constructor() {
     let existingCartItems = JSON.parse(localStorage.getItem('products' )||'[]');
     if (!existingCartItems) {
@@ -14,32 +15,54 @@ export class PanierService {
     this.itemsSubject.next(existingCartItems);
   }
 
-  private itemsSubject = new BehaviorSubject<IBurger[]|IMenu[]>([]);
-  // tableau================================
+  private itemsSubject:any = new BehaviorSubject<IBurger[]|IMenu[]>([]);
+  // tableau==============================================
   items$ = this.itemsSubject.asObservable();
 
-  addToPanier(product: IBurger & IMenu) {
+  
+  putToPanier(product: IBurger & IMenu,action: "in" | "out" = "in") {
     this.items$.pipe(
       take(1),
-      map((products) => {
-        products.push(product);
+      map((products:any) => {
+        if (action === "in") {
+          products.push(product); 
+        }else{
+          products.splice(product, 1);
+        }
         localStorage.setItem('products', JSON.stringify(products));
       }),
-    ).subscribe(); 
+    ).subscribe();
+  }
+   
+  getItems() {
+    return this.items$;
+  } 
+
+  getPrix(product: IBurger & IMenu){
+    this.prix += product.prix;
+  }
+  getPrixTotal(){
+    return this.prix;
   }
 
-  // clearCart(items$) {
-  //   this.items$ = [];
 
-  //   localStorage.removeItem("cart_items")
+  // addToPanier(product: IBurger & IMenu) {
+  //   this.items$.pipe(
+  //     take(1),
+  //     map((products:any) => {
+  //       products.push(product);
+  //       localStorage.setItem('products', JSON.stringify(products));
+  //     }),
+  //   ).subscribe(); 
   // }
-
-  // removeItem(item) {
-  //   const index = this.items.findIndex(o => o.id === item.id);
-
-  //   if (index > -1) {
-  //     this.items.splice(index, 1);
-  //     this.saveCart();
-  //   }
+    //removeToPanier(product:any) {
+    //   this.items$.pipe(
+    //     take(1),
+    //     map((products:any) => {
+    //       products.splice(product, 1);
+    //       localStorage.setItem('products', JSON.stringify(products));
+    //     }),
+    //   ).subscribe(); 
   // }
+  
 }

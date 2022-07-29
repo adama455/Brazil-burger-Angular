@@ -1,0 +1,47 @@
+<div class="card left-card mb-2 position-relative fs-6">
+    <div class="col-5">
+        <div class="row no-gutters">
+            <div class="col-md-3 column-img mt-3">
+                <img src="https://w7.pngwing.com/pngs/201/77/png-transparent-delicious-beef-burger-delicious-beef-burger-tomato-bread.png"    class="card-img " titlealt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{line.nom}}</h5>
+                    <p>{{line.prix}} F</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-7 action">
+        <!-- Quantity -->
+        <div class="d-flex mb-3 mt-2">
+            <button class="btn btn-primary moins  me-1"
+            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+            <i class="fas fa-minus"></i>
+            </button>
+
+            <div class="form-outline">
+            <input id="form1" min="0" name="quantity" value="{{qte}}" type="number" class="form-control" />
+            <label class="form-label" for="form1">Quantity</label>
+            </div>
+
+            <button class="btn btn-primary plus ms-1"
+            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+            <i class="fas fa-plus"></i>
+            </button>
+        </div>
+        <!-- Quantity -->  
+        <div class="col-md-6  fw-bold fs-5 text-center mt-2 ">
+            
+            {{((line.prix)*qte)|currency:'XOF'|	lowercase}}
+        </div>
+        <div class="delet">
+            <i (click)="removeToPanier(line)" class="fas fa-minus-circle  fs-5 mt-3 "></i>
+        </div>
+
+    </div>
+</div>
+
+
