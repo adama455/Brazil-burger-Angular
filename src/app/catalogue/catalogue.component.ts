@@ -25,44 +25,6 @@ export class CatalogueComponent implements OnInit {
         this.menus=cata.menus;
         this.burgers=cata.burgers;
       }
-    
-    );
-      
-     
+    );  
   }
 }
-// export class CatalogueComponent implements OnInit{
-//   // produit!:IProduit[];
-//   catalogue!:ICatalogue
-//   menus!:IMenu[];
-//   burgers!:IBurger[];
-//   constructor(private produitService : CatalogueService) {
-  
-//   }
-
-//   ngOnInit(): void {
-//     // this.showProduits();
-//     this.showMenu();
-//     this.showBurger();
-//   }
-
-//   // showProduits() {
-//   //   // this.produitService.getProduits;
-//   //   this.catalogue = this.produitService.getCatalogues();
-//   //   console.log(this.catalogue);
-    
-//   // } 
-//   showMenu() {
-//     // this.produitService.getProduits;
-//     this.menus = this.produitService.getMenus();
-//     // console.log(this.menus);
-    
-//   } 
-//   showBurger() {
-//     // this.produitService.getProduits;
-//     this.burgers = this.produitService.getBurgers();
-//     // console.log(this.burgers);
-    
-//   } 
-  
-// }

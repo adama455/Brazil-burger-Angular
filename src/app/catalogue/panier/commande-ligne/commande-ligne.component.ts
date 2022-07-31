@@ -10,25 +10,25 @@ import { PanierService } from 'src/app/services/panier/panier.service';
 export class CommandeLigneComponent implements OnInit {
 
   @Input() line!:IMenu | IBurger;
-  // quantité===========
-  qte:number=1;
+
   constructor(private panier:PanierService) { }
+  items$ = this.panier.items$;
+  prixTotal=this.getPrixTotal();
 
   ngOnInit(): void {
+   
+  }
+// Augmenter ou diminuer prix ligne de commande 
+  totalLine(product:IBurger  | IMenu,qte:any){
+    return this.panier.cmdeLinePrice(product,qte);
   }
 
-  // plus(e:Event){
-  //   this.qte=++this.qte;
-  // }
-  // moins(e:Event){
-  //   if (this.qte<=1) {
-  //     return ;
-  //   }
-  //   this.qte=--this.qte; 
-  // }
-  
   removeToPanier(prod:any){
     this.panier.putToPanier(prod,"out")
+  }
+
+  getPrixTotal(){
+    return this.panier.getPrixTotal();
   }
 
 }

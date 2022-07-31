@@ -1,12 +1,14 @@
 
     <div class="card">
-        <h5 class="card-title fw-bold">{{ produit.nom | uppercase }}</h5>
-        <img src="https://freepngimg.com/download/burger/22501-3-shack-burger.png" alt="..."  (click)="showDetails()">
-        <div class="card-body mt-2">
+        <h5 class="card-title text-center  fs-6 fw-bold">{{ produit.nom | uppercase }}</h5>
+        <img [src]="convert(produit.image)" class="col-md-12 mx-auto" alt="..."  (click)="showDetails()">
+        <div class="card-body mt-3">
             <p class="card-text" >{{ produit.description }}</p>
             <div class="row">
-                <p class="col-6 fs-4 fw-bold">Prix:</p>
-                <p class=" col-6 card-text prix fs-4 ">{{produit.prix}} F CFA</p>
+                <div class="prix d-flex justify-content-between">
+                    <p class="col-6 fs-5 fw-bold">Prix:</p>
+                    <p class=" col-6 card-teproduit.nom.substr(0,1)==='B'xt prix fs-5 ">{{produit.prix}} F CFA</p>
+                </div>
             </div>
             <div class="row d-flex justify-content-between" >
                 <a (click)="addCart(produit)" class="btn panier col-3 d-flex justify-content-center align-items-center" *ngIf="produit.nom.substr(0,1)==='B'" >

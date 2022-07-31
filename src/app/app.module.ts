@@ -22,7 +22,9 @@ import { BoissonComponent } from './boisson/boisson.component';
 import { MouvementDirective } from './directives/mouvement.directive';
 import { PanierComponent } from './catalogue/panier/panier.component';
 import { CommandeLigneComponent } from './catalogue/panier/commande-ligne/commande-ligne.component';
-
+import { FormsModule } from '@angular/forms';
+import { SubDetailMenuComponent } from './catalogue/show-details/sub-detail-menu/sub-detail-menu.component';
+import { ComplementsComponent } from './catalogue/show-details/complements/complements.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,12 +45,15 @@ import { CommandeLigneComponent } from './catalogue/panier/commande-ligne/comman
     MouvementDirective,
     PanierComponent,
     CommandeLigneComponent,
+    SubDetailMenuComponent,
+    ComplementsComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

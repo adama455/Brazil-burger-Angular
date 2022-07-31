@@ -2,11 +2,11 @@
     <app-filter></app-filter>
     
         <h2 class="text-center py-2 mt-5 mb-3 text-white fw-bold ">MES BURGERS:</h2>
-        <div class="row d-flex justify-content-between g-5">
+        <div class="row d-flex g-5">
             <app-card-produit *ngFor="let burger of burgers" [produit]="burger" class="col col-sm-4 col-md-3"></app-card-produit>
         </div>
     <h2 class="text-center py-2 mt-5 mb-3 text-white fw-bold">MES MENUS:</h2>
-    <div class="row d-flex justify-content-between g-5">
+    <div class="row d-flex g-5">
         <app-card-produit *ngFor="let menu of menus" [produit]="menu" class="col col-sm-4 col-md-3"></app-card-produit>
     </div>
 

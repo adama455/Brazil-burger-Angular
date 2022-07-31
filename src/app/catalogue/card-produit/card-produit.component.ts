@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IBurger, IMenu } from 'src/app/catalogue.model';
+import { DataServiceService } from 'src/app/services/data-service.service';
 // import { DataServiceService } from 'src/app/services/data-service.service';
 import { PanierService } from 'src/app/services/panier/panier.service';
 
@@ -16,7 +17,7 @@ export class CardProduitComponent implements OnInit {
   @Input() produit!:IMenu|IBurger;
   disabled!:boolean;
   // @Input() cpt:number = 0
-  constructor(private route:Router, private sanitizer: DomSanitizer, private panier:PanierService) { 
+  constructor(private route:Router, private data:DataServiceService, private panier:PanierService) { 
     
   }
   // tableau==================
@@ -27,24 +28,27 @@ export class CardProduitComponent implements OnInit {
     // this.addCart();
     this.disabled=true;
   }
+  
+  // routing: fonction pour naviger vers detail
   showDetails(){
     // alert("ok");
     this.route.navigateByUrl(`produit/${this.produit.id}`)
   }
 
-  transform (param: any){
-    return this.sanitizer.bypassSecurityTrustResourceUrl("data:image/jpg;base64, "+param); 
+  convert(url: string){
+    return this.data.convertImg(url)
   }
   // Ajouter panier=====================
   addCart(prod:any){
     this.panier.putToPanier(prod) ;
     this.disabled=false;
-    
-    this.panier.getPrix(prod);
+
+    // prix total commande=============
+    this.panier.getPrixTotal();
   }
 
-  // isBurger(prod){
-    
-  // }
+  showCart(product:any){
+    return product.burgers? this.disabled=false : this.disabled;
+  }
 
 }

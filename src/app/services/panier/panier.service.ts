@@ -1,50 +1,109 @@
+import { TmplAstBoundAttribute } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, take } from 'rxjs';
+import { BehaviorSubject, map, Observable, take } from 'rxjs';
 import { IBurger, IMenu } from 'src/app/catalogue.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PanierService {
-  prix:number=0;
+  prix: number = 0;
   constructor() {
-    let existingCartItems = JSON.parse(localStorage.getItem('products' )||'[]');
+    let existingCartItems = JSON.parse(
+      localStorage.getItem('products') || '[]'
+    );
     if (!existingCartItems) {
       existingCartItems = [];
     }
     this.itemsSubject.next(existingCartItems);
   }
 
-  private itemsSubject:any = new BehaviorSubject<IBurger[]|IMenu[]>([]);
+  private itemsSubject: any = new BehaviorSubject<IBurger[] | IMenu[]>([]);
   // tableau==============================================
   items$ = this.itemsSubject.asObservable();
+  quantite = this.items$.quantite;
 
-  
-  putToPanier(product: IBurger & IMenu,action: "in" | "out" = "in") {
-    this.items$.pipe(
-      take(1),
-      map((products:any) => {
-        if (action === "in") {
-          products.push(product); 
-        }else{
-          products.splice(product, 1);
-        }
-        localStorage.setItem('products', JSON.stringify(products));
-      }),
-    ).subscribe();
+  putToPanier(product: any, action: 'in' | 'out' = 'in') {
+    this.items$
+      .pipe(
+        take(1),
+        map((products: IBurger[] | IMenu[]) => {
+          let tab: IBurger[] | IMenu[] = JSON.parse(
+            localStorage.getItem('products') || '[]'
+          );
+          // console.log(tab);
+
+          product.quantite = 1;
+          if (action === 'in') {
+            if (tab) {
+              let trouver:IBurger|undefined = tab.find((param: { id: number }) => param.id === product.id);
+              if (!trouver) {
+                products.push(product);
+              } else {
+                products.forEach((element) => {
+                  if (element.id === product.id) {
+                    element.quantite++;
+                  }
+                });
+              }
+            }
+          } else {
+            products.splice(product, 1);
+          }
+          localStorage.setItem('products', JSON.stringify(products));
+        })
+
+      ).subscribe();
   }
-   
-  getItems() {
+
+  exixtInTab(tab: IBurger[] | IMenu[], idProd: number) {
+    return tab.find((prod) => {
+      return prod.id === idProd;
+    });
+  }
+
+  getItems(): Observable<IBurger[] | IMenu[]> {
     return this.items$;
-  } 
-
-  getPrix(product: IBurger & IMenu){
-    this.prix += product.prix;
-  }
-  getPrixTotal(){
-    return this.prix;
   }
 
+  // getPrix(product: IBurger & IMenu) {
+  //   this.prix += product.prix;
+  // }
+  // getPrixTotal() {
+  //   return this.prix;
+  // }
+
+    //  prix total du panier=============
+    getPrixTotal(){
+      let prixTotal=0;
+      this.items$.subscribe((items:any) =>{
+        items.forEach((item:any) =>{
+          prixTotal+=item.prix*item.quantite;
+        })
+        localStorage.setItem('products', JSON.stringify(items));
+      })
+      return prixTotal;
+    }
+
+    // prix ligne de commande====================
+    cmdeLinePrice(product: IBurger | IMenu,qte:any){
+      this.items$
+      .pipe(
+        take(1),
+        map((products: IBurger[] | IMenu[]) => {
+          products.forEach(element => {
+            if (element.id === product.id){
+              element.quantite = qte;
+            }
+            localStorage.setItem('products', JSON.stringify(products));
+          });
+        } 
+      )).subscribe();
+
+    }
+
+
+    
 
   // addToPanier(product: IBurger & IMenu) {
   //   this.items$.pipe(
@@ -53,16 +112,15 @@ export class PanierService {
   //       products.push(product);
   //       localStorage.setItem('products', JSON.stringify(products));
   //     }),
-  //   ).subscribe(); 
+  //   ).subscribe();
   // }
-    //removeToPanier(product:any) {
-    //   this.items$.pipe(
-    //     take(1),
-    //     map((products:any) => {
-    //       products.splice(product, 1);
-    //       localStorage.setItem('products', JSON.stringify(products));
-    //     }),
-    //   ).subscribe(); 
+  //removeToPanier(product:any) {
+  //   this.items$.pipe(
+  //     take(1),
+  //     map((products:any) => {
+  //       products.splice(product, 1);
+  //       localStorage.setItem('products', JSON.stringify(products));
+  //     }),
+  //   ).subscribe();
   // }
-  
 }

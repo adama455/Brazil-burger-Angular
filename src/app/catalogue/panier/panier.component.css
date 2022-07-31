@@ -42,27 +42,27 @@ input{
     width: 100%;
 }
 .total{
-    height: 12vh;
+    height: 10vh;
     flex-direction: column;
     /* justify-content: space-between; */
     margin-right: 1em;
 
 }
-.line {
+/* .line {
     border: none;
     border-top: 3px double #333;
     color: #333;
     overflow: visible;
     text-align: center;
     height: 5px;
-}
-.line:after {
+} */
+/* .line:after {
     background: #fff;
     content: '§';
     padding: 0 4px;
     position: relative;
     top: -13px;
-}
+} */
 .liv{
 background-color: bisque;
 }
@@ -76,8 +76,17 @@ select{
     width: 92%;
     border-radius: 5px;
 }
-
-
 .check1, .check2{
     width: 56%;
+}
+/* ==========Mode payement===================== */
+.gradient-custom {
+/* fallback for old browsers */
+background: #6a11cb;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
 }

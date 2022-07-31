@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { IBurger, IMenu } from 'src/app/catalogue.model';
+import { map, take } from 'rxjs';
+import { IBoisson, IBurger, ICatalogue, IComplement, IFrite, IMenu } from 'src/app/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
@@ -9,34 +11,60 @@ import { DataServiceService } from 'src/app/services/data-service.service';
   styleUrls: ['./show-details.component.css']
 })
 export class ShowDetailsComponent implements OnInit {
-  @Input() detail!:any;
+  frites!:IFrite[];
+  boissons!:IBoisson[];
+  complement!:IComplement;
+  @Input() produit!:IBurger|IMenu;
   @Input() maCouleur:string="red";
   
-  constructor(private data:DataServiceService, private route: ActivatedRoute) { }
-  
-  id:number = +this.route.snapshot.params['id'];
-  ngOnInit(): void {
-    this.data.getSingleProduitObs(this.id).subscribe(
-      data=> {
-        this.detail = data;
-        console.log(this.detail);
-        
-      }
-      
-    )
+  constructor(
+    private data:DataServiceService, 
+    private route: ActivatedRoute
+  ){
+
   }
 
-  // showTitle(){
-  //   if (this.detail.type == "menu") {
-  //     "DETAIL MENU";
+  //function vertir image------
+  convert(url: string){
+    return this.data.convertImg(url)
+  }
+
+  id:number = +this.route.snapshot.params['id'];
+  ngOnInit(): void {
+    this.data.getComplementsObs().subscribe(
+      (data:IComplement)=>{
+        this.frites=data.frites;
+        this.boissons=data.boissons;
+        console.log(data);    
+    });
+
+    this.data.getProduitsObs().pipe(
+      take(1),
+      map((cata:ICatalogue) =>{
+        cata.burgers.forEach((product:IBurger) =>{
+          if (this.id == product.id) {
+            this.produit = product;
+            // console.log(this.produit);
+            return;
+          }
+        });
+        cata.menus.forEach((product:IMenu) =>{
+          if (this.id == product.id) {
+            this.produit = product;
+            // console.log(this.produit);
+            return;
+          }
+        });
+      })
       
-  //   }else if (this.detail.type =="burger" ){
-  //     "DETAIL BURGER"; 
-  //   }
-    
-  // }
+    ).subscribe()
 
 
+  }
 
+  
 
+  showTitle(product:any){
+    return product.burgers? "Menus":"Burger"
+  }
 }

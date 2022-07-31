@@ -4,18 +4,22 @@
     padding: 1em;
     
 }
+.card{
+    box-shadow: rgb(120, 118, 118) 4px 4px 20px;
+    box-sizing: border-box;
+}
 .cmde p{
     font-size: 1em;
 }
 .cmde .btn{
     color: #BA631F;
+    box-sizing: border-box;
+    height:5vh;
+    border:none
 }
 .descrip,.image, .complement{
     box-shadow: lightgray 4px 4px 20px;
     box-sizing: border-box;
-}
-.complement{
-    height: 24vh;
 }
 .image:hover{
     animation: zoominoutsinglefeatured 1s ;
@@ -51,10 +55,15 @@
 .cmde{
     position: relative;
   }
-  .panier{
-    position: absolute;
+.panier{
     color: #ba631f;
-  }
+    top:30%;
+    right:13%
+}
+
+.burger-complement{
+overflow-x: scroll;
+}
 
 /* .image{
     box-shadow: lightgray 4px 4px 20px;
