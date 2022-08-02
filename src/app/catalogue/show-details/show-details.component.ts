@@ -11,42 +11,42 @@ import { DataServiceService } from 'src/app/services/data-service.service';
   styleUrls: ['./show-details.component.css']
 })
 export class ShowDetailsComponent implements OnInit {
-  burgers:Burger[]=[]
   // burger!:Burger
   fritess!:IFrite[];
   boissons!:IBoisson[];
   complement!:IComplement;
   @Input() produit!:IBurger|IMenu;
   @Input() maCouleur:string="red";
-
+  
   // /////////// ça concerne les sous détail de Menu////////////////
-////////////////////////////////////////////////////////////////
-    menu!: IMenu
-    menus!:IMenu[];
-    allBurgers!:IBurger[];
-    allFrites!:IFrite[]
-    frites:Frite[]=[];
-    frit:Frite[]=[];
-    frite!:Frite;
-    // burgers!:Burger[]; 
-    // @Input() burger!:Burger; ///tableau de burger ki est ds menu
-    // frites!:IFrite[];
-    // boissons!:IBoisson[];
-    // boisson!:IBoisson;
-    tailles!:ITaille[];
-    tailleBoissons!:ITailleBoisson[]
-    taille!:Taille;
-    taillee!:Taille[];
-
-    allBoissons!:IBoisson[];
-    boisson!:IBoisson;
-    parametre!:number;
-    param!:string;
+  ////////////////////////////////////////////////////////////////
+  menu!: IMenu;
+  menus!:IMenu[];
+  burgers:Burger[]=[];
+  frites:Frite[]=[];
+  tailles!:ITaille[];
+  frit:Frite[]=[];
+  frite!:Frite;
+  // burgers!:Burger[]; 
+  @Input() burger!:Burger; ///tableau de burger ki est ds menu
+  // frites!:IFrite[];
+  // boissons!:IBoisson[];
+  // boisson!:IBoisson;
+  tailleBoissons!:ITailleBoisson[]
+  taille!:Taille;
+  taillee!:Taille[];
+  
+  allBurgers!:IBurger[];
+  allFrites!:IFrite[];
+  allBoissons!:IBoisson[];
+  boisson!:IBoisson;
+  parametre!:number;
+  param!:string;
 ////////////////////////////////////////////////////////////////
   
   constructor(
     private data:DataServiceService, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ){
 
   }
@@ -60,7 +60,8 @@ export class ShowDetailsComponent implements OnInit {
         this.fritess=data.frites;
         this.boissons=data.boissons;
         console.log(data);    
-      });
+      }
+    );
 
     this.data.getProduitsObs().pipe(
       take(1),
@@ -72,11 +73,13 @@ export class ShowDetailsComponent implements OnInit {
           }
           console.log(cata);
         });
+
         cata.menus.forEach((product:IMenu) =>{
           if (this.id == product.id) {
             this.produit = product;
+            this.frites=product.frites;
             // this.burgers=product.burgers;
-            // this.frites=product.frites;
+            this.tailles=product.tailles;
             // console.log(this.produit);
             return;
           }
@@ -85,9 +88,9 @@ export class ShowDetailsComponent implements OnInit {
       })
       
     ).subscribe()
-
-// /////////// ça concerne les sous détail de Menu////////////////
-////////////////////////////////////////////////////////////////
+  
+    // /////////// ça concerne les sous détail de Menu////////////////
+    ////////////////////////////////////////////////////////////////
 
     this.parametre =this.route.snapshot.params['id'];
     this.param=this.parametre.toString();
@@ -105,55 +108,52 @@ export class ShowDetailsComponent implements OnInit {
             }
           })
         })
+      })
+  }
+        // this.frites=this.menu.frites ; //Tous les Frites dans menu
+        //   this.data.getFritesObs().subscribe(
+        //   (data:any)=>{
+        //     this.allFrites=data; //l'enssemble des frites dans complement
+        //     this.allFrites.forEach(Firtt=>{
+        //       this.frites.forEach(frite=>{
+        //         if (Firtt.id==frite.frite.id) {
+        //           console.log(frite.quantite);
+        //           frite.frite.image=Firtt.image; 
+        //         }
+        //       })
+        //     })
+        // })
 
-        this.frites=this.menu.frites ; //Tous les Frites dans menu
-          this.data.getFritesObs().subscribe(
-          (data:any)=>{
-            this.allFrites=data; //l'enssemble des frites dans complement
-            this.allFrites.forEach(Firtt=>{
-              this.frites.forEach(frite=>{
-                if (Firtt.id==frite.frite.id) {
-                  console.log(frite.quantite);
-                  frite.frite.image=Firtt.image; 
-                }
-              })
-            })
-        })
-
-        this.tailles=this.menu.tailles; //Tous les tailleBoisson dans menu
-        this.data.getBoissonObs().subscribe(
-          (data:any)=>{
-            console.log(data);
-            this.allBoissons=data;
-            this.allBoissons.forEach(oboisson=>{
-              this.tailles.forEach(otaille=>{
-                console.log(otaille);
-                this.taille.tailleBoissons.forEach(boisson=>{
-                  console.log(boisson);
-                  if (oboisson.id===boisson.boisson.id) {
-                    oboisson.image=boisson.boisson.image;
-                  }
-                })
+        // this.tailles=this.menu.tailles; //Tous les tailleBoisson dans menu
+        // this.data.getBoissonObs().subscribe(
+        //   (data:any)=>{
+        //     console.log(data);
+        //     this.allBoissons=data;
+        //     this.allBoissons.forEach(oboisson=>{
+        //       this.tailles.forEach(otaille=>{
+        //         console.log(otaille);
+        //         this.taille.tailleBoissons.forEach(boisson=>{
+        //           console.log(boisson);
+        //           if (oboisson.id===boisson.boisson.id) {
+        //             oboisson.image=boisson.boisson.image;
+        //           }
+        //         })
                 
                   
-                });
-              })
-            })
+        //         });
+        //       })
+        //     })
             
             
-          })
+          // })
 
 
-////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////
 
-      }
-
-  
   //function vertir image------
   convert(url: string){
     return this.data.convertImg(url)
   }
-
   showTitle(product:any){
     return product.burgers? "Menus":"Burger"
   }

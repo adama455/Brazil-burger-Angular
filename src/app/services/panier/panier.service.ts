@@ -22,7 +22,7 @@ export class PanierService {
   // tableau==============================================
   items$ = this.itemsSubject.asObservable();
   quantite = this.items$.quantity;
-
+  // Fornction pour incrementer la quantite du produit clicker au niveau du panier
   putToPanier(product: any, action: 'in' | 'out' = 'in') {
     this.items$
       .pipe(
@@ -52,7 +52,6 @@ export class PanierService {
           }
           localStorage.setItem('products', JSON.stringify(products));
         })
-
       ).subscribe();
   }
 
@@ -66,61 +65,31 @@ export class PanierService {
     return this.items$;
   }
 
-  // getPrix(product: IBurger & IMenu) {
-  //   this.prix += product.prix;
-  // }
-  // getPrixTotal() {
-  //   return this.prix;
-  // }
-
-    //  prix total du panier=============
-    getPrixTotal(){
-      let prixTotal=0;
-      this.items$.subscribe((items:any) =>{
-        items.forEach((item:any) =>{
-          prixTotal+=item.prix*item.quantite;
-        })
-        localStorage.setItem('products', JSON.stringify(items));
+  //  prix total du panier=============
+  getPrixTotal(){
+    let prixTotal=0;
+    this.items$.subscribe((items:any) =>{
+      items.forEach((item:any) =>{
+        prixTotal+=item.prix*item.quantite;
       })
-      return prixTotal;
-    }
+      localStorage.setItem('products', JSON.stringify(items));
+    })
+    return prixTotal;
+  }
 
-    // prix ligne de commande====================
-    cmdeLinePrice(product: IBurger | IMenu,qte:any){
-      this.items$
-      .pipe(
-        take(1),
-        map((products: IBurger[] | IMenu[]) => {
-          products.forEach(element => {
-            if (element.id === product.id){
-              element.quantity = qte;
-            }
-            localStorage.setItem('products', JSON.stringify(products));
-          });
-        } 
-      )).subscribe();
-
-    }
-
-
-    
-
-  // addToPanier(product: IBurger & IMenu) {
-  //   this.items$.pipe(
-  //     take(1),
-  //     map((products:any) => {
-  //       products.push(product);
-  //       localStorage.setItem('products', JSON.stringify(products));
-  //     }),
-  //   ).subscribe();
-  // }
-  //removeToPanier(product:any) {
-  //   this.items$.pipe(
-  //     take(1),
-  //     map((products:any) => {
-  //       products.splice(product, 1);
-  //       localStorage.setItem('products', JSON.stringify(products));
-  //     }),
-  //   ).subscribe();
-  // }
+  // prix ligne de commande====================
+  cmdeLinePrice(product: IBurger | IMenu, qte:any){
+    this.items$
+    .pipe(
+      take(1),
+      map((products: IBurger[] | IMenu[]) => {
+        products.forEach(element => {
+          if (element.id === product.id){
+            element.quantity = qte;
+          }
+          localStorage.setItem('products', JSON.stringify(products));
+        });
+      } 
+    )).subscribe();
+  }
 }

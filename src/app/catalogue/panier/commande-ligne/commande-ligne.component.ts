@@ -12,6 +12,7 @@ export class CommandeLigneComponent implements OnInit {
   @Input() line!:IMenu | IBurger;
 
   constructor(private panier:PanierService) { }
+  
   items$ = this.panier.items$;
   prixTotal=this.getPrixTotal();
 
@@ -23,12 +24,12 @@ export class CommandeLigneComponent implements OnInit {
     return this.panier.cmdeLinePrice(product,qte);
   }
 
+  getPrixTotal(){
+    return this.panier.getPrixTotal();
+  }
   removeToPanier(prod:any){
     this.panier.putToPanier(prod,"out")
   }
 
-  getPrixTotal(){
-    return this.panier.getPrixTotal();
-  }
 
 }

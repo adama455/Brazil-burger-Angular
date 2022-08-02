@@ -46,14 +46,15 @@
                             <div *ngFor="let drink of boisson.taille.tailleBoissons" class="col-12 me-3 px-3 boisson mt-2">  
                                 <div class="d-flex boisson">
                                     <div class="col-12">
-                                        <div class="prix d-flex justify-content-between ">
+                                        <div class=" d-flex justify-content-between ">
                                             <span class="fw-bold">{{drink.boisson.nom}}</span>
-                                            <p>Qté: {{boisson.quantite}}</p>
+                                            <span class="me-2">P: {{drink.prixBoisson}}</span>
                                         </div>
                                         <img [src]="convert(drink.boisson.image)"class="col-md-7 d-flex mx-auto">
-                                        <div class="prix d-flex justify-content-between">
-                                            <span class="me-2">P: {{drink.prixBoisson}}</span>
-                                            <span>Stock: {{drink.stock}}</span>
+                                        <div class="prix mt-3 d-flex justify-content-between">
+                                            <p class="fw-bold ">Taille: {{boisson.taille.nom}}</p>
+                                            <p>Qté: {{boisson.quantite}}</p>
+                                            <!--<span>Stock: {{drink.stock}}</span>-->
                                         </div>
                                     </div>
                                 </div>

@@ -8,19 +8,19 @@ import { DataServiceService } from 'src/app/services/data-service.service';
   styleUrls: ['./frites-menu.component.css']
 })
 export class FritesMenuComponent implements OnInit {
-  fritee!:Frite;
+  // fritee!:Frite;
   allFrites!:IFrite[]
   frites!:Frite[];
   @Input() frite!:Frite;
 
   
-  constructor( private dataService:DataServiceService ) { }
+  constructor( private data:DataServiceService ) { }
 
   ngOnInit(): void {
   }
 
   //function vertir image----------------
   convert(url: string){
-    return this.dataService.convertImg(url)
+    return this.data.convertImg(url)
   }
 }

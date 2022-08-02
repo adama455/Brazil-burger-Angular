@@ -14,46 +14,51 @@ export class DataServiceService {
 
   private readonly catalogue_url:string = 'http://127.0.0.1:8000/api/catalogues';
   private readonly complement_url:string = 'http://127.0.0.1:8000/api/complements';
-  private readonly frites_url:string = 'http://127.0.0.1:8000/api/frites';
-  private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
+  private readonly zone_url='http://127.0.0.1:8000/api/zones';
+  // private readonly frites_url:string = 'http://127.0.0.1:8000/api/frites';
+  // private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
   cpt:number=0;
 
   constructor(private http:HttpClient,private sanitizer: DomSanitizer) { }
 
   getProduitsObs():Observable<any>{
     return this.http.get<any>(this.catalogue_url)
-    console.log
+    console.log();
   }
   getComplementsObs():Observable<any>{
     return this.http.get<any>(this.complement_url);
     // console.log;  
   }
-  getFritesObs():Observable<any>{
-    return this.http.get<any[]>(this.frites_url);
+  getZonesObs():Observable<any>{
+    return this.http.get<any>(this.zone_url);
     console.log;
   }
-  getBoissonObs():Observable<any>{
-    return this.http.get<any>(this.boissons_url);
-    console.log;
-  }
+  // getFritesObs():Observable<any>{
+  //   return this.http.get<any[]>(this.frites_url);
+  //   console.log;
+  // }
+  // getBoissonObs():Observable<any>{
+  //   return this.http.get<any>(this.boissons_url);
+  //   console.log;
+  // }
 
 // return un burger:::::::::::::::::::::
-  getOnBurgers(id:string,burgers:IBurger[]):IBurger
-  { 
-    const burger = burgers.find((burger)=>
-    {
-      return burger.id.toString()===id
-    }
-    );
-    if (!burger) {
-      throw new Error('Burger not found');
-    }else{
-      return burger;
-    }
-  }
+  // getOnBurgers(id:string,burgers:IBurger[]):IBurger
+  // { 
+  //   const burger = burgers.find((burger)=>
+  //   {
+  //     return burger.id.toString()===id
+  //   }
+  //   );
+  //   if (!burger) {
+  //     throw new Error('Burger not found');
+  //   }else{
+  //     return burger;
+  //   }
+  // }
 // return un menu:::::::::::::::::::::
-  getOnMenus(id:string,menus:IMenu[]):IMenu 
-  {
+  
+  getOnMenus(id:string,menus:IMenu[]):IMenu {
     const menu = menus.find((menu)=>
     {
       return menu.id.toString()===id
@@ -78,11 +83,7 @@ export class DataServiceService {
   //  cpt+= this.cpt;
     return ++this.cpt;
   }
-/* 
-* params
-  * params:produit
-  * fonction pour convertir l'image
-*/
+
   convertImg(param: string){
     return this.sanitizer.bypassSecurityTrustResourceUrl("data:image/jpg;base64, "+param); 
   }

@@ -29,6 +29,7 @@ import { ConnexionComponent } from './forms/connexion/connexion.component';
 import { FritesMenuComponent } from './catalogue/show-details/frites-menu/frites-menu.component';
 import { BurgersDetailMenuComponent } from './catalogue/show-details/burgers-detail-menu/burgers-detail-menu.component';
 import { BoissonsDetailMenuComponent } from './catalogue/show-details/boissons-detail-menu/boissons-detail-menu.component';
+import { ZonesComponent } from './catalogue/show-details/zones/zones.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { BoissonsDetailMenuComponent } from './catalogue/show-details/boissons-d
     ConnexionComponent,
     FritesMenuComponent,
     BoissonsDetailMenuComponent,
+    ZonesComponent,
   ],
   imports: [
     BrowserModule,

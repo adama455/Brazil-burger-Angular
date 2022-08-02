@@ -38,7 +38,7 @@ export class CardProduitComponent implements OnInit {
   convert(url: string){
     return this.data.convertImg(url)
   }
-  // Ajouter panier=====================
+  // bloquer l-incrementation du panier au niveau du produit=====================
   addCart(prod:any){
     this.panier.putToPanier(prod) ;
     this.disabled=false;

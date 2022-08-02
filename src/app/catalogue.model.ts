@@ -36,6 +36,7 @@ export interface IBoisson{
     // quantite:number
 }
 export interface Taille{
+    nom:string,
     tailleBoissons:ITailleBoisson[],
 }
 export interface ITailleBoisson{
@@ -68,5 +69,18 @@ export interface IComplement{
 export interface ICatalogue{
     burgers:IBurger[],
     menus:IMenu[],
+}
+
+export interface IQuartier{
+    id: number,
+    nom: string,
+    rue:string,
+    etat: number,
+}
+export interface IZone{
+    id: number
+    nom: string,
+    etat: number
+    quartiers:IQuartier []
 }
 
