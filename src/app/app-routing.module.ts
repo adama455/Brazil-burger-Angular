@@ -6,8 +6,11 @@ import { PanierComponent } from './catalogue/panier/panier.component';
 import { ShowDetailsComponent } from './catalogue/show-details/show-details.component';
 import { DetailBurgerComponent } from './detail-burger/detail-burger.component';
 import { DetailMenuComponent } from './detail-menu/detail-menu.component';
+import { ConnexionComponent } from './forms/connexion/connexion.component';
+import { InscriptionComponent } from './forms/inscription/inscription.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
+// import { SubDetailMenuComponent } from './catalogue/show-details/sub-detail-menu/sub-detail-menu.component';
 // import { CatalogueComponent } from './catalogue/catalogue.component';
 // import { HeaderComponent } from './header/header.component';
 
@@ -20,6 +23,9 @@ const routes: Routes = [
   { path:'paniers', component: PanierComponent},
   { path:'', component: HeaderComponent},
   { path:'catalogue', component: CatalogueComponent},
+  { path:'registration', component: InscriptionComponent},
+  { path:'connexion', component: ConnexionComponent},
+  // { path:'sub', component: SubDetailMenuComponent},
   // { path:'', component: HeaderComponent}
 ];
 

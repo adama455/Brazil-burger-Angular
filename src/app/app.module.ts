@@ -23,8 +23,12 @@ import { MouvementDirective } from './directives/mouvement.directive';
 import { PanierComponent } from './catalogue/panier/panier.component';
 import { CommandeLigneComponent } from './catalogue/panier/commande-ligne/commande-ligne.component';
 import { FormsModule } from '@angular/forms';
-import { SubDetailMenuComponent } from './catalogue/show-details/sub-detail-menu/sub-detail-menu.component';
 import { ComplementsComponent } from './catalogue/show-details/complements/complements.component';
+import { InscriptionComponent } from './forms/inscription/inscription.component';
+import { ConnexionComponent } from './forms/connexion/connexion.component';
+import { FritesMenuComponent } from './catalogue/show-details/frites-menu/frites-menu.component';
+import { BurgersDetailMenuComponent } from './catalogue/show-details/burgers-detail-menu/burgers-detail-menu.component';
+import { BoissonsDetailMenuComponent } from './catalogue/show-details/boissons-detail-menu/boissons-detail-menu.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,8 +49,12 @@ import { ComplementsComponent } from './catalogue/show-details/complements/compl
     MouvementDirective,
     PanierComponent,
     CommandeLigneComponent,
-    SubDetailMenuComponent,
+    BurgersDetailMenuComponent,
     ComplementsComponent,
+    InscriptionComponent,
+    ConnexionComponent,
+    FritesMenuComponent,
+    BoissonsDetailMenuComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubDetailMenuComponent } from './sub-detail-menu.component';
+import { ConnexionComponent } from './connexion.component';
 
-describe('SubDetailMenuComponent', () => {
-  let component: SubDetailMenuComponent;
-  let fixture: ComponentFixture<SubDetailMenuComponent>;
+describe('ConnexionComponent', () => {
+  let component: ConnexionComponent;
+  let fixture: ComponentFixture<ConnexionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SubDetailMenuComponent ]
+      declarations: [ ConnexionComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SubDetailMenuComponent);
+    fixture = TestBed.createComponent(ConnexionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

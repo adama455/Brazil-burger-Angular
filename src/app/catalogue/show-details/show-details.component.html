@@ -1,11 +1,13 @@
-<div class="card w-75 m-auto ">   
+<div class="card grand-card w-75 m-auto ">   
     <div class="header">
-        <h5 class="card-title text-center fs-4 mt-2 fw-bold"[appMouvement]="maCouleur">DETAILS: {{showTitle(produit)|uppercase}}</h5>
+        <h5 class="card-title text-center fs-4 mt-2 fw-bold">DETAILS: {{showTitle(produit)|uppercase}}</h5>
+        <div class="panier bg-dark col-1 d-flex justify-content-center py-2 rounded rounded-5 float-end me-5" *ngIf="isMenu(produit)" >
+            <i class="fa-solid text-white fa-cart-arrow-down fs-2" routerLink="/paniers"></i>
+        </div>
         <span class="close" ><i class="fa-solid fa-xmark fs-3" routerLink="/catalogue"></i></span>
     </div>
-    <i class="fa-solid panier position-absolute fa-cart-arrow-down fs-1" routerLink="/paniers"></i>
     <div class="card-body w-100" >
-        <div class="detail w-100 d-flex justify-content-center">
+        <div class="show-detail w-100 d-flex justify-content-center">
             <div class="descrip col-4 p-3">
                 <h3 class="fw-bold">{{produit.nom}}</h3>
                 <p class="text-wrap">
@@ -22,7 +24,7 @@
                     <img [src]="convert(produit.image)"class="col-md-6 d-flex">
                 </div>
 
-                <button type="button" class=" cmde h-25 btn-rounded rounded-5">
+                <button type="button" class=" cmde h-25 btn-rounded rounded-5 ">
                       <div class="d-flex">
                         <span class="text-white fw-bold ">VOUS LE VOULEZ ? C’EST PAR ICI !</span>
                         <span><i class="fas fa-long-arrow-alt-right text-white fs-3 ms-2"></i></span>
@@ -33,18 +35,59 @@
                 
             </div>
             <!--===================Début Détail du menu========================= -->
-                <div class="burger-complement card mt-4 mb-3">
-                    <div class="mx-5 col-4">
-                        <img [src]="convert(produit.image)"class="col-md-6 d-flex">
-                    </div>
-                    <!--<app-sub-detail-menu></app-sub-detail-menu>-->
+            <div class="burger-complement card mt-4 mb-3" *ngIf="isMenu(produit)">
+                <div class=" d-flex mb-2 ">
+                    
+                    <app-burgers-detail-menu *ngFor="let oburger of burgers" [burge]="oburger" class=" col-2 oburger  px-3"></app-burgers-detail-menu>
+                    
+                    <app-frites-menu *ngFor="let ofrite of frites" [frite]="ofrite" class=" col-2 ofrite px-3 "></app-frites-menu>
+                    
+                        <div class="col-2 d-flex oboisson px-3" *ngFor="let boisson of tailles ">
+                            <div *ngFor="let drink of boisson.taille.tailleBoissons" class="col-12 me-3 px-3 boisson mt-2">  
+                                <div class="d-flex boisson">
+                                    <div class="col-12">
+                                        <div class="prix d-flex justify-content-between ">
+                                            <span class="fw-bold">{{drink.boisson.nom}}</span>
+                                            <p>Qté: {{boisson.quantite}}</p>
+                                        </div>
+                                        <img [src]="convert(drink.boisson.image)"class="col-md-7 d-flex mx-auto">
+                                        <div class="prix d-flex justify-content-between">
+                                            <span class="me-2">P: {{drink.prixBoisson}}</span>
+                                            <span>Stock: {{drink.stock}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>     
+                        </div>
+                    
+
+                    <!--<app-boissons-detail-menu *ngFor="let boisson of tailles"  class=" col-2 border border-primary">
+                        <div *ngFor="let boiss of boisson.taille" [taille]="boiss"   >
+                            
+
+                        </div>
+
+                    </app-boissons-detail-menu>-->
+                    
+                    <!-- <span>{{frite.frite.nom}}</span>
+                        <div *ngFor="let frite of frites" class="col-sm-1 col-md-2 burger d-flex">
+                            <img [src]="convert(frite.frite.image)"class="col-md-6 d-flex">
+                            <span>Prix: {{frite.frite.prix}}</span>
+                        </div>
+                        <span>Qté: {{frite.quantite}}</span>-->
+                        
+                    <!--<app-burgersdetail-menu *ngFor="let burg of burgers" [burger]="burg"></app-burgersdetail-menu>-->
                 </div>
+            </div>
             <!--=================== Fin Détail du menu========================= -->
+
+            <!--=================== Début des Complements========================= -->
+
             <div class="row g-5">
                 <div class="frites col-6 px-4 py-3">
                     <h3 class="fw-bold ">Frites:</h3>
                     <div class="row g-2">
-                        <app-complements *ngFor="let frite of frites" [produit]="frite" class="col col-sm-3 col-md-2"  ></app-complements>
+                        <app-complements *ngFor="let frite of fritess" [produit]="frite" class="col col-sm-3 col-md-2"  ></app-complements>
                     </div>
                 </div>
                 <div class="frites col-6 px-2 py-3">
@@ -52,8 +95,9 @@
                     <div class="row d-flex g-2">
                         <app-complements *ngFor="let boisson of boissons" [produit]="boisson" class="col col-sm-3 col-md-2"></app-complements>
                     </div>
-                </div>
-                
+                </div>      
             </div>
+        <!--=================== Fin des Complements========================= -->
+
     </div>
 </div>

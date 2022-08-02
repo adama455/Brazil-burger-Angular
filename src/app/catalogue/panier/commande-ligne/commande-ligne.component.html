@@ -33,7 +33,7 @@
             id="form1"
             min="1"
             name="quantity"
-            value="{{ line.quantite }}"
+            value="{{ line.quantity }}"
             #quantite
             type="number"
             class="form-control border border-primary border-2"
@@ -51,7 +51,7 @@
       </div>
       <!-- Quantity -->
       <div class="col-md-6 fw-bold fs-5 text-center mt-2">
-        {{ line.prix * line.quantite | currency: "$"| lowercase }}
+        {{ line.prix * line.quantity | currency: "$"| lowercase }}
       </div>
       <div class="delet">
         <i

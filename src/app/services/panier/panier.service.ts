@@ -21,7 +21,7 @@ export class PanierService {
   private itemsSubject: any = new BehaviorSubject<IBurger[] | IMenu[]>([]);
   // tableau==============================================
   items$ = this.itemsSubject.asObservable();
-  quantite = this.items$.quantite;
+  quantite = this.items$.quantity;
 
   putToPanier(product: any, action: 'in' | 'out' = 'in') {
     this.items$
@@ -42,7 +42,7 @@ export class PanierService {
               } else {
                 products.forEach((element) => {
                   if (element.id === product.id) {
-                    element.quantite++;
+                    element.quantity++;
                   }
                 });
               }
@@ -93,7 +93,7 @@ export class PanierService {
         map((products: IBurger[] | IMenu[]) => {
           products.forEach(element => {
             if (element.id === product.id){
-              element.quantite = qte;
+              element.quantity = qte;
             }
             localStorage.setItem('products', JSON.stringify(products));
           });

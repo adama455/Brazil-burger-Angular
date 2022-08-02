@@ -8,30 +8,70 @@ import {IBoisson, IBurger, ICatalogue, IComplement, IFrite, IMenu} from '../cata
   providedIn: 'root'
 })
 export class DataServiceService {
-  private readonly catalogue_url = 'http://127.0.0.1:8000/api/catalogues';
-  private readonly complement_url = 'http://127.0.0.1:8000/api/complements';
-  private readonly produit_url = 'http://127.0.0.1:8000/api/produits/';
+  burgers!:IBurger[];
+  menus!:IMenu[];
+  produits!:ICatalogue[];
 
+  private readonly catalogue_url:string = 'http://127.0.0.1:8000/api/catalogues';
+  private readonly complement_url:string = 'http://127.0.0.1:8000/api/complements';
+  private readonly frites_url:string = 'http://127.0.0.1:8000/api/frites';
+  private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
   cpt:number=0;
 
   constructor(private http:HttpClient,private sanitizer: DomSanitizer) { }
 
-  getProduitsObs():Observable<ICatalogue>{
-    return this.http.get<ICatalogue>(this.catalogue_url)
-    // console.log
+  getProduitsObs():Observable<any>{
+    return this.http.get<any>(this.catalogue_url)
+    console.log
   }
-  getComplementsObs():Observable<IComplement>{
-    return this.http.get<IComplement>(this.complement_url);
-    console.log;  
+  getComplementsObs():Observable<any>{
+    return this.http.get<any>(this.complement_url);
+    // console.log;  
+  }
+  getFritesObs():Observable<any>{
+    return this.http.get<any[]>(this.frites_url);
+    console.log;
+  }
+  getBoissonObs():Observable<any>{
+    return this.http.get<any>(this.boissons_url);
+    console.log;
   }
 
-  getSingleProduitObs(id:number):Observable<IMenu>{
-    return this.http.get<IMenu>(this.produit_url+''+id)
+// return un burger:::::::::::::::::::::
+  getOnBurgers(id:string,burgers:IBurger[]):IBurger
+  { 
+    const burger = burgers.find((burger)=>
+    {
+      return burger.id.toString()===id
+    }
+    );
+    if (!burger) {
+      throw new Error('Burger not found');
+    }else{
+      return burger;
+    }
+  }
+// return un menu:::::::::::::::::::::
+  getOnMenus(id:string,menus:IMenu[]):IMenu 
+  {
+    const menu = menus.find((menu)=>
+    {
+      return menu.id.toString()===id
+    });
+    if (!menu) {
+      throw new Error("Menu not Found");
+    }else{
+      return menu;
+    }
   }
 
-  getAllProduitsObs():Observable<IMenu | IBurger>{
-    return this.http.get<IMenu |IBurger>(this.produit_url);
-  }
+  // getSingleProduitObs(id:number):Observable<IMenu>{
+  //   return this.http.get<IMenu>(this.produit_url+''+id)
+  // }
+
+  // getAllProduitsObs():Observable<IMenu | IBurger>{
+  //   return this.http.get<IMenu |IBurger>(this.produit_url);
+  // }
  
 
   addCart(){

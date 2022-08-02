@@ -1,0 +1,12 @@
+.right-card{
+    box-shadow: rgb(120, 118, 118) 4px 4px 20px;
+    box-sizing: border-box;
+}
+.left-card{
+    box-shadow: rgb(120, 118, 118) 4px 4px 20px;
+    box-sizing: border-box;
+}
+.btn-creat{
+    background-color: #BA631F;
+    border:none
+}

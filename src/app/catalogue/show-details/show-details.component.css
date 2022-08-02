@@ -1,8 +1,12 @@
+/* .grand-card{
+    
+} */
 .cmde{
     background-color: #BA631F;
     border-radius: 10;
     padding: 1em;
-    
+    border: none;
+    position: absolute;
 }
 .card{
     box-shadow: rgb(120, 118, 118) 4px 4px 20px;
@@ -20,6 +24,9 @@
 .descrip,.image, .complement{
     box-shadow: lightgray 4px 4px 20px;
     box-sizing: border-box;
+}
+.descrip{
+    overflow-y: scroll;
 }
 .image:hover{
     animation: zoominoutsinglefeatured 1s ;
@@ -57,14 +64,25 @@
   }
 .panier{
     color: #ba631f;
-    top:30%;
-    right:13%
-}
+    position: absolute;
+     top:25%;
+    right:7% 
+} 
 
 .burger-complement{
 overflow-x: scroll;
 }
 
+.boisson{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ofrite, .oburger, .oboisson{
+    box-shadow: rgb(164, 162, 162) 4px 4px 20px;
+    border-radius: 8px;
+    
+}
 /* .image{
     box-shadow: lightgray 4px 4px 20px;
     box-sizing: border-box;
