@@ -22,7 +22,7 @@
       <!-- Quantity -->
       <div class="d-flex mb-3 mt-2">
         <button (click)="totalLine(line, quantite.value);getPrixTotal()"
-          class="btn btn-primary moins me-1"
+          class="btn moins me-1 mt-1"
           onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
         >
           <i class="fas fa-minus"></i>
@@ -36,14 +36,14 @@
             value="{{ line.quantity }}"
             #quantite
             type="number"
-            class="form-control border border-primary border-2"
+            class="form-control"
             (input)="totalLine(line,quantite.value);getPrixTotal()"
           />
           <label class="form-label" for="form1">Quantity</label>
         </div>
 
         <button (click)="totalLine(line, quantite.value);getPrixTotal()"
-          class="btn btn-primary plus ms-1"
+          class="btn plus ms-1 mt-1"
           onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
         >
           <i class="fas fa-plus"></i>

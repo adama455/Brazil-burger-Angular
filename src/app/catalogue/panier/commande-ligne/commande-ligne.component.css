@@ -75,10 +75,14 @@ hr{
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 35px;
-        width: 35px;
-        border: solid ;
+        height: 25px;
+        width: 25px;
+        border: none;
         border-radius: 90%;
+        background-color: #C7824B;
+    }
+    .form-control{
+        border: 1px solid #C7824B;
     }
    label{
     font-size: 10px;

@@ -52,14 +52,14 @@
                          
                             <h3 class=" fw-bold pb-2">Résumé du panier:</h3>
                             <div class="total-content d-block justify-content-between">
-                                <div class="btn-total mb-2 h-50 border border-primary border-2 d-flex">
-                                    <span class="btn-total bg-info fs-3 fw-bold col-4 border  text-white text-center">Prix <br> Total</span>
-                                    <p class=" col-7 fw-bold fs-3 my-auto text-center">{{getTotal()}}</p> 
+                                <div class="btn-total mb-2 py-2 h-75 d-flex">
+                                    <span class="btn-total fs-2 fw-bold col-4 text-white text-center">Total:</span>
+                                    <p class=" col-7 fw-bold fs-3 my-auto text-center">{{getTotal() | currency: ' $'}} </p> 
                                 </div>
                             </div>      
                          <hr class="line">
                         </div>
-                        <div class="card1 right-card mx-3 mt-5 fs-4">
+                        <div class="card1 right-card mx-3 mt-2 fs-4">
                             <h6 class="fw-bold ps-2">OPTION COMMANDE</h6>
                             <form action="" class="mode-liv card mb-4 ">
                                 <div class="d-flex justify-content-between align-items-center check1">
@@ -74,7 +74,41 @@
                                     </div>
 
                                     <!--LES ZONES==========================================-->
-                                    <app-zones></app-zones>
+                                    <div class="accordion" id="accordionExample" [ngStyle]="{display:'block'} ">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingTwo">
+                                                <div class="accordion-button collapsed text-center fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" >
+                                                ------------Veillez Choisir votre zone-------------
+                                                </div>
+                                            </h2>
+                                            <div id="collapseTwo" class=" collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                <table *ngFor="let ozone of zones" class="text-center border w-100">
+                                                    <div class="ms-5 w-100">
+                                                        **********{{ozone.nom}}**********
+                                                    </div>
+                                                    <tr *ngFor="let quartier of ozone.quartiers" class="px-2">
+                                                        <td class="ps-2 float-start">
+                                                            <div class="d-flex">
+                                                                <input type="radio" name="quartier" value="" class="me-3">
+                                                                {{quartier.nom}}
+                                                            </div>
+                                                        </td> 
+                                                        -------------
+                                                        <td class="pe-2">
+                                                            {{quartier.rue}}
+                                                        </td>    
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <!--
+                                                <div id="collapseTwo" class=" collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                    <app-zones *ngFor="let ozone of zones" [zone]="ozone"></app-zones>
+                                                    <app-zones *ngFor="let oquartier of quartiers" [quartier]="oquartier"></app-zones>
+                                                </div>
+                                            --> 
+                                        </div> 
+                                    </div>
+                                    <!--FIN ZONES==========================================-->
 
                                 </div>
                             </form>
@@ -96,7 +130,7 @@
                                     alt="" />
                                 </div>
                             </div>-->
-                            <button class=" btn w-100 fs-4 fw-bold mt-3 py-3 btn-liv btn-primary" type="submit">
+                            <button class=" btn w-100 fs-4 fw-bold mt-2 py-3 btn-liv" type="submit">
                                 <marquee scrollamount="25" > COMMANDEZ-LIVRAISON</marquee>
                             </button>
                         </div>

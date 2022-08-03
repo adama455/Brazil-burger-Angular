@@ -77,9 +77,9 @@ export class ShowDetailsComponent implements OnInit {
         cata.menus.forEach((product:IMenu) =>{
           if (this.id == product.id) {
             this.produit = product;
-            this.frites=product.frites;
+            this.frites=product.frites; //les frites du munu
+            this.tailles=product.tailles; //les tailles de boisson du menu
             // this.burgers=product.burgers;
-            this.tailles=product.tailles;
             // console.log(this.produit);
             return;
           }
@@ -89,7 +89,7 @@ export class ShowDetailsComponent implements OnInit {
       
     ).subscribe()
   
-    // /////////// ça concerne les sous détail de Menu////////////////
+    // /////////// ça concerne les burgers sous détail de Menu////////////////
     ////////////////////////////////////////////////////////////////
 
     this.parametre =this.route.snapshot.params['id'];

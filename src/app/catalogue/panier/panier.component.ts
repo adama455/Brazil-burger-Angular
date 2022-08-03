@@ -10,8 +10,11 @@ import { PanierService } from 'src/app/services/panier/panier.service';
 })
 export class PanierComponent implements OnInit {
 
+  zones!:IZone[];
   quartiers:IQuartier[]=[];
+  allQuartiers:IQuartier[]=[];
   zone!:IZone;
+  quartier!:IQuartier;
 
   constructor(private panier:PanierService, private data:DataServiceService ) { }
   
@@ -26,12 +29,41 @@ export class PanierComponent implements OnInit {
     }
   
     ngOnInit(): void {
+      // this.data.getZonesObs().subscribe(
+      //   (data)=>{
+      //     this.zones=data;
+      //     console.log(this.zones);
+      //     this.zones.forEach((ozone)=>{
+      //       console.log(ozone.nom);
+      //       // ozone.quartiers.forEach((quartier)=>{
+      //       //   console.log(quartier.nom);  
+      //       // })
+            
+      //     })
+      //   }
+      // );
+
       this.data.getZonesObs().subscribe(
         (data)=>{
-
-          console.log(data);
-          this.quartiers=data.quartiers;
-
+          this.zones=data;
+          console.log(this.zones);
+          this.data.getQuartiersObs().subscribe(
+            (qata)=>{
+              this.allQuartiers=qata;
+                this.allQuartiers.forEach((allQ)=>{
+                  this.zones.forEach((z)=> {
+                    z.quartiers.forEach((oneQ)=>{
+                      if (allQ.id === oneQ.id) {
+                        allQ.nom =oneQ.nom;
+                        console.log;
+                        
+                      }
+                    })
+                  })
+                })
+              
+            
+          });
         }
       );
     }

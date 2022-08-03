@@ -15,6 +15,7 @@ export class DataServiceService {
   private readonly catalogue_url:string = 'http://127.0.0.1:8000/api/catalogues';
   private readonly complement_url:string = 'http://127.0.0.1:8000/api/complements';
   private readonly zone_url='http://127.0.0.1:8000/api/zones';
+  private readonly quartier_url='http://127.0.0.1:8000/api/quartiers';
   // private readonly frites_url:string = 'http://127.0.0.1:8000/api/frites';
   // private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
   cpt:number=0;
@@ -31,6 +32,10 @@ export class DataServiceService {
   }
   getZonesObs():Observable<any>{
     return this.http.get<any>(this.zone_url);
+    console.log;
+  }
+  getQuartiersObs():Observable<any>{
+    return this.http.get<any>(this.quartier_url);
     console.log;
   }
   // getFritesObs():Observable<any>{

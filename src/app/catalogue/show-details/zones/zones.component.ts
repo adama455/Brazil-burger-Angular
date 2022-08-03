@@ -9,14 +9,40 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 })
 export class ZonesComponent implements OnInit {
 
-  zones:IZone[]=[];
+  // zones:IZone[]=[];
   quartiers:IQuartier[]=[];
+  zones:IZone[]=[];
+  allQuartiers:IQuartier[]=[];
   @Input() zone!:IZone;
   @Input() quartier!:IQuartier;
 
   constructor(private data:DataServiceService) { }
 
   ngOnInit(): void {
+    // this.data.getZonesObs().subscribe(
+    //   (data)=>{
+    //     this.zones=data;
+    //     console.log(this.zones);
+    //     this.data.getQuartiersObs().subscribe(
+    //       (qata)=>{
+    //         this.allQuartiers=qata;
+            
+    //           this.allQuartiers.forEach((allQ)=>{
+    //             this.zones.forEach((z)=> {
+    //               z.quartiers.forEach((oneQ)=>{
+    //                 if (allQ.id === oneQ.id) {
+    //                   allQ.nom =oneQ.nom;
+    //                   console.log;
+                      
+    //                 }
+    //               })
+    //             })
+    //           })
+            
+          
+    //     });
+    //   }
+    // );
   }
 
   // showZone(livraison:HTMLInputElement){

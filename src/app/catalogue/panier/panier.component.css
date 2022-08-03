@@ -25,7 +25,9 @@
     /* color: red;    */
 }
 .btn-total{
-    box-shadow: rgb(99, 152, 208) 0 0 5px;
+    /* box-shadow: rgb(99, 152, 208) 0 0 5px; */
+    background-color: #C7824B;
+    border:2px solid #C7824B;
    
 }
 .grand-card{
@@ -51,15 +53,18 @@ input{
     text-align: center;
     height: 5px;
 }
-.line:after {
+/* .line:after {
 background: #fff;
 content: '§';
 padding: 0 4px;
 position: relative;
 top: -13px;
-}
+} */
 .liv{
 background-color: bisque;
+}
+.btn-liv{
+    background-color: #C7824B;
 }
 hr{
     margin: 0;

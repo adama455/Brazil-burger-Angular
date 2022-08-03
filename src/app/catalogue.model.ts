@@ -78,9 +78,9 @@ export interface IQuartier{
     etat: number,
 }
 export interface IZone{
-    id: number
+    id: number,
     nom: string,
-    etat: number
-    quartiers:IQuartier []
+    etat: number,
+    quartiers:IQuartier[],
 }
 
