@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, take } from 'rxjs';
 import { Burger, Frite, IBoisson, IBurger, ICatalogue, IComplement, IFrite, IMenu, ITaille, ITailleBoisson, Taille } from 'src/app/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
+import { PanierService } from 'src/app/services/panier/panier.service';
 
 @Component({
   selector: 'app-show-details',
@@ -16,7 +17,6 @@ export class ShowDetailsComponent implements OnInit {
   boissons!:IBoisson[];
   complement!:IComplement;
   @Input() produit!:IBurger|IMenu;
-  @Input() maCouleur:string="red";
   
   // /////////// ça concerne les sous détail de Menu////////////////
   ////////////////////////////////////////////////////////////////
@@ -35,6 +35,7 @@ export class ShowDetailsComponent implements OnInit {
   tailleBoissons!:ITailleBoisson[]
   taille!:Taille;
   taillee!:Taille[];
+  tailless!:ITaille;
   
   allBurgers!:IBurger[];
   allFrites!:IFrite[];
@@ -42,11 +43,16 @@ export class ShowDetailsComponent implements OnInit {
   boisson!:IBoisson;
   parametre!:number;
   param!:string;
+
+  disabled!:boolean;
+  quantiteBoissonChoisi!: number;
+
 ////////////////////////////////////////////////////////////////
   
   constructor(
     private data:DataServiceService, 
     private route: ActivatedRoute,
+    private panierService: PanierService
   ){
 
   }
@@ -80,7 +86,10 @@ export class ShowDetailsComponent implements OnInit {
             this.frites=product.frites; //les frites du munu
             this.tailles=product.tailles; //les tailles de boisson du menu
             // this.burgers=product.burgers;
-            // console.log(this.produit);
+            console.log(this.produit);
+            this.tailles.forEach((taillesss)=>{
+              this.tailless=taillesss;
+            })
             return;
           }
         });
@@ -110,7 +119,9 @@ export class ShowDetailsComponent implements OnInit {
         })
       })
   }
-        // this.frites=this.menu.frites ; //Tous les Frites dans menu
+  ////////////////////////////////////////////////////////////////
+
+  // this.frites=this.menu.frites ; //Tous les Frites dans menu
         //   this.data.getFritesObs().subscribe(
         //   (data:any)=>{
         //     this.allFrites=data; //l'enssemble des frites dans complement
@@ -151,15 +162,45 @@ export class ShowDetailsComponent implements OnInit {
   ////////////////////////////////////////////////////////////////
 
   //function vertir image------
+  
+
+  // if (condition) {
+    
+  // }
+  
+  // disabledAddPanierMenu(){
+  //   if (condition) {
+      
+  //   }
+  // }
+  
+  addMenuToCart(prod:any){
+    this.panierService.putToPanier(prod) ;
+    this.disabled=false;
+
+    // prix total commande=============
+    this.panierService.getPrixTotal();
+  }
+
   convert(url: string){
     return this.data.convertImg(url)
   }
+  // Fonction pour dinamiser le Titre du menu------------------
   showTitle(product:any){
     return product.burgers? "Menus":"Burger"
   }
 
   isMenu(product: any) {
     return product.burgers ? true : false;
+  }
 
+  // Incrementation et Décrementation de la quantité de boisson dans détail Menu==================
+  increment(){
+    this.quantiteBoissonChoisi=this.data.increment(); 
+    return this.quantiteBoissonChoisi;
+  }
+  decrement(){
+    this.quantiteBoissonChoisi=this.data.decrement(); 
+    return this.quantiteBoissonChoisi;
   }
 }

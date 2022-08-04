@@ -1,0 +1,11 @@
+.card-taiile{
+    width: 12rem;
+}
+.card-card{
+    box-shadow: rgb(120, 118, 118) 4px 4px 20px;
+    box-sizing: border-box;
+    background: #000;
+}
+.card-h{
+    overflow-x: scroll;
+}

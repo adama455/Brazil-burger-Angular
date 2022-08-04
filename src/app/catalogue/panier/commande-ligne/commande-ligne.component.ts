@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IBurger, IMenu } from 'src/app/catalogue.model';
+import { DataServiceService } from 'src/app/services/data-service.service';
 import { PanierService } from 'src/app/services/panier/panier.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class CommandeLigneComponent implements OnInit {
 
   @Input() line!:IMenu | IBurger;
 
-  constructor(private panier:PanierService) { }
+  constructor(private panier:PanierService, private data :DataServiceService) { }
   
   items$ = this.panier.items$;
   prixTotal=this.getPrixTotal();
@@ -31,5 +32,7 @@ export class CommandeLigneComponent implements OnInit {
     this.panier.putToPanier(prod,"out")
   }
 
-
+  convert(url: string){
+    return this.data.convertImg(url)
+  }
 }

@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-between" >
-                <a (click)="addCart(produit)" class="btn panier col-3 d-flex justify-content-center align-items-center" *ngIf="produit.nom.substr(0,1)==='B'" >
+                <a (click)="addBurgerToCart(produit)" class="btn panier col-3 d-flex justify-content-center align-items-center" *ngIf="produit.nom.substr(0,1)==='B'" >
                     <i *ngIf="disabled" class="fa-solid fa-cart-arrow-down fs-4"></i>
                     <i *ngIf="!disabled" class="fas fa-check-double text-success fs-4"></i>
                 </a>

@@ -1,0 +1,61 @@
+<div class=" "><!--card card-card py-1 px-3 h-75 mx-5 row gx-3-->
+    <div class=" d-flex justify-content-center">
+        <h5 class="d-flex justify-content-center text-white  fw-bold">
+            Le menu contient: {{taillee.quantite}} boisson (s) de {{ taillee.taille.nom}}
+        </h5>   
+    </div>
+    <div class="d-flex "> <!--justify-content-between card-h-->
+        <div class="card card-taiile w-50 m-3 "*ngFor="let item of taillee.taille.tailleBoissons">
+            <div class="d-flex w-100  ">
+                <img [src]="convert(item.boisson.image)" alt="..." class="">
+                <div class="">
+                    <h5 class="text-center mt-2">
+                        <em class="fw-bold">{{item.boisson.nom}}</em>
+                    </h5> 
+                    <h6 class="text-center">
+                        <em>Prix: {{item.prixBoisson}}</em> 
+                    </h6>
+                    <div class="card-body">
+                        <div class="d-flex w-100">
+                            <button
+                            class="btn moins me-1 mt-1"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()" (click)="decrement()" 
+                            >
+                            <i class="fas fa-minus"></i>
+                            </button>
+                            <div class="form-outline">
+                            <input
+                                id="form1"
+                                min="0"
+                                name="quantity"
+                                value=""
+                                #quantite
+                                type="number"
+                                class="form-control"
+                            />
+                            </div>
+                    
+                           <button 
+                            class="btn plus ms-1 mt-1"
+                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()" (click)="increment()" 
+                            >
+                            <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="card" >
+    <img [src]="convert(burge.burger.image)" class="col-md-6 mx-auto">
+    <div class="card-body">
+        <h5 class="card-title text-center fw-bold">{{burge.burger.nom}}</h5>
+        <div class="text-center">
+            <span class="me-3"><em class="fw-bold">Prix: </em>{{burge.burger.prix}}</span>
+            <span><em class="fw-bold">Qté: </em> {{burge.quatite}}</span>
+        </div>
+    </div>
+</div>-->

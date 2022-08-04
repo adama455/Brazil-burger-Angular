@@ -31,6 +31,8 @@ import { BurgersDetailMenuComponent } from './catalogue/show-details/burgers-det
 import { BoissonsDetailMenuComponent } from './catalogue/show-details/boissons-detail-menu/boissons-detail-menu.component';
 import { ZonesComponent } from './catalogue/show-details/zones/zones.component';
 import { QuartierComponent } from './catalogue/show-details/zones/quartier/quartier.component';
+import { ChoixTailleBoissonComponent } from './catalogue/show-details/choix-taille-boisson/choix-taille-boisson.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,13 +61,16 @@ import { QuartierComponent } from './catalogue/show-details/zones/quartier/quart
     BoissonsDetailMenuComponent,
     ZonesComponent,
     QuartierComponent,
+    ChoixTailleBoissonComponent,
+   
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule, 
+    Ng2SearchPipeModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

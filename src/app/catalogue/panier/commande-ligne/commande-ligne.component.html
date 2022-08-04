@@ -4,7 +4,7 @@
       <div class="row no-gutters">
         <div class="col-md-3 column-img mt-3">
           <img
-            src="https://w7.pngwing.com/pngs/201/77/png-transparent-delicious-beef-burger-delicious-beef-burger-tomato-bread.png"
+            [src]="convert(line.image)"
             class="card-img"
             titlealt="..."
           />
@@ -51,7 +51,7 @@
       </div>
       <!-- Quantity -->
       <div class="col-md-6 fw-bold fs-5 text-center mt-2">
-        {{ line.prix * line.quantity | currency: "$"| lowercase }}
+        {{ line.prix * line.quantity | currency: "$" }}
       </div>
       <div class="delet">
         <i

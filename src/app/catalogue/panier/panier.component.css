@@ -30,6 +30,9 @@
     border:2px solid #C7824B;
    
 }
+.form-select{
+    background-color: #C7824B;
+}
 .grand-card{
     display: flex;
     flex-direction: column;
@@ -65,6 +68,10 @@ background-color: bisque;
 }
 .btn-liv{
     background-color: #C7824B;
+}
+.btn-liv:hover{
+    background-color: green;
+    color: #fff;
 }
 hr{
     margin: 0;

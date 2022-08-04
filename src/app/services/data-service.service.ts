@@ -11,20 +11,22 @@ export class DataServiceService {
   burgers!:IBurger[];
   menus!:IMenu[];
   produits!:ICatalogue[];
+  sumVal:number=0;
 
   private readonly catalogue_url:string = 'http://127.0.0.1:8000/api/catalogues';
   private readonly complement_url:string = 'http://127.0.0.1:8000/api/complements';
   private readonly zone_url='http://127.0.0.1:8000/api/zones';
   private readonly quartier_url='http://127.0.0.1:8000/api/quartiers';
   // private readonly frites_url:string = 'http://127.0.0.1:8000/api/frites';
-  // private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
+  private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
+  private readonly commande_url:string = 'http://127.0.0.1:8000/api/commandes';
   cpt:number=0;
 
   constructor(private http:HttpClient,private sanitizer: DomSanitizer) { }
 
   getProduitsObs():Observable<any>{
     return this.http.get<any>(this.catalogue_url)
-    console.log();
+    // console.log();
   }
   getComplementsObs():Observable<any>{
     return this.http.get<any>(this.complement_url);
@@ -32,20 +34,22 @@ export class DataServiceService {
   }
   getZonesObs():Observable<any>{
     return this.http.get<any>(this.zone_url);
-    console.log;
+    // console.log;
   }
   getQuartiersObs():Observable<any>{
     return this.http.get<any>(this.quartier_url);
-    console.log;
+    // console.log;
   }
+
   // getFritesObs():Observable<any>{
   //   return this.http.get<any[]>(this.frites_url);
   //   console.log;
   // }
-  // getBoissonObs():Observable<any>{
-  //   return this.http.get<any>(this.boissons_url);
-  //   console.log;
-  // }
+  
+  getBoissonObs():Observable<any>{
+    return this.http.get<any>(this.boissons_url);
+    console.log;
+  }
 
 // return un burger:::::::::::::::::::::
   // getOnBurgers(id:string,burgers:IBurger[]):IBurger
@@ -61,7 +65,7 @@ export class DataServiceService {
   //     return burger;
   //   }
   // }
-// return un menu:::::::::::::::::::::
+  // return un menu:::::::::::::::::::::
   
   getOnMenus(id:string,menus:IMenu[]):IMenu {
     const menu = menus.find((menu)=>
@@ -83,7 +87,6 @@ export class DataServiceService {
   //   return this.http.get<IMenu |IBurger>(this.produit_url);
   // }
  
-
   addCart(){
   //  cpt+= this.cpt;
     return ++this.cpt;
@@ -91,6 +94,17 @@ export class DataServiceService {
 
   convertImg(param: string){
     return this.sanitizer.bypassSecurityTrustResourceUrl("data:image/jpg;base64, "+param); 
+  }
+
+  increment(){
+    return this.sumVal ++
+    console.log(this.sumVal );
+    
+  }
+  decrement(){
+    return this.sumVal --
+    console.log(this.sumVal );
+    
   }
 
 }

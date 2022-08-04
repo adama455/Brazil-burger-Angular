@@ -1,10 +1,20 @@
-<div class="mt-2 ">
+<!--<div class="mt-2 ">
     <div class="d-flex frite">
         <span class="fw-bold">{{frite.frite.nom}}</span>
         <img [src]="convert(frite.frite.image)"class="col-md-6 d-flex">
         <div class="prix d-flex justify-content-between">
             <span class="me-3">P: {{frite.frite.prix}}</span>
             <span>Qté: {{frite.quantite}}</span>
+        </div>
+    </div>
+</div>-->
+<div class="card w-100 d-flex flex-row" >
+    <img [src]="convert(frite.frite.image)" class="col-md-4 mx-auto">
+    <div class="card-body">
+        <div class="text-center d-flex flex-column justify-content-center">
+            <h5 class="card-title text-center fw-bold">{{frite.frite.nom}}</h5>  
+            <span class="me-1"><em class="fw-bold">Prix: </em>{{frite.frite.prix}}</span>
+            <span><em class="fw-bold">Quantité: </em> {{frite.quantite}}</span>
         </div>
     </div>
 </div>

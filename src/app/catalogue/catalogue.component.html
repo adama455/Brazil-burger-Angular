@@ -1,13 +1,15 @@
-<div class="catalogue">
-    <app-filter></app-filter>
-    
-        <h2 class="text-center py-2 mt-5 mb-3 text-white fw-bold ">MES BURGERS:</h2>
-        <div class="row d-flex g-5">
-            <app-card-produit *ngFor="let burger of burgers" [produit]="burger" class="col col-sm-4 col-md-3"></app-card-produit>
-        </div>
+<div class="catalogue mt-5">
+    <div class="search-hero w-75 my-2 mx-auto d-flex justify-content-between">
+        <input class=" inputiD form-control mr-sm-2 py-3" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#xf002; Rechercher sur l'application...">
+    </div>
+   
+    <h2 class="text-center py-2 mt-3 mb-3 text-white fw-bold ">MES BURGERS:</h2>
+    <div class="row d-flex g-5">
+        <app-card-produit *ngFor="let burger of burgers | filter:searchText" [produit]="burger" class="col col-sm-4 col-md-3"></app-card-produit>
+    </div>
     <h2 class="text-center py-2 mt-5 mb-3 text-white fw-bold">MES MENUS:</h2>
     <div class="row d-flex g-5">
-        <app-card-produit *ngFor="let menu of menus" [produit]="menu" class="col col-sm-4 col-md-3"></app-card-produit>
+        <app-card-produit *ngFor="let menu of menus | filter:searchText" [produit]="menu" class="col col-sm-4 col-md-3"></app-card-produit>
     </div>
 
 </div>

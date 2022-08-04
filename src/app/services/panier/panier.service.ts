@@ -7,7 +7,9 @@ import { IBurger, IMenu } from 'src/app/catalogue.model';
   providedIn: 'root',
 })
 export class PanierService {
+
   prix: number = 0;
+
   constructor() {
     let existingCartItems = JSON.parse(
       localStorage.getItem('products') || '[]'
@@ -21,7 +23,9 @@ export class PanierService {
   private itemsSubject: any = new BehaviorSubject<IBurger[] | IMenu[]>([]);
   // tableau==============================================
   items$ = this.itemsSubject.asObservable();
-  quantite = this.items$.quantity;
+  quantity = this.items$.quantity;
+  
+
   // Fornction pour incrementer la quantite du produit clicker au niveau du panier
   putToPanier(product: any, action: 'in' | 'out' = 'in') {
     this.items$
@@ -33,7 +37,7 @@ export class PanierService {
           );
           // console.log(tab);
 
-          product.quantite = 1;
+          product.quantity = 1;
           if (action === 'in') {
             if (tab) {
               let trouver:IBurger|undefined = tab.find((param: { id: number }) => param.id === product.id);
@@ -48,6 +52,7 @@ export class PanierService {
               }
             }
           } else {
+            // suppression au niveau du panier-------------------------------------------
             products.splice(product, 1);
           }
           localStorage.setItem('products', JSON.stringify(products));
@@ -65,12 +70,12 @@ export class PanierService {
     return this.items$;
   }
 
-  //  prix total du panier=============
+  // prix total du panier============= Résumer commande =============
   getPrixTotal(){
     let prixTotal=0;
     this.items$.subscribe((items:any) =>{
       items.forEach((item:any) =>{
-        prixTotal+=item.prix*item.quantite;
+        prixTotal+=item.prix*item.quantity;
       })
       localStorage.setItem('products', JSON.stringify(items));
     })
@@ -92,4 +97,6 @@ export class PanierService {
       } 
     )).subscribe();
   }
+
+ 
 }

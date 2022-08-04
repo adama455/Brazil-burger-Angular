@@ -1,104 +1,191 @@
-<div class="card grand-card w-75 m-auto ">   
-    <div class="header">
-        <h5 class="card-title text-center fs-4 mt-2 fw-bold">DETAILS: {{showTitle(produit)|uppercase}}</h5>
-        <div class="panier bg-dark col-1 d-flex justify-content-center py-2 rounded rounded-5 float-end me-5" *ngIf="isMenu(produit)" >
-            <i class="fa-solid text-white fa-cart-arrow-down fs-2" routerLink="/paniers"></i>
-        </div>
-        <span class="close" ><i class="fa-solid fa-xmark fs-3" routerLink="/catalogue"></i></span>
+<div class="card card-card grand-card w-75 m-auto">
+  <div class="header border">
+    <div class="title d-flex justify-content-between mx-4 pt-3">
+      <h5 class="card-title fs-4 mt-2 fw-bold">DETAILS: {{ showTitle(produit) | uppercase }}</h5>
+      <button *ngIf="(isMenu(produit) && quantiteBoissonChoisi === tailless.quantite)" (click)="addMenuToCart(produit) " 
+        class="panier text-white py-2 fw-bold px-5 roundeded border border-0 rounded-4 fs-4" 
+        >+panier
+      </button> 
+      
     </div>
-    <div class="card-body w-100" >
-        <div class="show-detail w-100 d-flex justify-content-center">
-            <div class="descrip col-4 p-3">
-                <h3 class="fw-bold">{{produit.nom}}</h3>
-                <p class="text-wrap">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                    Eligendi et sint maxime repudiandae. Optio, 
-                    tenetur aliquid adipisci commodi consequuntur minima 
-                    mollitia quas iusto ducimus. 
-                    Explicabo exercitationem molestias cum reiciendis non?
-                </p>
-                    <span class="fw-bold fs-2 total" >Total: {{produit.prix}} F CFA</span>
-                </div>
+    <div class="card-body w-100">
+    <div class="show-detail w-100 d-flex justify-content-center">
+      <div class="descrip col-4 p-3">
+        <h3 class="fw-bold">{{ produit.nom | currency: "$"}}</h3>
+        <p class="text-wrap">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi et
+          sint maxime repudiandae. Optio, tenetur aliquid adipisci commodi
+          consequuntur minima mollitia quas iusto ducimus. Explicabo
+          exercitationem molestias cum reiciendis non?
+        </p>
+        <span class="fw-bold fs-2 total">Total: {{ produit.prix }} F CFA</span>
+      </div>
 
-                <div class="image mx-5 col-4 card">
-                    <img [src]="convert(produit.image)"class="col-md-6 d-flex">
-                </div>
+      <div class="image mx-5 col-4 card">
+        <img [src]="convert(produit.image)" class="col-md-6 d-flex" />
+      </div>
 
-                <button type="button" class=" cmde h-25 btn-rounded rounded-5 ">
-                      <div class="d-flex">
-                        <span class="text-white fw-bold ">VOUS LE VOULEZ ? C’EST PAR ICI !</span>
-                        <span><i class="fas fa-long-arrow-alt-right text-white fs-3 ms-2"></i></span>
-                        </div>
-                        <button class="btn btn-light btn-rounded rounded-4">CLICKER ICI & COMMANDER</button>
-                </button>
-                
-                
-            </div>
-            <!--===================Début Détail du menu========================= -->
-            <div class="burger-complement card mt-4 mb-3" *ngIf="isMenu(produit)">
-                <div class=" d-flex mb-2 ">
-                    
-                    <app-burgers-detail-menu *ngFor="let oburger of burgers" [burge]="oburger" class=" col-2 oburger  px-3"></app-burgers-detail-menu>
-                    
-                    <app-frites-menu *ngFor="let ofrite of frites" [frite]="ofrite" class=" col-2 ofrite px-3 "></app-frites-menu>
-                    
-                        <div class="col-2 d-flex oboisson px-3" *ngFor="let boisson of tailles ">
-                            <div *ngFor="let drink of boisson.taille.tailleBoissons" class="col-12 me-3 px-3 boisson mt-2">  
-                                <div class="d-flex boisson">
-                                    <div class="col-12">
-                                        <div class=" d-flex justify-content-between ">
-                                            <span class="fw-bold">{{drink.boisson.nom}}</span>
-                                            <span class="me-2">P: {{drink.prixBoisson}}</span>
+      <button type="button" class="cmde h-25 btn-rounded rounded-5">
+        <div class="d-flex">
+          <span class="text-white fw-bold"
+            >VOUS LE VOULEZ ? C’EST PAR ICI !</span
+          >
+          <span
+            ><i class="fas fa-long-arrow-alt-right text-white fs-3 ms-2"></i
+          ></span>
+        </div>
+        <button class="btn btn-light btn-rounded rounded-4">
+          CLICKER ICI & COMMANDER
+        </button>
+      </button>
+    </div>
+    <!--===================Début Détail du menu========================= -->
+    <div
+      class="card burger-complement card-card d-flex mt-3 mb-3  p-2 mx-5"
+      *ngIf="isMenu(produit)"
+    >
+        <div class="d-flex ">
+            <app-burgers-detail-menu style="width: 400px;height:100%" 
+            *ngFor="let oburger of burgers"
+            [burge]="oburger"
+            class="col-2 oburger px-3"
+            ></app-burgers-detail-menu>
+
+            <app-frites-menu style="width: 400px;height:100%"
+            *ngFor="let ofrite of frites"
+            [frite]="ofrite"
+            class="col-2 ofrite px-3"
+            ></app-frites-menu>
+        </div>
+
+      <!-- <div class="col-2 d-flex oboisson px-3 card " *ngFor="let boisson of tailles ">
+                        <div *ngFor="let drink of boisson.taille.tailleBoissons" class="col-12 me-3 px-2 boisson mt-2">  
+                            <div class="d-flex">
+                                <div class="col-12">
+                                    <img [src]="convert(drink.boisson.image)"class="col-md-6 d-flex mx-auto">
+                                    <div class="prix mt-3">
+                                        <div class=" d-flex justify-content-between">
+                                            <h5 class="card-title fw-bold">{{drink.boisson.nom}}</h5>
+                                            <h5 class="card-title"><em class="fw-bold" >Prix:</em> {{drink.prixBoisson}}</h5>
                                         </div>
-                                        <img [src]="convert(drink.boisson.image)"class="col-md-7 d-flex mx-auto">
-                                        <div class="prix mt-3 d-flex justify-content-between">
-                                            <p class="fw-bold ">Taille: {{boisson.taille.nom}}</p>
-                                            <p>Qté: {{boisson.quantite}}</p>
-                                            <!--<span>Stock: {{drink.stock}}</span>-->
+                                        <div class="d-flex justify-content-between">
+                                            <p><em class="fw-bold">Taille: </em>{{boisson.taille.nom}}</p>
+                                            <p><em class="fw-bold">Qté: </em> {{boisson.quantite}}</p>
                                         </div>
+                                        <!--<span>Stock: {{drink.stock}}</span>
                                     </div>
                                 </div>
-                            </div>     
-                        </div>
-                    
-
-                    <!--<app-boissons-detail-menu *ngFor="let boisson of tailles"  class=" col-2 border border-primary">
-                        <div *ngFor="let boiss of boisson.taille" [taille]="boiss"   >
-                            
-
-                        </div>
-
-                    </app-boissons-detail-menu>-->
-                    
-                    <!-- <span>{{frite.frite.nom}}</span>
-                        <div *ngFor="let frite of frites" class="col-sm-1 col-md-2 burger d-flex">
-                            <img [src]="convert(frite.frite.image)"class="col-md-6 d-flex">
-                            <span>Prix: {{frite.frite.prix}}</span>
-                        </div>
-                        <span>Qté: {{frite.quantite}}</span>-->
-                        
-                    <!--<app-burgersdetail-menu *ngFor="let burg of burgers" [burger]="burg"></app-burgersdetail-menu>-->
-                </div>
-            </div>
-            <!--=================== Fin Détail du menu========================= -->
-
-            <!--=================== Début des Complements========================= -->
-
-            <div class="row g-5">
-                <div class="frites col-6 px-4 py-3">
-                    <h3 class="fw-bold ">Frites:</h3>
-                    <div class="row g-2">
-                        <app-complements *ngFor="let frite of fritess" [produit]="frite" class="col col-sm-3 col-md-2"  ></app-complements>
-                    </div>
-                </div>
-                <div class="frites col-6 px-2 py-3">
-                    <h3 class="fw-bold">Boissons:</h3>
-                    <div class="row d-flex g-2">
-                        <app-complements *ngFor="let boisson of boissons" [produit]="boisson" class="col col-sm-3 col-md-2"></app-complements>
-                    </div>
-                </div>      
-            </div>
-        <!--=================== Fin des Complements========================= -->
-
+                            </div>
+                        </div>     
+                    </div>-->
+      <!-- <div class="card" >
+                            <h5 class="card-title fw-bold mx-auto">{{burge.burger.nom}}</h5>
+                            <img [src]="convert(burge.burger.image)" class="col-md-6 mx-auto">
+                            <div class="card-body mx-auto">
+                                <span class="me-3">P: {{burge.burger.prix}}</span>
+                                <span>Qté: {{burge.quatite}}</span>
+                            </div>
+                        </div>-->
     </div>
+    <!--=================== Fin Détail du menu========================= -->
+  
+    <!--=================== Début des TailleBoisson========================= -->
+    <!--
+      <app-choix-taille-boisson
+      *ngFor="let taille of tailles"
+      [taillee]="taille"
+      class="col-sm-3 col-md-2"
+      >
+    </app-choix-taille-boisson>--> 
+
+    <div *ngIf="isMenu(produit)" class="card card-boi py-1 px-3 h-75 mx-5 row gx-3"><!--card card-card py-1 px-3 h-75 mx-5 row gx-3-->
+      <div class=" d-flex justify-content-center">
+          <h5 class="d-flex justify-content-center text-white  fw-bold">
+            Le menu contient: {{tailless.quantite}} boisson (s) de {{ tailless.taille.nom}}
+          </h5>   
+      </div>
+      <div class="d-flex justify-content-between card-h"> <!--justify-content-between card-h-->
+          <div class="card card-taiile w-50 m-3 "*ngFor="let item of tailless.taille.tailleBoissons">
+              <div class="d-flex card-boisss border border-primary ">
+                  <img [src]="convert(item.boisson.image)" alt="..." class=" col-md-6 col-sm3 bg-warning">
+                  <div class="">
+                      <h5 class="text-center mt-2">
+                        <em class="fw-bold">{{item.boisson.nom}}</em>
+                      </h5> 
+                      <h6 class="text-center">
+                        <em>Prix: {{item.prixBoisson}}</em> 
+                      </h6>
+                      <div class="card-body">
+                          <div class="d-flex w-100">
+                              <button
+                              class="btn moins me-1 mt-1"
+                              onclick="this.parentNode.querySelector('input[type=number]').stepDown()" (click)="decrement()" 
+                              >
+                              <i class="fas fa-minus fs-6 border border-info"></i>
+                              </button>
+                              <div class="form-outline">
+                              <input
+                                id="form1"
+                                min="0"
+                                name="quantity"
+                                value=""
+                                #quantite
+                                type="number"
+                                class="form-control border border-danger w-75"
+                              />
+                              </div>
+                      
+                             <button 
+                              class="btn plus ms-1 mt-1"
+                              onclick="this.parentNode.querySelector('input[type=number]').stepUp()" (click)="increment()" 
+                              >
+                              <i class="fas fa-plus fs-6"></i>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <!--<div class="card" >
+      <img [src]="convert(burge.burger.image)" class="col-md-6 mx-auto">
+      <div class="card-body">
+          <h5 class="card-title text-center fw-bold">{{burge.burger.nom}}</h5>
+          <div class="text-center">
+              <span class="me-3"><em class="fw-bold">Prix: </em>{{burge.burger.prix}}</span>
+              <span><em class="fw-bold">Qté: </em> {{burge.quatite}}</span>
+          </div>
+      </div>
+  </div>-->
+  
+    <!--=================== Fin des TailleBoisson========================= -->
+
+    <!--=================== Début des Complements========================= -->
+    <div class="row g-5" *ngIf="!isMenu(produit)">
+        <div class="frites col-6 px-4 py-3">
+            <h3 class="fw-bold">Frites:</h3>
+                <div class="p-3  d-flex boissons ">
+                    <app-complements
+                        *ngFor="let frite of fritess"
+                        [produit]="frite"
+                        class="col col-sm-3 col-md-2"
+                    ></app-complements>
+                </div>
+        </div>
+
+        <div class="frites col-6 px-4 py-3">
+            <h3 class="fw-bold">Boissons:</h3>
+            <div class="p-3  d-flex boissons ">
+                <app-complements 
+                    *ngFor="let boisson of boissons"
+                    [produit]="boisson"
+                    class="col col-sm-3 col-md-2"
+                ></app-complements>
+            </div>
+        </div>
+    </div>
+    <!--=================== Fin des Complements========================= -->
+  </div>
 </div>

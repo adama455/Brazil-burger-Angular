@@ -1,6 +1,6 @@
 <!--===================Début Détail du menu========================= -->
-<div class="mt-2">
-    <div class="d-flex burger">
+<!--<div class="mt-2">
+    <div class="d-flex">
         <span class="fw-bold">{{burge.burger.nom}}</span>
         <img [src]="convert(burge.burger.image)" class="col-md-6 d-flex">
         <div class="prix d-flex justify-content-between">
@@ -8,6 +8,17 @@
         <span>Qté: {{burge.quatite}}</span>
     </div>
     
+</div>-->
+
+<div class="card w-100 d-flex flex-row">
+    <img [src]="convert(burge.burger.image)" class="col-md-4 mx-auto">
+    <div class="card-body  ">
+        <div class="text-center d-flex justify-content-space-evenly flex-column">
+            <h5 class="card-title text-center fw-bold">{{burge.burger.nom}}</h5>
+            <span class="me-1"><em class="fw-bold">Prix: </em>{{burge.burger.prix}}</span>
+            <span><em class="fw-bold">Quantité: </em> {{burge.quatite}}</span>
+        </div>
+    </div>
 </div>
 
 

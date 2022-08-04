@@ -13,7 +13,7 @@ export class CatalogueComponent implements OnInit {
   burgers!:IBurger[];
   errorMsg!:string;
   catalogues!:ICatalogue;
-
+  searchText:any;
   constructor(private dataService: DataServiceService){
 
   }

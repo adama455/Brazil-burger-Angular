@@ -8,3 +8,18 @@ h2{
 .catalogue{
     margin: 0 10%;
 }
+
+/* Filtre=============================== */
+.card form{
+    margin-left:auto;
+}
+.inputiD {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+.search-hero input{
+    background-color: #ecb992;
+    
+}

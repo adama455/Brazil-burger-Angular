@@ -11,41 +11,13 @@
      <hr class="line mb-4">
         <div class="contenu-panier">
             <div class="row gy-5">
+            <!-- ======================Partie gauche du panier =========================-->
                 <section class="col-md-7 lignesCmde border ">
-                    <!-- ======================Partie gauche du panier =========================-->
-                    <!--<div class="card left-card mb-2 position-relative fs-6 " *ngFor="let item of (items$ |async)">
-                            <div class="row no-gutters">
-                                <div class="col-md-1  column-img">
-                                    <img src="https://w7.pngwing.com/pngs/201/77/png-transparent-delicious-beef-burger-delicious-beef-burger-tomato-bread.png"    class="card-img " titlealt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title ">{{item.nom}}</h5>
-                                        <p>{{item.prix}}</p>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row action ms-5">
-                                <div class="col-md-4">
-
-                                    <form class="form-control">
-                                        <label for="">Qté</label>
-                                        <input type="number" min="1" max="30" name="points" value="qte">
-                                    </form>
-                                </div>
-                                <div class="col-md-6 fs-5">
-                                    1000 Fcfa
-                                </div>
-                                <div class="col-md-2 delet">
-                                    <i (click)="removeToPanier(item)" class="fas fa-minus-circle  fs-5 "></i>
-                                </div>
-                            </div>
-                        </div>-->
+                    
                     <app-commande-ligne *ngFor="let item of (items$ |async)" [line]="item"></app-commande-ligne>
                     
                 </section>
-                <!-- ======================Partie droite du panier =========================-->
+            <!-- ======================Partie droite du panier =========================-->
                 <div class="col-md-5 resumeCmde">
                     <div class="card grand-card right mx-3 py-2 fs-4">
                         <div class="total d-flex mx-3 mb-5">
@@ -54,27 +26,27 @@
                             <div class="total-content d-block justify-content-between">
                                 <div class="btn-total mb-2 py-2 h-75 d-flex">
                                     <span class="btn-total fs-2 fw-bold col-4 text-white text-center">Total:</span>
-                                    <p class=" col-7 fw-bold fs-3 my-auto text-center">{{getTotal() | currency: ' $'}} </p> 
+                                    <p class=" col-7 fw-bold fs-3 my-auto text-center">{{ getTotal() | currency: "$"}}</p> 
                                 </div>
                             </div>      
                          <hr class="line">
                         </div>
                         <div class="card1 right-card mx-3 mt-2 fs-4">
                             <h6 class="fw-bold ps-2">OPTION COMMANDE</h6>
-                            <form action="" class="mode-liv card mb-4 ">
+                            <section action="" class="mode-liv card mb-4 ">
                                 <div class="d-flex justify-content-between align-items-center check1">
-                                    <input type="radio"  name="livraison" id="emp" class="w-25 h-50"> 
+                                    <input  type="radio"  #emporte (input)="estAEmporter(emporte)" name="mode_livraison" id="emp" class="w-25 h-50"> 
                                     <label for="emp"> Emporter</label>
                                 </div>
                                 <hr>
                                 <div class="liv">
                                     <div class="d-flex justify-content-between align-items-center check2 mb-2" id=" " >
-                                        <input type="radio" #livrable name="livraison" id="liv" class="w-25 h-50" > 
+                                        <input  type="radio" #livrer (input)="estALivrer(livrer)"  name="mode_livraison" id="liv" class="w-25 h-50" > 
                                         <label for="liv"> Livraison</label>
                                     </div>
 
                                     <!--LES ZONES==========================================-->
-                                    <div class="accordion" id="accordionExample" [ngStyle]="{display:'block'} ">
+                                    <div class="accordion" id="accordionExample" [ngStyle]="{display:checkLivraison(livrer)} ">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="headingTwo">
                                                 <div class="accordion-button collapsed text-center fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" >
@@ -82,36 +54,18 @@
                                                 </div>
                                             </h2>
                                             <div id="collapseTwo" class=" collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                                <table *ngFor="let ozone of zones" class="text-center border w-100">
-                                                    <div class="ms-5 w-100">
-                                                        **********{{ozone.nom}}**********
-                                                    </div>
-                                                    <tr *ngFor="let quartier of ozone.quartiers" class="px-2">
-                                                        <td class="ps-2 float-start">
-                                                            <div class="d-flex">
-                                                                <input type="radio" name="quartier" value="" class="me-3">
-                                                                {{quartier.nom}}
-                                                            </div>
-                                                        </td> 
-                                                        -------------
-                                                        <td class="pe-2">
-                                                            {{quartier.rue}}
-                                                        </td>    
-                                                    </tr>
-                                                </table>
+                                                <select class="form-select w-100 " aria-label=".form-select-sm example" #zonee (input)="selectZone(zonee)">
+                                                    <optgroup *ngFor="let ozone of zones"  label="********************{{ozone.nom}}********************" class="w-100">
+                                                        <option  value="{{ozone.id}}" *ngFor="let quartier of ozone.quartiers" class="w-100 ">{{quartier.nom}}</option>
+                                                    </optgroup>
+                                                </select>
                                             </div>
-                                            <!--
-                                                <div id="collapseTwo" class=" collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                                    <app-zones *ngFor="let ozone of zones" [zone]="ozone"></app-zones>
-                                                    <app-zones *ngFor="let oquartier of quartiers" [quartier]="oquartier"></app-zones>
-                                                </div>
-                                            --> 
                                         </div> 
                                     </div>
                                     <!--FIN ZONES==========================================-->
 
                                 </div>
-                            </form>
+                            </section>
                             <!-- ===============================Mode de payement====================================-->
                             <!--<div class="card mb-4 mb-lg-0">
                                 <div class="card-body">
@@ -130,7 +84,7 @@
                                     alt="" />
                                 </div>
                             </div>-->
-                            <button class=" btn w-100 fs-4 fw-bold mt-2 py-3 btn-liv" type="submit">
+                            <button class=" btn w-100 fs-4 fw-bold mt-2 py-3 btn-liv" [disabled]="peutCommander(emporte,zonee)" type="submit">
                                 <marquee scrollamount="25" > COMMANDEZ-LIVRAISON</marquee>
                             </button>
                         </div>
