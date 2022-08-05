@@ -60,8 +60,12 @@ export interface IMenu{
     tailles:ITaille[],
     frites:Frite [],
     quantity:number,
-
 }
+export interface ChoixBoisson{
+    qteTotal:number,
+    somQte:number
+}
+
 export interface IComplement{
     boissons:IBoisson[],
     frites:IFrite[],

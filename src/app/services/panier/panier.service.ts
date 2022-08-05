@@ -28,8 +28,8 @@ export class PanierService {
   quantity = this.items$.quantity;
 
   commande_url:string = 'http://127.0.0.1:8000/api/commandes';
+  ldc:Array<any> =[];
 
-  ldc:Array<any> =[]
   // Fornction pour incrementer la quantite du produit clicker au niveau du panier
   putToPanier(product: any, action: 'in' | 'out' = 'in') {
     this.items$
@@ -117,22 +117,11 @@ export class PanierService {
 
   postCommande(body:Commande){
     const headers={"Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk3MjAzNzAsImV4cCI6MTY1OTc1NjM3MCwicm9sZXMiOlsiUk9MRV9DTElFTlQiLCJST0xFX1ZJU0lURVVSIl0sInVzZXJuYW1lIjoiZGlvdWZAZ21haWwuY29tIn0.bghxC2p6i54yqBpgzv7CZZ4gww5CJcbgNxzbup_e2a2HuailcTXc3wvLg_CFluJ-BFPMX68mLfk47NVtiRosA-PhbZpyzo_g6_YCQ4ndCQksT4sloZD3UCjstwjazNVkbk9Net3oX5pYNRBmJ-cfD1zxcfqWiWyplQOVL90ndCoFV6FXpzCL5yvUjDZVB1Le6n3eLgmAsWZtqD0xm8uNRY6sTxkJUOsvw-mO5VIdWfRmpJMqKBYlZTa4dEPZtjbklZInVnHtslnoxK4s7iTOJi9DZDuawE5BdAQ-29S20vh266A8BdcnxrYTHKEZR-P2A0vJj_duHh7srqOsHUV00w"}
-    this.http.post<Commande>(this.commande_url,body,{headers} ).subscribe()
+    this.http.post<Commande>(this.commande_url,body,{headers}).subscribe();
   }
 
   getPanier(){
     return JSON.parse(localStorage.getItem('products') || '[]');
   }
-  // postCommande(){
-  //   this.http.post<any>(this.commande_url, { 
-  //     "produits":this.getLineComde(),
-  //     "zone":"/api/zones/7",
-  //     "client":"api/clients/1"
-
-  //    }).subscribe(
-  //     data=>{
-  //       this.postId=data.id
-  //     })
-  //   }
   
 }

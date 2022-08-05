@@ -150,6 +150,7 @@ export class PanierComponent implements OnInit {
       return true;
     }
   }
+  
   // Debut Validation Commande client:::::::::::::::::::::::::::
     postCommande() {
       let body:Commande={

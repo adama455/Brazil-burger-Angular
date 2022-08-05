@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { map, take } from 'rxjs';
 import { Burger, Frite, IBoisson, IBurger, ICatalogue, IComplement, IFrite, IMenu, ITaille, ITailleBoisson, Taille } from 'src/app/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
+import { MenuService } from 'src/app/services/menu/menu.service';
 import { PanierService } from 'src/app/services/panier/panier.service';
 
 @Component({
@@ -53,7 +54,8 @@ export class ShowDetailsComponent implements OnInit {
   constructor(
     private data:DataServiceService, 
     private route: ActivatedRoute,
-    private panierService: PanierService
+    private panierService: PanierService,
+    private menuService: MenuService
   ){
 
   }
@@ -68,6 +70,7 @@ export class ShowDetailsComponent implements OnInit {
         this.boissons=data.boissons;
         console.log(data);    
       }
+
     );
 
     this.data.getProduitsObs().pipe(
@@ -78,7 +81,7 @@ export class ShowDetailsComponent implements OnInit {
             this.produit = product;
             return;
           }
-          console.log(cata);
+          // console.log(cata);
         });
 
         cata.menus.forEach((product:IMenu) =>{
@@ -86,8 +89,9 @@ export class ShowDetailsComponent implements OnInit {
             this.produit = product;
             this.frites=product.frites; //les frites du munu
             this.tailles=product.tailles; //les tailles de boisson du menu
+            this.menuService.recupBoisson(this.tailles)
             // this.burgers=product.burgers;
-            console.log(this.produit);
+            // console.log(this.produit);
             this.tailles.forEach((taillesss)=>{
               this.tailless=taillesss;
               // this.data.qteTotal=taillesss.quantite; 
@@ -114,7 +118,7 @@ export class ShowDetailsComponent implements OnInit {
         this.burgers=this.menu.burgers; //l'enssemble des burgers dans menu
         this.allBurgers.forEach(oneBurger=>{
           this.burgers.forEach(oburger=>{
-            console.log(oburger);
+            // console.log(oburger);
             if (oneBurger.id===oburger.burger.id) {
               oburger.burger.image=oneBurger.image;
             }
@@ -197,10 +201,13 @@ export class ShowDetailsComponent implements OnInit {
     return product.burgers ? true : false;
   }
 
-  // Incrementation et Décrementation de la quantité de boisson dans détail Menu==================
-  update(qte:number){
-    this.quantiteBoissonChoisi = this.data.updateQte(qte); 
-    return this.quantiteBoissonChoisi;
+  activePanierMenu(){
+    return this.menuService.activePanierMenu()
   }
- 
+
+  // Incrementation et Décrementation de la quantité de boisson dans détail Menu==================
+  // update(qte:number){
+  //   this.quantiteBoissonChoisi = this.data.updateQte(qte); 
+  //   return this.quantiteBoissonChoisi;
+  // } 
 }

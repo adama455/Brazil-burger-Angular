@@ -24,9 +24,7 @@ export class DataServiceService {
   private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
 
   // Tableau qui stock pour chaque boisson sa somme et sa quantite:::::::::::::::
-  tabQteBoisson:{"qteTotal":number,"somQte":number}[]=[];
-  qteTotalB:number=0;
-
+ 
   constructor(private http:HttpClient,private sanitizer: DomSanitizer) { }
 
   getProduitsObs():Observable<any>{
@@ -96,21 +94,12 @@ export class DataServiceService {
     return this.sanitizer.bypassSecurityTrustResourceUrl("data:image/jpg;base64, "+param); 
   }
 
-  // increment(n:number){
-  //   return this.qteTotal 
-  //   // console.log(this.qteTotal );
-    
-  // }
-  // decrement(){
-  //   return this.qteTotal --
-  //   // console.log(this.qteTotal );
-    
-  // }
+  
+  // tabQteBoisson:{"qteTotal":number,"somQte":number}[]=[];
+  // qteTotalB:number=0;
 
-  // 
-
-  updateQte(n:number){
-    return this.qteTotalB += n;
-  }
+  // updateQte(n:number){
+  //   return this.qteTotalB += n;
+  // }
 
 }
