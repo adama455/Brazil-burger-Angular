@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable} from 'rxjs';
 import {IBoisson, IBurger, ICatalogue, IComplement, IFrite, IMenu} from '../catalogue.model';
+import { Commande } from '../models/commande';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ export class DataServiceService {
   burgers!:IBurger[];
   menus!:IMenu[];
   produits!:ICatalogue[];
-  sumVal:number=1;
   cpt:number=0;
+
+
 
   private readonly catalogue_url:string = 'http://127.0.0.1:8000/api/catalogues';
   private readonly complement_url:string = 'http://127.0.0.1:8000/api/complements';
@@ -20,7 +22,10 @@ export class DataServiceService {
   private readonly quartier_url='http://127.0.0.1:8000/api/quartiers';
   // private readonly frites_url:string = 'http://127.0.0.1:8000/api/frites';
   private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
-  private readonly commande_url:string = 'http://127.0.0.1:8000/api/commandes';
+
+  // Tableau qui stock pour chaque boisson sa somme et sa quantite:::::::::::::::
+  tabQteBoisson:{"qteTotal":number,"somQte":number}[]=[];
+  qteTotalB:number=0;
 
   constructor(private http:HttpClient,private sanitizer: DomSanitizer) { }
 
@@ -40,11 +45,6 @@ export class DataServiceService {
     return this.http.get<any>(this.quartier_url);
     // console.log;
   }
-
-  // getFritesObs():Observable<any>{
-  //   return this.http.get<any[]>(this.frites_url);
-  //   console.log;
-  // }
 
   getBoissonObs():Observable<any>{
     return this.http.get<any>(this.boissons_url);
@@ -96,15 +96,21 @@ export class DataServiceService {
     return this.sanitizer.bypassSecurityTrustResourceUrl("data:image/jpg;base64, "+param); 
   }
 
-  increment(){
-    return this.sumVal ++
-    // console.log(this.sumVal );
+  // increment(n:number){
+  //   return this.qteTotal 
+  //   // console.log(this.qteTotal );
     
-  }
-  decrement(){
-    return this.sumVal --
-    // console.log(this.sumVal );
+  // }
+  // decrement(){
+  //   return this.qteTotal --
+  //   // console.log(this.qteTotal );
     
+  // }
+
+  // 
+
+  updateQte(n:number){
+    return this.qteTotalB += n;
   }
 
 }

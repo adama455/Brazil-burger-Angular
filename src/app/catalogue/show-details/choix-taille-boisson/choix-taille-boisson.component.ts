@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {  ITaille, ITailleBoisson, Taille } from 'src/app/catalogue.model';
+import {  IBoisson, ITaille, ITailleBoisson, Taille } from 'src/app/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
@@ -25,24 +25,28 @@ export class ChoixTailleBoissonComponent implements OnInit {
     return this.data.convertImg(url)
   }
 
-
-  increment(){
-    return this.qteBoisson ++
-    console.log(this.qteBoisson );
-    
-  }
-  decrement(){
-    return this.qteBoisson --
-    console.log(this.qteBoisson );
-    
+  updateQteBoisson(qte:number){
+    return this.data.updateQte(qte);
   }
 
 // Incrementation et Décrementation de la quantité de boisson dans détail Menu==================
-  incremente(){
-    return this.data.increment();
+  updateQte(n:number){
+    if ((this.qteBoisson == 0 && n < 0) || 
+      (this.data.tabQteBoisson[this.tailleBoisson.boisson.id].somQte ==
+      this.data.tabQteBoisson[this.tailleBoisson.boisson.id].qteTotal && n > 0)){ 
+      return
+    }
+    this.qteBoisson += n;
+    // console.log(this.qteBoisson);
+    
+    this.data.tabQteBoisson[this.tailleBoisson.boisson.id].qteTotal +=n;
+    console.log(
+      this.data.tabQteBoisson[this.tailleBoisson.boisson.id].qteTotal, 
+      this.data.tabQteBoisson[this.tailleBoisson.boisson.id].somQte
+    );
+    
+
     
   }
-  decremente(){
-    return this.data.decrement(); 
-  }
+  
 }

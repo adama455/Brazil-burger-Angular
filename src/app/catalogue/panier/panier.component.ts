@@ -1,5 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output } from '@angular/core';
-import { Frite, IBoisson, IComplement, IFrite, IQuartier, ITaille, ITailleBoisson, IZone } from 'src/app/catalogue.model';
+import {
+  Frite,
+  IBoisson,
+  IComplement,
+  IFrite,
+  IQuartier,
+  ITaille,
+  ITailleBoisson,
+  IZone,
+} from 'src/app/catalogue.model';
+import {
+  Commande,
+  FormatCmde,
+  IProduit,
+  Produit,
+} from 'src/app/models/commande';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { PanierService } from 'src/app/services/panier/panier.service';
 
@@ -14,16 +30,17 @@ export class PanierComponent implements OnInit {
   allQuartiers: IQuartier[] = [];
   zone!: IZone;
   quartier!: IQuartier;
-  disabled: string = "true";
+  disabled: string = 'true';
 
-  fritess!:IFrite[];
-  boissons!:IBoisson[];
-  complement!:IComplement;
-
+  fritess!: IFrite[];
+  boissons!: IBoisson[];
+  complement!: IComplement;
+  postId!: number;
 
   constructor(
     private panier: PanierService,
-    private data: DataServiceService
+    private data: DataServiceService,
+    private http: HttpClient
   ) {}
 
   // tableau================================
@@ -36,15 +53,16 @@ export class PanierComponent implements OnInit {
     return this.panier.getPrixTotal();
   }
 
-  ngOnInit(): void {
+  // postCommande(){
+  //   return this.panier.postCommande();
+  // }
 
-    this.data.getComplementsObs().subscribe(
-      (data:IComplement)=>{
-        this.fritess=data.frites;
-        this.boissons=data.boissons;
-        console.log(data);    
-      }
-    );
+  ngOnInit(): void {
+    this.data.getComplementsObs().subscribe((data: IComplement) => {
+      this.fritess = data.frites;
+      this.boissons = data.boissons;
+      console.log(data);
+    });
 
     // this.data.getZonesObs().subscribe(
     //   (data)=>{
@@ -59,7 +77,7 @@ export class PanierComponent implements OnInit {
     //     })
     //   }
     // );
-  // Deuxiéme Méthode pour recuperer les Zones et les Quartier avec deux url(url zones et urlquartier)======================
+    // Deuxiéme Méthode pour recuperer les Zones et les Quartier avec deux url(url zones et urlquartier)======================
     this.data.getZonesObs().subscribe((data) => {
       this.zones = data;
       console.log(this.zones);
@@ -111,38 +129,51 @@ export class PanierComponent implements OnInit {
     return 'none';
   }
 
-  existModeLivraision(
-    emporte: any,
-    zoneSelect: any
-  ) {
+  existModeLivraision(emporte: any, zoneSelect: any) {
     if (this.estAEmporter(emporte)) {
       return true;
     } else if (this.selectZone(zoneSelect)) {
-
       return true;
     }
     return false;
   }
- 
 
-// commander(emporter: HTMLInputElement,
-//   zoneSelect: HTMLSelectElement){
-//     if (condition) {
-      
-//     }
-//   }
-
-  peutCommander(
-    empor: any,
-    zonee: any
-  ): boolean {
-    if (((this.estAEmporter(empor))||(this.estALivrer(zonee))) && this.getTotal() > 0) {
-      console.log("il peut commander");
+  peutCommander(empor: any, zonee: any): boolean {
+    if (
+      (this.estAEmporter(empor) || this.estALivrer(zonee)) &&
+      this.getTotal() > 0
+    ) {
+      console.log('il peut commander');
       return false;
-    }else{
-      console.log("il ne peut pas commander");
+    } else {
+      console.log('il ne peut pas commander');
       return true;
-
     }
   }
+  // Debut Validation Commande client:::::::::::::::::::::::::::
+    postCommande() {
+      let body:Commande={
+        produits:this.operationCmd(),
+        zone:"/api/zones/7",
+      }
+      this.panier.postCommande(body);
+    }
+
+    operationCmd() {
+      //recuperer tous les produits du panier dans un tableau
+      //  tabPaniers et les mettre produits
+      let tabPaniers = this.panier.getPanier();
+      const produits: FormatCmde[] = [];
+      tabPaniers.forEach((produit: Produit) => {
+        // console.log(produit);
+        produits.push({
+          quantiteCmde: +produit.quantity,
+          produit: '/api/produits/' + produit.id,
+          client:'api/clients/1'
+        });
+      });
+      // console.log(produits);
+      return produits;
+    }
+  // Debut Validation Commande client:::::::::::::::::::::::::::
 }

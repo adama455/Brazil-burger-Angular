@@ -45,7 +45,8 @@ export class ShowDetailsComponent implements OnInit {
   param!:string;
 
   disabled!:boolean;
-  quantiteBoissonChoisi!: number;
+
+  quantiteBoissonChoisi: number=0;
 
 ////////////////////////////////////////////////////////////////
   
@@ -89,6 +90,8 @@ export class ShowDetailsComponent implements OnInit {
             console.log(this.produit);
             this.tailles.forEach((taillesss)=>{
               this.tailless=taillesss;
+              // this.data.qteTotal=taillesss.quantite; 
+              // this.data.tabQteBoisson[taillesss]
             })
             return;
           }
@@ -195,12 +198,9 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   // Incrementation et Décrementation de la quantité de boisson dans détail Menu==================
-  increment(){
-    this.quantiteBoissonChoisi=this.data.increment(); 
+  update(qte:number){
+    this.quantiteBoissonChoisi = this.data.updateQte(qte); 
     return this.quantiteBoissonChoisi;
   }
-  decrement(){
-    this.quantiteBoissonChoisi=this.data.decrement(); 
-    return this.quantiteBoissonChoisi;
-  }
+ 
 }

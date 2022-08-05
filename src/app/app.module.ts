@@ -14,7 +14,7 @@ import { BurgerComponent } from './burger/burger.component';
 import { DetailBurgerComponent } from './detail-burger/detail-burger.component';
 import { DetailMenuComponent } from './detail-menu/detail-menu.component';
 import { FilterComponent } from './filter/filter.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { CardProduitComponent } from './catalogue/card-produit/card-produit.component';
 import { ShowDetailsComponent } from './catalogue/show-details/show-details.component';
 import { FriteComponent } from './frite/frite.component';

@@ -109,7 +109,7 @@
                                     alt="" />
                                 </div>
                             </div>-->
-                            <button class=" btn w-100 fs-4 fw-bold mt-2 py-3 btn-liv" [disabled]="peutCommander(emporte,zonee)" type="submit">
+                            <button class=" btn w-100 fs-4 fw-bold mt-2 py-3 btn-liv" [disabled]="peutCommander(emporte,zonee)" (click)="postCommande()" type="submit">
                                 <marquee scrollamount="25" > COMMANDEZ-LIVRAISON</marquee>
                             </button>
                         </div>
