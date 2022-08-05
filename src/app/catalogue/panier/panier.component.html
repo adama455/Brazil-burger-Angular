@@ -12,10 +12,35 @@
         <div class="contenu-panier">
             <div class="row gy-5">
             <!-- ======================Partie gauche du panier =========================-->
-                <section class="col-md-7 lignesCmde border ">
+                <section class="col-md-7 lignesCmde">
                     
                     <app-commande-ligne *ngFor="let item of (items$ |async)" [line]="item"></app-commande-ligne>
                     
+                    <!--=================== Début des Complements========================= -->
+                <div class="row g-5" >
+                    <div class="frites col-6 px-4 py-3">
+                        <h3 class="fw-bold">Frites:</h3>
+                            <div class="p-3  d-flex boissons ">
+                                <app-complements
+                                    *ngFor="let frite of fritess"
+                                    [produit]="frite"
+                                    class="col col-sm-3 col-md-4"
+                                ></app-complements>
+                            </div>
+                    </div>
+        
+                    <div class="frites col-6 px-4 py-3">
+                        <h3 class="fw-bold">Boissons:</h3>
+                        <div class="p-3  d-flex boissons ">
+                            <app-complements 
+                                *ngFor="let boisson of boissons"
+                                [produit]="boisson"
+                                class="col col-sm-3 col-md-4"
+                            ></app-complements>
+                        </div>
+                    </div>
+                </div>
+                <!--=================== Fin des Complements========================= -->
                 </section>
             <!-- ======================Partie droite du panier =========================-->
                 <div class="col-md-5 resumeCmde">
@@ -90,6 +115,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
             
         </div>

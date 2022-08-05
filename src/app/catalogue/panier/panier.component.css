@@ -101,10 +101,23 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
     background-color: rgb(191, 191, 244);
 }
 .lignesCmde{
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 65vh;
+    overflow-x: hidden;
 }
 .resumeCmde{
     overflow-y: scroll;
     height: 60vh;
+}
+/* Complement================= */
+.frite{
+    overflow-x: scroll;
+    /* border: #000 Solid 2px;
+    border-radius: 10px ; */
+}
+.boissons{
+    overflow-x: scroll!important;
+    background: #000;
+    border: #000 Solid 2px;
+    border-radius: 10px ;
 }

@@ -11,7 +11,8 @@ export class DataServiceService {
   burgers!:IBurger[];
   menus!:IMenu[];
   produits!:ICatalogue[];
-  sumVal:number=0;
+  sumVal:number=1;
+  cpt:number=0;
 
   private readonly catalogue_url:string = 'http://127.0.0.1:8000/api/catalogues';
   private readonly complement_url:string = 'http://127.0.0.1:8000/api/complements';
@@ -20,7 +21,6 @@ export class DataServiceService {
   // private readonly frites_url:string = 'http://127.0.0.1:8000/api/frites';
   private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
   private readonly commande_url:string = 'http://127.0.0.1:8000/api/commandes';
-  cpt:number=0;
 
   constructor(private http:HttpClient,private sanitizer: DomSanitizer) { }
 
@@ -45,7 +45,7 @@ export class DataServiceService {
   //   return this.http.get<any[]>(this.frites_url);
   //   console.log;
   // }
-  
+
   getBoissonObs():Observable<any>{
     return this.http.get<any>(this.boissons_url);
     console.log;
@@ -98,12 +98,12 @@ export class DataServiceService {
 
   increment(){
     return this.sumVal ++
-    console.log(this.sumVal );
+    // console.log(this.sumVal );
     
   }
   decrement(){
     return this.sumVal --
-    console.log(this.sumVal );
+    // console.log(this.sumVal );
     
   }
 

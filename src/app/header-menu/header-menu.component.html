@@ -28,13 +28,16 @@
         <!-- Left links -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link fs-4  text-danger" >Menus</a>
+            <a class="nav-link fs-4  " >Menus</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fs-4" href="#"  >Burger</a>
+            <a class="nav-link fs-4" href="#">Burger</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fs-4" href="#"  >Commande</a>
+            <a class="nav-link fs-4" routerLink="/commande" >Commande</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-4 text-danger" routerLink="/catalogue" >Catalogue</a>
           </li>
         </ul>
         <!-- Left links -->
@@ -44,7 +47,7 @@
       <!-- Right elements -->
       <div class="d-flex align-items-center">
         <!-- Icon -->
-        <a class="text-reset me-3" routerLink="paniers">
+        <a routerLink="paniers" class="text-reset me-3">
           <i class="fas fa-shopping-cart fs-3"></i>
           <span class="badge rounded-pill badge-notification bg-danger">{{(items$|async).length}}</span>
         </a>

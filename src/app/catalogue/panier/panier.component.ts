@@ -1,5 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { IQuartier, IZone } from 'src/app/catalogue.model';
+import { Frite, IBoisson, IComplement, IFrite, IQuartier, ITaille, ITailleBoisson, IZone } from 'src/app/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { PanierService } from 'src/app/services/panier/panier.service';
 
@@ -15,6 +15,11 @@ export class PanierComponent implements OnInit {
   zone!: IZone;
   quartier!: IQuartier;
   disabled: string = "true";
+
+  fritess!:IFrite[];
+  boissons!:IBoisson[];
+  complement!:IComplement;
+
 
   constructor(
     private panier: PanierService,
@@ -32,6 +37,15 @@ export class PanierComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.data.getComplementsObs().subscribe(
+      (data:IComplement)=>{
+        this.fritess=data.frites;
+        this.boissons=data.boissons;
+        console.log(data);    
+      }
+    );
+
     // this.data.getZonesObs().subscribe(
     //   (data)=>{
     //     this.zones=data;

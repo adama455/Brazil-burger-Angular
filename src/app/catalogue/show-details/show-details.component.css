@@ -8,9 +8,12 @@
     border: none;
     position: absolute;
 }
-.card-card{
+.grand-card{
     box-shadow: rgb(120, 118, 118) 4px 4px 20px;
     box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 75vh;
 }
 .cmde p{
     font-size: 1em;
@@ -25,9 +28,9 @@
     box-shadow: lightgray 4px 4px 20px;
     box-sizing: border-box;
 }
-.descrip{
-    overflow-y: scroll;
-}
+/* .descrip{
+    /* overflow-y: scroll; */
+/* } */
 .image:hover{
     animation: zoominoutsinglefeatured 1s ;
     box-shadow:#BA631F 
@@ -69,7 +72,7 @@
 } 
 
 .burger-complement{
-    overflow-x: scroll;
+    overflow-x: auto;
     background: #000;
 }
 
@@ -79,15 +82,18 @@
     align-items: center;
 }
 .frite{
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 .boissons{
     overflow-x: scroll!important;
     background: #000;
+    border: #000 Solid 2px;
+    border-radius: 10px ;
 }
 /* les boissons du menu================== */
 .card-taiile{
-    width: 12rem;
+    /* width: 50rem; */
+    border :#BA631F solid 2px
 }
 .card-boi{
     box-shadow: rgb(120, 118, 118) 4px 4px 20px;
@@ -95,8 +101,39 @@
     background: #000;
 }
 .card-h{
-    overflow-x: scroll;
+    overflow-x: auto;
+    scrollbar-width: thin;    
 }
-.card-boisss{
-    
+input[type=number] {
+    -moz-appearance: textfield;
+}
+ 
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+.img-boisson{
+background-color: #BA631F;
+}
+.line {
+    border: none;
+    border-top: 3px double #333;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+}
+.line:after {
+background: #fff;
+content: '§';
+padding: 0 4px;
+position: relative;
+top: -13px;
+} 
+.fa-arrow-left{
+    top: 4%;
+    left: 2%;
+
 }

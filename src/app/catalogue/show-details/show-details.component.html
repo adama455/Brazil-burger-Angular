@@ -1,17 +1,18 @@
-<div class="card card-card grand-card w-75 m-auto">
+<div class="card card-card grand-card w-75 m-auto ">
   <div class="header border">
+    <i class="fa-solid fs-3 fa-arrow-left position-absolute" routerLink="/catalogue"></i>
     <div class="title d-flex justify-content-between mx-4 pt-3">
-      <h5 class="card-title fs-4 mt-2 fw-bold">DETAILS: {{ showTitle(produit) | uppercase }}</h5>
+      <h5 class="card-title fs-4 mt-2 fw-bold ms-5">DETAILS: {{ showTitle(produit) | uppercase }}</h5>
       <button *ngIf="(isMenu(produit) && quantiteBoissonChoisi === tailless.quantite)" (click)="addMenuToCart(produit) " 
         class="panier text-white py-2 fw-bold px-5 roundeded border border-0 rounded-4 fs-4" 
         >+panier
       </button> 
-      
     </div>
+  <hr class="line">
     <div class="card-body w-100">
     <div class="show-detail w-100 d-flex justify-content-center">
       <div class="descrip col-4 p-3">
-        <h3 class="fw-bold">{{ produit.nom | currency: "$"}}</h3>
+        <h3 class="fw-bold">{{ produit.nom |uppercase}}</h3>
         <p class="text-wrap">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi et
           sint maxime repudiandae. Optio, tenetur aliquid adipisci commodi
@@ -104,10 +105,10 @@
             Le menu contient: {{tailless.quantite}} boisson (s) de {{ tailless.taille.nom}}
           </h5>   
       </div>
-      <div class="d-flex justify-content-between card-h"> <!--justify-content-between card-h-->
-          <div class="card card-taiile w-50 m-3 "*ngFor="let item of tailless.taille.tailleBoissons">
-              <div class="d-flex card-boisss border border-primary ">
-                  <img [src]="convert(item.boisson.image)" alt="..." class=" col-md-6 col-sm3 bg-warning">
+      <div class="d-flex justify-content-between card-h "> <!--justify-content-between card-h-->
+          <div class="card card-taiile   m-2 "*ngFor="let item of tailless.taille.tailleBoissons">
+              <div class="d-flex card-boisss w-100 ">
+                  <img [src]="convert(item.boisson.image)" alt="..." class=" col-sm-3 col-md-5 img-boisson">
                   <div class="">
                       <h5 class="text-center mt-2">
                         <em class="fw-bold">{{item.boisson.nom}}</em>
@@ -115,13 +116,13 @@
                       <h6 class="text-center">
                         <em>Prix: {{item.prixBoisson}}</em> 
                       </h6>
-                      <div class="card-body">
+                      <div class="card-body ">
                           <div class="d-flex w-100">
                               <button
                               class="btn moins me-1 mt-1"
                               onclick="this.parentNode.querySelector('input[type=number]').stepDown()" (click)="decrement()" 
                               >
-                              <i class="fas fa-minus fs-6 border border-info"></i>
+                              <i class="fas fa-minus fs-6"></i>
                               </button>
                               <div class="form-outline">
                               <input
@@ -131,7 +132,7 @@
                                 value=""
                                 #quantite
                                 type="number"
-                                class="form-control border border-danger w-75"
+                                class="form-control border border-danger w-100"
                               />
                               </div>
                       
@@ -163,7 +164,7 @@
     <!--=================== Fin des TailleBoisson========================= -->
 
     <!--=================== Début des Complements========================= -->
-    <div class="row g-5" *ngIf="!isMenu(produit)">
+    <div class="row g-5" >
         <div class="frites col-6 px-4 py-3">
             <h3 class="fw-bold">Frites:</h3>
                 <div class="p-3  d-flex boissons ">

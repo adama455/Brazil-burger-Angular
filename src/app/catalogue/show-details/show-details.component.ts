@@ -32,13 +32,13 @@ export class ShowDetailsComponent implements OnInit {
   // frites!:IFrite[];
   // boissons!:IBoisson[];
   // boisson!:IBoisson;
-  tailleBoissons!:ITailleBoisson[]
   taille!:Taille;
   taillee!:Taille[];
   tailless!:ITaille;
   
   allBurgers!:IBurger[];
   allFrites!:IFrite[];
+  tailleBoissons!:ITailleBoisson[]
   allBoissons!:IBoisson[];
   boisson!:IBoisson;
   parametre!:number;
