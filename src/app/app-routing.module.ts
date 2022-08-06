@@ -4,6 +4,8 @@ import { BurgerComponent } from './burger/burger.component';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { PanierComponent } from './catalogue/panier/panier.component';
 import { ShowDetailsComponent } from './catalogue/show-details/show-details.component';
+import { ClientComponent } from './client/client.component';
+import { DetailsCommandeComponent } from './client/details-commande/details-commande.component';
 import { DetailBurgerComponent } from './detail-burger/detail-burger.component';
 import { DetailMenuComponent } from './detail-menu/detail-menu.component';
 import { ConnexionComponent } from './forms/connexion/connexion.component';
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path:'catalogue', component: CatalogueComponent},
   { path:'registration', component: InscriptionComponent},
   { path:'connexion', component: ConnexionComponent},
+  { path:'list-clients', component: ClientComponent},
+  { path:'commandes/:id', component: DetailsCommandeComponent},
   // { path:'sub', component: SubDetailMenuComponent},
   // { path:'', component: HeaderComponent}
 ];

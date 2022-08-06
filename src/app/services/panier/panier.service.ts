@@ -30,6 +30,12 @@ export class PanierService {
   commande_url:string = 'http://127.0.0.1:8000/api/commandes';
   ldc:Array<any> =[];
 
+
+  getCommandeObs(){
+    return this.http.get<any>(this.commande_url);
+
+  }
+
   // Fornction pour incrementer la quantite du produit clicker au niveau du panier
   putToPanier(product: any, action: 'in' | 'out' = 'in') {
     this.items$
@@ -116,7 +122,7 @@ export class PanierService {
   }
 
   postCommande(body:Commande){
-    const headers={"Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk3MjAzNzAsImV4cCI6MTY1OTc1NjM3MCwicm9sZXMiOlsiUk9MRV9DTElFTlQiLCJST0xFX1ZJU0lURVVSIl0sInVzZXJuYW1lIjoiZGlvdWZAZ21haWwuY29tIn0.bghxC2p6i54yqBpgzv7CZZ4gww5CJcbgNxzbup_e2a2HuailcTXc3wvLg_CFluJ-BFPMX68mLfk47NVtiRosA-PhbZpyzo_g6_YCQ4ndCQksT4sloZD3UCjstwjazNVkbk9Net3oX5pYNRBmJ-cfD1zxcfqWiWyplQOVL90ndCoFV6FXpzCL5yvUjDZVB1Le6n3eLgmAsWZtqD0xm8uNRY6sTxkJUOsvw-mO5VIdWfRmpJMqKBYlZTa4dEPZtjbklZInVnHtslnoxK4s7iTOJi9DZDuawE5BdAQ-29S20vh266A8BdcnxrYTHKEZR-P2A0vJj_duHh7srqOsHUV00w"}
+    const headers={"Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk4MTkyNDQsImV4cCI6MTY1OTg1NTI0NCwicm9sZXMiOlsiUk9MRV9DTElFTlQiLCJST0xFX1ZJU0lURVVSIl0sInVzZXJuYW1lIjoibG9tYmF5ZUBnbWFpbC5jb20ifQ.A6VAUYVFz5Ygdf2TSpEHR7jnVggHxmBookyVztFFfC9CQnnk16PbUpuC_xdyC97jxrhzqLaJPFM9rrHgBJCXVfR0abWIPLkLdTHprYrTP8HgaWCP-9MYPv5dNhi_RhrhfKDPyquBOqX3lsRB6IIxKmQfiwTGbeVVbxkI7s-qgBEc2N6BvisFVv1h3p-S-5j8lpwymWiFgEQ5ZBi-y751TsmyTD8AV3MqYh_tudKpFq8Vb541wbbLD3IQmUr9q01t6IceVnL_IlqC-xT2-1L1Fl3qLyvNJomE-95QljnmHc1ZKTBQkvmbX-C7DJ-XVpa7o1Mq-g3FRxbjmn3t-GFNmQ"}
     this.http.post<Commande>(this.commande_url,body,{headers}).subscribe();
   }
 

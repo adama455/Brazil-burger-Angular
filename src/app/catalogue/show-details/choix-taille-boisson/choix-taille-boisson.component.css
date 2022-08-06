@@ -9,3 +9,19 @@
 .card-h{
     overflow-x: scroll;
 }
+.card-taiile{
+    /* width: 50rem; */
+    border :#BA631F solid 2px
+}
+.card-boi{
+    box-shadow: rgb(120, 118, 118) 4px 4px 20px;
+    box-sizing: border-box;
+    background: #000;
+}
+.card-h{
+    overflow-x: auto;
+    scrollbar-width: thin;    
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}

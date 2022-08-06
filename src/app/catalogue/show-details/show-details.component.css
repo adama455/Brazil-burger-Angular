@@ -137,3 +137,7 @@ top: -13px;
     left: 2%;
 
 }
+.rangee{
+    overflow-x: auto;
+    overflow-y: hidden;
+}

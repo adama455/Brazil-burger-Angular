@@ -1,0 +1,14 @@
+<div class="bg-primary py-5 ">
+
+    <div class="my-3 bg-danger container" *ngFor="let commande of client.commandes ">
+
+        <app-info-commande class="col-12" [commande]="commande"></app-info-commande>
+
+        <div class=" d-flex flex-row justify-content-between detailsProduitsCmmde" *ngFor="let prod of commande.produits ">
+
+            <app-info-produit class="col" *ngFor="let prod of commande.produits" [prod]="prod" ></app-info-produit>
+
+        </div>
+    </div>
+
+</div>

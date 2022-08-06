@@ -61,7 +61,7 @@ export class PanierComponent implements OnInit {
     this.data.getComplementsObs().subscribe((data: IComplement) => {
       this.fritess = data.frites;
       this.boissons = data.boissons;
-      console.log(data);
+      // console.log(data);
     });
 
     // this.data.getZonesObs().subscribe(
@@ -80,7 +80,7 @@ export class PanierComponent implements OnInit {
     // Deuxiéme Méthode pour recuperer les Zones et les Quartier avec deux url(url zones et urlquartier)======================
     this.data.getZonesObs().subscribe((data) => {
       this.zones = data;
-      console.log(this.zones);
+      // console.log(this.zones);
       this.data.getQuartiersObs().subscribe((qata) => {
         this.allQuartiers = qata;
         this.allQuartiers.forEach((allQ) => {
@@ -98,12 +98,12 @@ export class PanierComponent implements OnInit {
   }
   //
 
-  selectZone(zonee: any): boolean {
-    if (zonee.value) {
-      return true;
+  selectZone(zonee: HTMLSelectElement): boolean {
+    if (!zonee.value) {
+      return false;
     }
-    // console.log(+zoneSelect.value);
-    return false;
+    console.log(+zonee.value);
+    return true;
   }
 
   estAEmporter(emporte: HTMLInputElement) {
@@ -129,7 +129,7 @@ export class PanierComponent implements OnInit {
     return 'none';
   }
 
-  existModeLivraision(emporte: any, zoneSelect: any) {
+  existModeLivraision(emporte: HTMLInputElement, zoneSelect: HTMLSelectElement) {
     if (this.estAEmporter(emporte)) {
       return true;
     } else if (this.selectZone(zoneSelect)) {
@@ -139,42 +139,38 @@ export class PanierComponent implements OnInit {
   }
 
   peutCommander(empor: any, zonee: any): boolean {
-    if (
-      (this.estAEmporter(empor) || this.estALivrer(zonee)) &&
-      this.getTotal() > 0
-    ) {
-      console.log('il peut commander');
+    //  && this.getTotal() > 0
+    if (this.existModeLivraision(empor, zonee)) {
+     console.log('il peut commander');
       return false;
-    } else {
+    } 
       console.log('il ne peut pas commander');
       return true;
-    }
   }
-  
-  // Debut Validation Commande client:::::::::::::::::::::::::::
-    postCommande() {
-      let body:Commande={
-        produits:this.operationCmd(),
-        zone:"/api/zones/7",
-      }
-      this.panier.postCommande(body);
-    }
 
-    operationCmd() {
-      //recuperer tous les produits du panier dans un tableau
-      //  tabPaniers et les mettre produits
-      let tabPaniers = this.panier.getPanier();
-      const produits: FormatCmde[] = [];
-      tabPaniers.forEach((produit: Produit) => {
-        // console.log(produit);
-        produits.push({
-          quantiteCmde: +produit.quantity,
-          produit: '/api/produits/' + produit.id,
-          client:'api/clients/1'
-        });
+  // Debut Validation Commande client:::::::::::::::::::::::::::
+  postCommande() {
+    let body: Commande = {
+      produits: this.operationCmd(),
+      zone: '/api/zones/7',
+    };
+    this.panier.postCommande(body);
+  }
+
+  operationCmd() {
+    //recuperer tous les produits du panier dans un tableau
+    //  tabPaniers et les mettre produits
+    let tabPaniers = this.panier.getPanier();
+    const produits: FormatCmde[] = [];
+    tabPaniers.forEach((produit: Produit) => {
+      // console.log(produit);
+      produits.push({
+        quantiteCmde: +produit.quantity,
+        produit: '/api/produits/' + produit.id,
       });
-      // console.log(produits);
-      return produits;
-    }
+    });
+    // console.log(produits);
+    return produits;
+  }
   // Debut Validation Commande client:::::::::::::::::::::::::::
 }

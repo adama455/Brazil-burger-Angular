@@ -23,11 +23,9 @@
           </p>
           <span class="fw-bold fs-2 total">Total: {{ produit.prix }} F CFA</span>
         </div>
-
-        <div class="image mx-5 col-4 card">
-          <img [src]="convert(produit.image)" class="col-md-6 d-flex" />
-          <span>{{ quantiteBoissonChoisi }}</span>
-          <span>{{ tailless.quantite }}</span>
+        
+        <div class="image mx-5 col-4 card justify-content-center">
+          <img [src]="convert(produit.image)" class="col-md-12 d-flex" />
         </div>
 
         <button type="button" class="cmde h-25 btn-rounded rounded-5">
@@ -44,7 +42,8 @@
       <div class="card burger-complement card-card d-flex mt-3 mb-3 p-2 mx-5" *ngIf="isMenu(produit)">
         <div class="d-flex">
           <app-burgers-detail-menu style="width: 400px; height: 100%" *ngFor="let oburger of burgers" [burge]="oburger"
-            class="col-2 oburger px-3"></app-burgers-detail-menu>
+          class="col-2 oburger px-3">
+        </app-burgers-detail-menu>
 
           <app-frites-menu style="width: 400px; height: 100%" *ngFor="let ofrite of frites" [frite]="ofrite"
             class="col-2 ofrite px-3"></app-frites-menu>
@@ -83,9 +82,8 @@
 
       <!--=================== Début des TailleBoisson========================= -->
 
-      <div class="">
-        
-        <app-choix-taille-boisson *ngFor="let taille of tailles;let i=index;" [i]="i" [taillee]="taille" class="col-sm-3 col-md-2">
+      <div class="d-flex justify-content-between rangee">  
+        <app-choix-taille-boisson  *ngFor="let taille of tailles;let i=index;" [i]="i"  [taillee]="taille" class="mx-2">
 
         </app-choix-taille-boisson>
       </div>

@@ -20,7 +20,7 @@ export class DataServiceService {
   private readonly complement_url:string = 'http://127.0.0.1:8000/api/complements';
   private readonly zone_url='http://127.0.0.1:8000/api/zones';
   private readonly quartier_url='http://127.0.0.1:8000/api/quartiers';
-  // private readonly frites_url:string = 'http://127.0.0.1:8000/api/frites';
+  private readonly client_url:string = 'http://127.0.0.1:8000/api/clients/';
   private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
 
   // Tableau qui stock pour chaque boisson sa somme et sa quantite:::::::::::::::
@@ -42,6 +42,13 @@ export class DataServiceService {
   getQuartiersObs():Observable<any>{
     return this.http.get<any>(this.quartier_url);
     // console.log;
+  }
+  getClientsObs():Observable<any>{
+    return this.http.get<any>(this.client_url);
+  }
+
+  getOneClient(id:number):Observable<any>{
+    return this.http.get<any>(this.client_url+id);
   }
 
   getBoissonObs():Observable<any>{

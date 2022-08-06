@@ -81,6 +81,7 @@
                                             <div id="collapseTwo" class=" collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                 <select class="form-select w-100 " aria-label=".form-select-sm example" #zonee (input)="selectZone(zonee)">
                                                     <optgroup *ngFor="let ozone of zones"  label="********************{{ozone.nom}}********************" class="w-100">
+                                                        <option hidden  value="" disabled selected class="w-100 ">--v--</option>
                                                         <option  value="{{ozone.id}}" *ngFor="let quartier of ozone.quartiers" class="w-100 ">{{quartier.nom}}</option>
                                                     </optgroup>
                                                 </select>

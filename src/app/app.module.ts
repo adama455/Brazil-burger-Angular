@@ -33,6 +33,10 @@ import { ZonesComponent } from './catalogue/show-details/zones/zones.component';
 import { QuartierComponent } from './catalogue/show-details/zones/quartier/quartier.component';
 import { ChoixTailleBoissonComponent } from './catalogue/show-details/choix-taille-boisson/choix-taille-boisson.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ClientComponent } from './client/client.component';
+import { DetailsCommandeComponent } from './client/details-commande/details-commande.component';
+import { InfoCommandeComponent } from './client/details-commande/info-commande/info-commande.component';
+import { InfoProduitComponent } from './client/details-commande/info-produit/info-produit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +66,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ZonesComponent,
     QuartierComponent,
     ChoixTailleBoissonComponent,
+    ClientComponent,
+    DetailsCommandeComponent,
+    InfoCommandeComponent,
+    InfoProduitComponent,
    
   ],
   imports: [
