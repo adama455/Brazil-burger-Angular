@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IBurger, IMenu } from 'src/app/catalogue.model';
+import { IBurger, IMenu } from 'src/app/models/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 // import { DataServiceService } from 'src/app/services/data-service.service';
 import { PanierService } from 'src/app/services/panier/panier.service';

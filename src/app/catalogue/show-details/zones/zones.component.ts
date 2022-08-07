@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IQuartier, IZone } from 'src/app/catalogue.model';
+import { IQuartier, IZone } from 'src/app/models/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({

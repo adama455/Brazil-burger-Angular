@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IMenu } from '../catalogue.model';
+import { IMenu } from '../models/catalogue.model';
 // import { CatalogueService } from '../services/catalogue.service';
 
 @Component({

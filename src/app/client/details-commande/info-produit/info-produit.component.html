@@ -1,17 +1,29 @@
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Nom produit</th>
-            <th scope="col">Prix</th>
-            <th scope="col">Quantité</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="table-active">
-            <th scope="row">{{prod.produit.nom}}</th>
-            <td>{{prod.produit.prix}}</td>
-            <td>{{prod.quantiteCmde}}</td>
-        </tr>
-    </tbody>
-</table>
+<!--
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nom produit</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Quantité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-active">
+                <th scope="row">{{prod.produit.nom}}</th>
+                <td>{{prod.produit.prix}}</td>
+                <td>{{prod.quantiteCmde}}</td>
+            </tr>
+        </tbody>
+    </table>
+-->
+<div class="card g-3 d-flex flex-row mb-2" >
+    <img [src]="convert(prod.produit.image)" class="col-md-4 mx-auto" >
+    <div class="card-body  ">
+        <div class="text-center d-flex justify-content-space-evenly flex-column">
+            <h5 class="card-title fs-6 text-center fw-bold">{{prod.produit.nom}}</h5>
+            <span class="me-1"><em class="fw-bold">Prix: </em>{{prod.produit.prix}}</span>
+            <span><em class="fw-bold">Quantité: </em> {{prod.quantiteCmde}}</span>
+        </div>
+    </div>
+</div>

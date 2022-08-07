@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IBurger, IMenu } from '../catalogue.model';
+import { IBurger, IMenu } from '../models/catalogue.model';
 
 @Component({
   selector: 'app-detail-burger',

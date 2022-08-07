@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ITaille, ITailleBoisson, Taille } from 'src/app/catalogue.model';
+import { ITaille, ITailleBoisson, Taille } from 'src/app/models/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({

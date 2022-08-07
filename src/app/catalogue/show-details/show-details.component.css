@@ -7,13 +7,16 @@
     padding: 1em;
     border: none;
     position: absolute;
+    box-sizing: border-box;
+    
 }
 .grand-card{
     box-shadow: rgb(120, 118, 118) 4px 4px 20px;
     box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-y: auto;
+    overflow-x: hidden; */
     height: 75vh;
+    border-bottom: #ba631f 8px solid;
 }
 .cmde p{
     font-size: 1em;
@@ -69,11 +72,31 @@
     background-color: #ba631f;
     box-shadow: lightgray 4px 4px 20px;
     cursor: pointer;
+    width: 5rem;
 } 
+.section-details{
+    overflow-y: auto;
+    /* border: 2px solid red; */
+    height: 63vh;
+    box-sizing: border-box;
+
+}
 
 .burger-complement{
-    overflow-x: auto;
-    background: #000;
+    overflow-y: auto;
+    box-shadow: rgb(242, 178, 129) 4px 4px 20px;
+    border-bottom: red solid 2px;
+    box-sizing: border-box;
+    height: 10%;
+
+}
+.decrip-img{
+    box-sizing: border-box;
+}
+.btn-cmd-burger{
+    flex-direction: column;
+    height: 10%;
+    box-sizing: border-box;
 }
 
 .boisson{
@@ -138,6 +161,13 @@ top: -13px;
 
 }
 .rangee{
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-shadow: rgb(61, 60, 59) 4px 4px 20px;
+    border-bottom: red solid 2px;
+    box-sizing: border-box;
+}
+.burger-boisson{
+    overflow-x: hidden;
+    overflow-y: auto;
 }

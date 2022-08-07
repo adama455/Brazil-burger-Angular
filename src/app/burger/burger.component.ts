@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IBurger } from '../catalogue.model';
+import { IBurger } from '../models/catalogue.model';
 // import { CatalogueService } from '../services/catalogue.service';
 
 @Component({

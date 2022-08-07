@@ -9,7 +9,7 @@ import {
   ITaille,
   ITailleBoisson,
   IZone,
-} from 'src/app/catalogue.model';
+} from 'src/app/models/catalogue.model';
 import {
   Commande,
   FormatCmde,

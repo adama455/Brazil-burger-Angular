@@ -1,14 +1,12 @@
 <div class=" ">
     <!--card card-card py-1 px-3 h-75 mx-5 row gx-3-->
-    <div class="d-flex justify-content-between">
-        <h5 class="d-flex justify-content-center text-text fw-bold">
-            Le menu contient: {{ taillee.quantite }} boisson (s) de
-            {{ taillee.taille.nom }}
-        </h5>
-    </div>
-    <div class="d-flex">
+    <h6 class="d-flex justify-content-center title-taille text-text mt-1 fw-bold">
+        Le menu contient: {{ taillee.quantite }} boisson (s) de
+        {{ taillee.taille.nom }}
+    </h6>
+    <div class="d-flex flex-column align-items-center">
         <!--justify-content-between card-h-->
-        <div class="card card-taiile w-100 m-3" style="min-width:300px ;" *ngFor="let item of taillee.taille.tailleBoissons">
+        <div class="card card-taiile my-1 " style="min-width:320px ; height:140px" *ngFor="let item of taillee.taille.tailleBoissons">
             <div class="d-flex w-100">
                 <img [src]="convert(item.boisson.image)" alt="..." class="col-sm-3 col-md- img-boisson" />
                 <div class="">

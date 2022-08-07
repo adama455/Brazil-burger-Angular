@@ -1,0 +1,12 @@
+.container{
+    height: 75vh;
+    
+}
+.title{
+    background-color: chocolate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+}

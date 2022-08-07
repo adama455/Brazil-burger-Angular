@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Produit } from 'src/app/models/commande';
+import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-info-produit',
@@ -10,9 +11,11 @@ export class InfoProduitComponent implements OnInit {
 
   @Input()
   prod!: { quantiteCmde: number; produit: Produit; };
-  constructor() { }
+  constructor(private data:DataServiceService) { }
 
   ngOnInit(): void {
   }
-
+  convert(url: string){
+    return this.data.convertImg(url)
+  }
 }

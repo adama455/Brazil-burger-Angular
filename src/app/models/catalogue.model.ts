@@ -85,7 +85,7 @@ export interface IZone{
     id: number,
     nom: string,
     etat: number,
-    
+    prixDeLivraison:number,
     quartiers:IQuartier[],
 }
 

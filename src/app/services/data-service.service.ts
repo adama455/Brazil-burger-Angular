@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable} from 'rxjs';
-import {IBoisson, IBurger, ICatalogue, IComplement, IFrite, IMenu} from '../catalogue.model';
+import {IBoisson, IBurger, ICatalogue, IComplement, IFrite, IMenu} from '../models/catalogue.model';
 import { Commande } from '../models/commande';
 
 @Injectable({

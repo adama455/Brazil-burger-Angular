@@ -4,7 +4,7 @@ import {
   ITaille,
   ITailleBoisson,
   Taille,
-} from 'src/app/catalogue.model';
+} from 'src/app/models/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 import { MenuService } from 'src/app/services/menu/menu.service';
 

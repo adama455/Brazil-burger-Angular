@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Burger, Frite, IBoisson, IBurger, ICatalogue, IFrite, IMenu, ITaille, ITailleBoisson, Taille } from 'src/app/catalogue.model';
+import { Burger, Frite, IBoisson, IBurger, ICatalogue, IFrite, IMenu, ITaille, ITailleBoisson, Taille } from 'src/app/models/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({

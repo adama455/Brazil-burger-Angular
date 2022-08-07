@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IBoisson, IBurger, IFrite } from 'src/app/catalogue.model';
+import { IBoisson, IBurger, IFrite } from 'src/app/models/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({

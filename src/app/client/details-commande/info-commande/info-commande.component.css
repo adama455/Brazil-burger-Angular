@@ -1,0 +1,19 @@
+.table tr{
+    border-bottom: 3px solid rgb(239, 235, 235);
+    text-shadow: 1px 1px 2px rgb(187, 183, 183);
+}
+td, th{
+    border-style: none ;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+}
+h1{
+    text-shadow: 5px 5px #101111;
+}
+p{
+    text-shadow: 2px 2px 4px rgb(247, 245, 245);
+}
+table:active{
+    background: none;
+}

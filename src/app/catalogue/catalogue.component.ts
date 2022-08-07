@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICatalogue, IMenu, IBurger } from '../catalogue.model';
+import { ICatalogue, IMenu, IBurger } from '../models/catalogue.model';
 // import { CatalogueService } from '../services/catalogue.service';
 import { DataServiceService } from '../services/data-service.service';
 

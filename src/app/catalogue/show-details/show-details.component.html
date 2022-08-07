@@ -5,41 +5,82 @@
       <h5 class="card-title fs-4 mt-2 fw-bold ms-5">
         DETAILS: {{ showTitle(produit) | uppercase }}
       </h5>
-      <button *ngIf="isMenu(produit) && activePanierMenu()" (click)="addMenuToCart(produit)"
-        class="panier text-white py-2 fw-bold px-5 roundeded border border-0 rounded-4 fs-4">
-        +panier
-      </button>
+      <span class="badge rounded-pill d-flex align-items-center justify-content-center panier text-white py-2 fw-bold px-5"
+          *ngIf="isMenu(produit) && activePanierMenu()" 
+          (click)="addMenuToCart(produit)">
+          <i class="fas fa-shopping-cart fs-4 "></i>
+          +panier
+      </span>
     </div>
     <hr class="line" />
-    <div class="card-body w-100">
-      <div class="show-detail w-100 d-flex justify-content-center">
-        <div class="descrip col-4 p-3">
-          <h3 class="fw-bold">{{ produit.nom | uppercase }}</h3>
-          <p class="text-wrap">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-            et sint maxime repudiandae. Optio, tenetur aliquid adipisci commodi
-            consequuntur minima mollitia quas iusto ducimus. Explicabo
-            exercitationem molestias cum reiciendis non?
-          </p>
-          <span class="fw-bold fs-2 total">Total: {{ produit.prix }} F CFA</span>
-        </div>
-        
-        <div class="image mx-5 col-4 card justify-content-center">
-          <img [src]="convert(produit.image)" class="col-md-12 d-flex" />
+    <section class="card-body w-100 section-details">
+      <div class="d-flex  decrip-img justify-content-between ">
+        <div class="show-detail d-flex h-25" style="width: 65%;height: 552px">
+          <div class="descrip col-md-6 col-sm-3 p-3">
+            <h3 class="fw-bold">{{ produit.nom | uppercase }}</h3>
+            <p class="text-wrap">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
+              et sint maxime repudiandae. Optio, tenetur aliquid adipisci commodi
+              consequuntur minima mollitia quas iusto ducimus. Explicabo
+              exercitationem molestias cum reiciendis non?
+            </p>
+            <div class=" d-flex flex-column ">
+              <h2>Compositon du menu:</h2>
+              <h4 *ngFor="let oburger of burgers">{{oburger.quatite}}. --- {{oburger.burger.nom}} ---- {{oburger.burger.prix}}/Unité</h4>
+              <h4 *ngFor="let ofrite of frites">{{ofrite.quantite}}. --- {{ofrite.frite.nom}} ----- {{ofrite.frite.prix}}/Unité</h4>
+            </div>
+            <span class="fw-bold fs-2 total">Total: {{ produit.prix }} F CFA</span>
+          </div>
+          
+          <div class="image mx-5 col-md-6 col-sm-3 card justify-content-center" style="height: 552px">
+            <img [src]="convert(produit.image)" class="col-md-12 d-flex" />
+          </div>
         </div>
 
-        <button type="button" class="cmde h-25 btn-rounded rounded-5">
-          <div class="d-flex">
-            <span class="text-white fw-bold">VOUS LE VOULEZ ? C’EST PAR ICI !</span>
-            <span><i class="fas fa-long-arrow-alt-right text-white fs-3 ms-2"></i></span>
+        <div class="btn-cmd-burger col-md-4 col-sm-2 d-flex align-items-end border"style="height: 553px">
+          <div class="btn-cmd">
+            <button type="button" class="cmde btn-rounded rounded-5">
+              <div class="">
+                <span class="text-white fw-bold">VOUS LE VOULEZ ? C’EST PAR ICI !</span>
+                <span><i class="fas fa-long-arrow-alt-right text-white fs-3 ms-2"></i></span>
+              </div>
+              <button class="btn btn-light btn-rounded rounded-4">
+                CLICKER ICI & COMMANDER
+              </button>
+            </button> 
           </div>
-          <button class="btn btn-light btn-rounded rounded-4">
-            CLICKER ICI & COMMANDER
-          </button>
-        </button>
+
+          <!--=================== Fin Détail du menu========================= -->
+          <div class=" burger-boisson d-flex flex-column justify-content-between" style="height: 80%">
+          
+            <div class="card burger-complement my-3 pt-4 d-flex " *ngIf="isMenu(produit)" style="height:50%">
+              <app-burgers-detail-menu style="width: 340px; " *ngFor="let oburger of burgers" [burge]="oburger"
+              class=" oburger px-3 mb-4 mx-auto">
+              </app-burgers-detail-menu>
+
+              <app-frites-menu style="width: 350px;" *ngFor="let ofrite of frites" [frite]="ofrite"
+                class="ofrite px-3 mb-4">
+              </app-frites-menu>
+            </div>
+            <!--===================Début Détail du menu========================= -->
+
+            <!--=================== Début des TailleBoisson========================= -->
+          <div class=" card d-flex flex-column  align-items-between rangee" style="height: 50%">  
+            <app-choix-taille-boisson  style="width: 340px;" *ngFor="let taille of tailles;let i=index;" [i]="i"  [taillee]="taille" class="mx-auto">
+    
+            </app-choix-taille-boisson>
+          </div>
+        </div>
+          <!--=================== Fin des TailleBoisson========================= -->
+
+        </div>
       </div>
-      <!--===================Début Détail du menu========================= -->
-      <div class="card burger-complement card-card d-flex mt-3 mb-3 p-2 mx-5" *ngIf="isMenu(produit)">
+
+
+
+
+
+     <!-- <div class="card burger-complement card-card d-flex mt-3 mb-3 p-2 mx-5" *ngIf="isMenu(produit)">
         <div class="d-flex">
           <app-burgers-detail-menu style="width: 400px; height: 100%" *ngFor="let oburger of burgers" [burge]="oburger"
           class="col-2 oburger px-3">
@@ -49,7 +90,7 @@
             class="col-2 ofrite px-3"></app-frites-menu>
         </div>
 
-        <!-- <div class="col-2 d-flex oboisson px-3 card " *ngFor="let boisson of tailles ">
+         <div class="col-2 d-flex oboisson px-3 card " *ngFor="let boisson of tailles ">
                         <div *ngFor="let drink of boisson.taille.tailleBoissons" class="col-12 me-3 px-2 boisson mt-2">  
                             <div class="d-flex">
                                 <div class="col-12">
@@ -76,18 +117,11 @@
                                 <span class="me-3">P: {{burge.burger.prix}}</span>
                                 <span>Qté: {{burge.quatite}}</span>
                             </div>
+                          </div>
                         </div>-->
-      </div>
-      <!--=================== Fin Détail du menu========================= -->
 
-      <!--=================== Début des TailleBoisson========================= -->
 
-      <div class="d-flex justify-content-between rangee">  
-        <app-choix-taille-boisson  *ngFor="let taille of tailles;let i=index;" [i]="i"  [taillee]="taille" class="mx-2">
-
-        </app-choix-taille-boisson>
-      </div>
-
+      
       <!--<div *ngIf="isMenu(produit)" class="card card-boi py-1 px-3 h-75 mx-5 row gx-3">card card-card py-1 px-3 h-75 mx-5 row gx-3-->
       <!-- <div class=" d-flex justify-content-center">
           <h5 class="d-flex justify-content-center text-white  fw-bold">
@@ -103,7 +137,7 @@
                         <em class="fw-bold">{{item.boisson.nom}}</em>
                       </h5> 
                       <h6 class="text-center">
-                        <em>Prix: {{item.prixBoisson}}</em> 
+                        <em>Prix: </em> 
                       </h6>
                       <div class="card-body ">
                           <div class="d-flex w-100">
@@ -150,10 +184,9 @@
       </div>
   </div>-->
 
-      <!--=================== Fin des TailleBoisson========================= -->
 
       <!--=================== Début des Complements========================= -->
-      <!--<div class="row g-5" >
+      <div class="row g-5" >
         <div class="frites col-6 px-4 py-3">
             <h3 class="fw-bold">Frites:</h3>
                 <div class="p-3  d-flex boissons ">
@@ -177,7 +210,7 @@
         </div>
     </div>
     <!--=================== Fin des Complements========================= -->
-    </div>
+  </section>
   </div>
   
 </div>

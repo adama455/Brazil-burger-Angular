@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { TmplAstBoundAttribute } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, take } from 'rxjs';
-import { IBurger, IMenu } from 'src/app/catalogue.model';
+import { IBurger, IMenu } from 'src/app/models/catalogue.model';
 import { Commande } from 'src/app/models/commande';
 
 @Injectable({

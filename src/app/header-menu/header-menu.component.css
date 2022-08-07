@@ -8,5 +8,7 @@ nav{
 li a{
     color: black;
     font-weight: 400;
-
+}
+li a:hover{
+    color: red;
 }

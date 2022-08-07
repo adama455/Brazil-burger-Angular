@@ -1,4 +1,4 @@
-import { IZone } from "../catalogue.model";
+import { IZone } from "./catalogue.model";
 
 export interface ICommande {
   reference: string;

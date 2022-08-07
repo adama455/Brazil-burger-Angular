@@ -1,0 +1,14 @@
+.detailsProduitsCmmde{
+    overflow-y: hidden;
+    overflow-x:scroll;
+}
+img{
+    background-color: #C7824B;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.card{
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+}
