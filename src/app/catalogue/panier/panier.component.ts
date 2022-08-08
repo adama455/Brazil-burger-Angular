@@ -149,28 +149,29 @@ export class PanierComponent implements OnInit {
   }
 
   // Debut Validation Commande client:::::::::::::::::::::::::::
-  postCommande() {
-    let body: Commande = {
-      produits: this.operationCmd(),
-      zone: '/api/zones/7',
-    };
-    this.panier.postCommande(body);
-  }
+    postCommande() {
+      let body: Commande = {
+        produits: this.operationCmd(),
+        zone: '/api/zones/7',
+      };
+      this.panier.postCommande(body);
+    }
 
-  operationCmd() {
-    //recuperer tous les produits du panier dans un tableau
-    //  tabPaniers et les mettre produits
-    let tabPaniers = this.panier.getPanier();
-    const produits: FormatCmde[] = [];
-    tabPaniers.forEach((produit: Produit) => {
-      // console.log(produit);
-      produits.push({
-        quantiteCmde: +produit.quantity,
-        produit: '/api/produits/' + produit.id,
+    operationCmd() {
+      //recuperer tous les produits du panier dans un tableau
+      //  tabPaniers et les mettre produits
+      let tabPaniers = this.panier.getPanier();
+      const produits: FormatCmde[] = [];
+      tabPaniers.forEach((produit: Produit) => {
+        // console.log(produit);
+        produits.push({
+          quantiteCmde: +produit.quantity,
+          produit: '/api/produits/' + produit.id,
+        });
+        
       });
-    });
-    // console.log(produits);
-    return produits;
-  }
+      // console.log(produits);
+      return produits;
+    }
   // Debut Validation Commande client:::::::::::::::::::::::::::
 }

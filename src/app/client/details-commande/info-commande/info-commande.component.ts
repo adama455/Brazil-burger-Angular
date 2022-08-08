@@ -7,7 +7,7 @@ import { GetCommande } from 'src/app/models/commande';
   styleUrls: ['./info-commande.component.css']
 })
 export class InfoCommandeComponent implements OnInit {
-@Input()
+  @Input()
   commande!:GetCommande;
   constructor() { }
 

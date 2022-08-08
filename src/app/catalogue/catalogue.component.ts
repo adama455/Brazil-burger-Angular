@@ -21,7 +21,6 @@ export class CatalogueComponent implements OnInit {
     this.dataService.getProduitsObs().subscribe(
       (cata:ICatalogue)=>{
         console.log(cata);
-        
         this.menus=cata.menus;
         this.burgers=cata.burgers;
       }

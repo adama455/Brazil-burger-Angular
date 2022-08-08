@@ -129,5 +129,10 @@ export class PanierService {
   getPanier(){
     return JSON.parse(localStorage.getItem('products') || '[]');
   }
+
+ // annulerCommande(id:number, commande: UpdateCommande | {statut:string}){
+  //   this.http.put<UpdateCommande>(this.commande_url + "/" + id,commande).subscribe();
+    
+  // } 
   
 }

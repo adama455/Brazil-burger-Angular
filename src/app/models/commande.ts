@@ -28,6 +28,7 @@ export interface FormatCmde {
   quantiteCmde: number,
   produit: string,
 }
+
 export interface GetCommande{
   id:number
   produits: {quantiteCmde: number,produit:Produit}[],
@@ -37,6 +38,5 @@ export interface GetCommande{
   reference:string,
   etat:string,
   zone: IZone
-
 
 }

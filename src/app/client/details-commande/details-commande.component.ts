@@ -18,35 +18,15 @@ export class DetailsCommandeComponent implements OnInit {
   id:number = +this.route.snapshot.params['id'];
 
     constructor(private dataService: DataServiceService,
-      private route: ActivatedRoute, private panierService: PanierService) { }
+      private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
     this.dataService.getOneClient(this.id).subscribe((data) => {
       this.client = data;
-      // this.clients.forEach((client)=>{
-      //   client.commandes.forEach((commande) => {
-      //     this.commande=commande;
-      //     console.log(this.commande);
-          
-      //   })
-      //  console.log();
-       
-      // })
+  
     })
 
-    // this.dataService.getClientsObs().subscribe((data) => {
-    //   this.clients = data;
-    //   this.clients.forEach((client)=>{
-    //     client.commandes.forEach((commande) => {
-    //       this.commande=commande;
-    //       console.log(this.commande);
-          
-    //     })
-    //    console.log();
-       
-    //   })
-    // })
   }
   
 

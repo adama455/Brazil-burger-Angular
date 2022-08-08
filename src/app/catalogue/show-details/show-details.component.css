@@ -76,6 +76,7 @@
 } 
 .section-details{
     overflow-y: auto;
+    overflow-x: hidden;
     /* border: 2px solid red; */
     height: 63vh;
     box-sizing: border-box;
@@ -170,4 +171,8 @@ top: -13px;
 .burger-boisson{
     overflow-x: hidden;
     overflow-y: auto;
+}
+.menu-similaire{
+    overflow-x: scroll;
+    overflow-y: hidden;
 }

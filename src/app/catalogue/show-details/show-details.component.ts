@@ -1,5 +1,6 @@
+import { transition } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+// import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { map, take } from 'rxjs';
 import { Burger, Frite, IBoisson, IBurger, ICatalogue, IComplement, IFrite, IMenu, ITaille, ITailleBoisson, Taille } from 'src/app/models/catalogue.model';
@@ -13,7 +14,7 @@ import { PanierService } from 'src/app/services/panier/panier.service';
   styleUrls: ['./show-details.component.css']
 })
 export class ShowDetailsComponent implements OnInit {
-  // burger!:Burger
+  produits!:IBurger[] | IMenu[]
   fritess!:IFrite[];
   boissons!:IBoisson[];
   complement!:IComplement;
@@ -22,17 +23,16 @@ export class ShowDetailsComponent implements OnInit {
   // /////////// ça concerne les sous détail de Menu////////////////
   ////////////////////////////////////////////////////////////////
   menu!: IMenu;
+  burgerr!:IBurger
   menus!:IMenu[];
+  burgerrs!:IBurger[];
   burgers:Burger[]=[];
   frites:Frite[]=[];
   tailles!:ITaille[];
   frit:Frite[]=[];
   frite!:Frite;
-  // burgers!:Burger[]; 
   @Input() burger!:Burger; ///tableau de burger ki est ds menu
-  // frites!:IFrite[];
-  // boissons!:IBoisson[];
-  // boisson!:IBoisson;
+
   taille!:Taille;
   taillee!:Taille[];
   tailless!:ITaille;
@@ -49,7 +49,7 @@ export class ShowDetailsComponent implements OnInit {
 
   quantiteBoissonChoisi: number=0;
 
-////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////
   
   constructor(
     private data:DataServiceService, 
@@ -68,7 +68,7 @@ export class ShowDetailsComponent implements OnInit {
       (data:IComplement)=>{
         this.fritess=data.frites;
         this.boissons=data.boissons;
-        console.log(data);    
+        // console.log(data);    
       }
 
     );
@@ -125,6 +125,27 @@ export class ShowDetailsComponent implements OnInit {
           })
         })
       })
+
+
+      // Produit similaire=================================================
+      // Menu similaire=================================================
+        this.menu = this.data.getOnMenus(this.param, this.menus);
+        this.data.getMenusObs().subscribe((data:any)=>{
+          // this.burgerr=this.data.getOnBurgers(this.param, this.menus);
+          if (data.id!==this.menu.id) {
+            // console.log(data.id);
+            this.menus.push(data); 
+                                 
+          }
+        })
+      // Burger similaire=================================================
+        this.burgerr = this.data.getOnBurgers(this.param, this.allBurgers);
+        this.data.getBurgersObs().subscribe((data:any)=>{
+          // this.burgerr=this.data.getOnBurgers(this.param, this.menus);
+          if (data.id !== this.param){
+            this.allBurgers.push(data);                      
+          }
+        })
   }
   ////////////////////////////////////////////////////////////////
 
@@ -180,6 +201,9 @@ export class ShowDetailsComponent implements OnInit {
       
   //   }
   // }
+
+
+
   
   addMenuToCart(prod:any){
     this.panierService.putToPanier(prod) ;

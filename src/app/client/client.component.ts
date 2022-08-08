@@ -25,15 +25,14 @@ export class ClientComponent implements OnInit {
       take(1),
       map((data:any) =>{
         data.filter((y:IClient)=>{
-          if (y.a_deja_commander==true) {
+          if (y.commandes.length > 0) {
             this.clients.push(y);
           }
         })
-
       })
-
     ).subscribe()
   }
+  // fonction pour aller dans detail commande
   detailCommande(client:IClient){
     this.router.navigateByUrl("commandes/"+client.id);
   }

@@ -24,10 +24,10 @@ export class MenuService {
   }
 
   isQteNormal(qteBoisson: ChoixBoisson) {
-    if (qteBoisson.qteTotal <= qteBoisson.somQte) {
-      return true;
-    } else {
+    if (qteBoisson.qteTotal < qteBoisson.somQte || qteBoisson.qteTotal > qteBoisson.somQte) {
       return false;
+    } else {
+      return true;
     }
   }
 

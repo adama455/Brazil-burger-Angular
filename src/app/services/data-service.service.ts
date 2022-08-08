@@ -22,6 +22,8 @@ export class DataServiceService {
   private readonly quartier_url='http://127.0.0.1:8000/api/quartiers';
   private readonly client_url:string = 'http://127.0.0.1:8000/api/clients/';
   private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
+  private readonly burger_url:string = 'http://127.0.0.1:8000/api/burgers';
+  private readonly menu_url:string = 'http://127.0.0.1:8000/api/menus';
 
   // Tableau qui stock pour chaque boisson sa somme et sa quantite:::::::::::::::
  
@@ -50,6 +52,9 @@ export class DataServiceService {
   getOneClient(id:number):Observable<any>{
     return this.http.get<any>(this.client_url+id);
   }
+  // getOneClient(id:number):Observable<any>{
+  //   return this.http.get<any>(this.client_url + "/" +id);
+  // }
 
   getBoissonObs():Observable<any>{
     return this.http.get<any>(this.boissons_url);
@@ -57,21 +62,29 @@ export class DataServiceService {
   }
 
 // return un burger:::::::::::::::::::::
-  // getOnBurgers(id:string,burgers:IBurger[]):IBurger
-  // { 
-  //   const burger = burgers.find((burger)=>
-  //   {
-  //     return burger.id.toString()===id
-  //   }
-  //   );
-  //   if (!burger) {
-  //     throw new Error('Burger not found');
-  //   }else{
-  //     return burger;
-  //   }
-  // }
+  getBurgersObs():Observable<any>{
+    return this.http.get<any>(this.burger_url);
+    console.log;
+  }
+
+  getOnBurgers(id:string,burgers:IBurger[]):IBurger
+  { 
+    const burger = burgers.find((burger)=>
+    {
+      return burger.id.toString()===id
+    }
+    );
+    if (!burger) {
+      throw new Error('Burger not found');
+    }else{
+      return burger;
+    }
+  }
   // return un menu:::::::::::::::::::::
-  
+  getMenusObs():Observable<any>{
+    return this.http.get<any>(this.menu_url);
+    console.log;
+  }
   getOnMenus(id:string,menus:IMenu[]):IMenu {
     const menu = menus.find((menu)=>
     {

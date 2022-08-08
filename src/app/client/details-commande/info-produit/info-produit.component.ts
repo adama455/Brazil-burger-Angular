@@ -14,7 +14,9 @@ export class InfoProduitComponent implements OnInit {
   constructor(private data:DataServiceService) { }
 
   ngOnInit(): void {
+    
   }
+
   convert(url: string){
     return this.data.convertImg(url)
   }

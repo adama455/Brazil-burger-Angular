@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-import { Burger, Frite, IBoisson, IBurger, ICatalogue, IFrite, IMenu, ITaille, ITailleBoisson, Taille } from 'src/app/models/catalogue.model';
+import { Burger,  IBurger} from 'src/app/models/catalogue.model';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
@@ -18,39 +16,11 @@ export class BurgersDetailMenuComponent implements OnInit {
     allBurgers!:IBurger[];
     burgers!:Burger[]; 
     @Input() burge!:Burger;
-   
-    // tailles!:ITaille[];
-    // taille!:Taille;
-    // tailleBoissons!:ITailleBoisson[]
-    // boisson!:IBoisson;
 
-  // id!:number;
-  // param!:string;
-
-  constructor(
-    private data:DataServiceService, 
-    private route: ActivatedRoute,
-    private sanitizer:DomSanitizer
-  ) { }
-  ngOnInit(): void { 
-  // this.id =this.route.snapshot.params['id'];
-  // this.param=this.id.toString();
-  // this.dataService.getProduitsObs().subscribe(
-  // data=>{
-  //   this.menus = data.menus    
-  //   this.menu = this.dataService.getOnMenus(this.param, this.menus);
-  //     this.allBurgers=data.burgers; //l'enssemble des burgers dans catalogue
-  //     this.burgers=this.menu.burgers; //l'enssemble des burgers dans menu
-  //     this.allBurgers.forEach(oneBurger=>{
-  //       this.burgers.forEach(oburger=>{
-  //         // console.log(oburger.burger);
-  //         if (oneBurger.id===oburger.burger.id) {
-  //           oburger.burger.image=oneBurger.image;
-  //         }
-  //       })
-  //     })
-    
-    
+    constructor(
+      private data:DataServiceService, 
+    ) { }
+  ngOnInit(): void {  
     //     this.frites=this.menu.frites;
     //     this.dataService.getComplementsObs().subscribe(
     //       data=>{
@@ -67,31 +37,29 @@ export class BurgersDetailMenuComponent implements OnInit {
     //     )
     // }
 
-  // this.tailles=this.menu.tailles;
-  // this.dataService.getBoissonObs().subscribe(
-  //   data=>{
-  //     console.log(data);
-      
-  //     // this.allFrites=data.frites; //l'enssemble des frites dans complement
-  //     // this.allFrites.forEach(Firtt=>{
-  //     //   this.frites.forEach(frite=>{
-  //     //     if (Firtt.id===frite.frite.id) {
-  //     //       frite.frite.image=Firtt.image;    
-  //     //     }
-  //     //   })
-  //     // })
-  //   }
-  // )
+    // this.tailles=this.menu.tailles;
+    // this.dataService.getBoissonObs().subscribe(
+    //   data=>{
+    //     console.log(data);
+        
+    //     // this.allFrites=data.frites; //l'enssemble des frites dans complement
+    //     // this.allFrites.forEach(Firtt=>{
+    //     //   this.frites.forEach(frite=>{
+    //     //     if (Firtt.id===frite.frite.id) {
+    //     //       frite.frite.image=Firtt.image;    
+    //     //     }
+    //     //   })
+    //     // })
+    //   }
+    // )
 
 
-  // )
-}
-//function vertir image----------------
-convert(url: string){
-  return this.data.convertImg(url)
-}
-// convertImg(param: string){
-//   return this.sanitizer.bypassSecurityTrustResourceUrl("data:image/jpg;base64, "+param); 
-// }
+    // )
+  }
+  //function vertir image----------------
+  convert(url: string){
+    return this.data.convertImg(url)
+  }
+
   
 }
