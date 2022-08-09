@@ -6,6 +6,7 @@ import { PanierComponent } from './catalogue/panier/panier.component';
 import { ShowDetailsComponent } from './catalogue/show-details/show-details.component';
 import { ClientComponent } from './client/client.component';
 import { DetailsCommandeComponent } from './client/details-commande/details-commande.component';
+import { CommandesComponent } from './commandes/commandes.component';
 import { DetailBurgerComponent } from './detail-burger/detail-burger.component';
 import { DetailMenuComponent } from './detail-menu/detail-menu.component';
 import { ConnexionComponent } from './forms/connexion/connexion.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path:'connexion', component: ConnexionComponent},
   { path:'list-clients', component: ClientComponent},
   { path:'commandes/:id', component: DetailsCommandeComponent},
+  { path:'list-commandes', component: CommandesComponent},
   // { path:'sub', component: SubDetailMenuComponent},
   // { path:'', component: HeaderComponent}
 ];

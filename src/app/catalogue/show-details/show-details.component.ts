@@ -46,6 +46,9 @@ export class ShowDetailsComponent implements OnInit {
   param!:string;
 
   disabled!:boolean;
+  menuu!:IMenu
+  menuSimilaires:IMenu[]=[];
+  burgerSimilaires:IBurger[]=[];
 
   quantiteBoissonChoisi: number=0;
 
@@ -70,19 +73,35 @@ export class ShowDetailsComponent implements OnInit {
         this.boissons=data.boissons;
         // console.log(data);    
       }
-
     );
-
+    
     this.data.getProduitsObs().pipe(
       take(1),
       map((cata:ICatalogue) =>{
         cata.burgers.forEach((product:IBurger) =>{
           if (this.id == product.id) {
             this.produit = product;
+            // console.log(product);
+            this.data.getProduitsObs().pipe(
+              take(1),
+              map((cata:ICatalogue) =>{
+                cata.burgers.forEach((product:IBurger)=>{
+                  console.log(cata);
+                  if (product.id !== this.produit.id ) {
+    
+                    this.burgerSimilaires.push(product);
+                    
+                  }
+                })
+              }
+            ))
+            
             return;
           }
-          // console.log(cata);
+
         });
+
+        
 
         cata.menus.forEach((product:IMenu) =>{
           if (this.id == product.id) {
@@ -125,27 +144,6 @@ export class ShowDetailsComponent implements OnInit {
           })
         })
       })
-
-
-      // Produit similaire=================================================
-      // Menu similaire=================================================
-        this.menu = this.data.getOnMenus(this.param, this.menus);
-        this.data.getMenusObs().subscribe((data:any)=>{
-          // this.burgerr=this.data.getOnBurgers(this.param, this.menus);
-          if (data.id!==this.menu.id) {
-            // console.log(data.id);
-            this.menus.push(data); 
-                                 
-          }
-        })
-      // Burger similaire=================================================
-        this.burgerr = this.data.getOnBurgers(this.param, this.allBurgers);
-        this.data.getBurgersObs().subscribe((data:any)=>{
-          // this.burgerr=this.data.getOnBurgers(this.param, this.menus);
-          if (data.id !== this.param){
-            this.allBurgers.push(data);                      
-          }
-        })
   }
   ////////////////////////////////////////////////////////////////
 
@@ -216,7 +214,7 @@ export class ShowDetailsComponent implements OnInit {
   convert(url: string){
     return this.data.convertImg(url)
   }
-  // Fonction pour dinamiser le Titre du menu------------------
+  // Fonction pour dinamiser le Titre du menu----------------------------------------------===
   showTitle(product:any){
     return product.burgers? "Menus":"Burger"
   }

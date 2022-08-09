@@ -1,0 +1,37 @@
+<div class="container scrollbar-y scrollbar-pink bordered-pink thin" style="margin-top: 15vh; max-height:75vh">
+    <div class="title my-3 py-3">
+        <h1 class="my-auto text-center title">LISTE DES COMMANDES CLIENTS</h1>
+    </div>
+    <div class="card p-5">
+        <div class="form-outline mb-4">
+            <input type="date" class="form-control " [(ngModel)]="searchDate" id="datatable-search-input">
+            <label class="form-label" for="datatable-search-input">Search</label>
+          </div>
+          <div id="datatable">
+        </div>
+        <table class="table mx-auto" id="datatable">
+            <thead class="mx-auto">
+              <tr >
+                <th scope="col "class="text-center">Numéro</th>
+                <th scope="col "class="text-center">Réference</th>
+                <th scope="col "class="text-center">Heure</th>
+                <th scope="col "class="text-center">Etat</th>
+                <th scope="col "class="text-center">Client</th>
+                <th scope="col "class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let commande of commandes | filter:searchDate; let i=index">
+                <th scope="row" class="text-center">{{i}}</th>
+                <td class="text-center">{{commande.reference | uppercase}}</td>
+                <td class="text-center">{{commande.dateCmde | date: 'hh:mm'}}</td>
+                <td class="text-center">{{commande.etat}}</td>
+                <td class="text-center">{{commande.client.telephone}}</td>
+                <td class="text-center">
+                  <!---->
+                  <button type="button" class="btn btn-outline-success" >Valider</button>
+                  <button type="button" class="btn btn-outline-info" >Détail</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>

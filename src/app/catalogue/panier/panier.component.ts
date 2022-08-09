@@ -167,8 +167,7 @@ export class PanierComponent implements OnInit {
         produits.push({
           quantiteCmde: +produit.quantity,
           produit: '/api/produits/' + produit.id,
-        });
-        
+        }); 
       });
       // console.log(produits);
       return produits;

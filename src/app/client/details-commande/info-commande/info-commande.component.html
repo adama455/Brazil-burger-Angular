@@ -1,5 +1,5 @@
 <table class="table fs-3  px-5">
-    <button type="button" class="btn btn-danger float-end mb-5">Annuler</button>
+    <button type="button" id="annuler" class="btn btn-danger float-end mb-5" (click)="annulerCommande(commande)" [disabled]="disableBtnAnnuler(commande)">Annuler</button>
     <h1 class="text-center text-white">
         DETAIL COMMANDE: {{commande.reference}}
 
@@ -11,11 +11,11 @@
         </tr>
         <tr class="table-active d-flex justify-content-between mb-2  text-white">
             <th scope="col">Montant Total:</th>
-            <td>{{commande.montantCommande}}</td>    
+            <td>{{commande.montantCommande }}</td>    
         </tr>
         <tr class="table-active d-flex justify-content-between  mb-2 text-white">
             <th scope="col">Date:</th>
-            <td>{{commande.dateCmde}}</td>
+            <td>{{commande.dateCmde | date}}</td>
         </tr>
         <tr class="table-active d-flex justify-content-between  mb-2 text-white">
             <th scope="col">Etat: </th>

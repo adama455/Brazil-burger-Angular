@@ -39,6 +39,7 @@ import { InfoCommandeComponent } from './client/details-commande/info-commande/i
 import { InfoProduitComponent } from './client/details-commande/info-produit/info-produit.component';
 import { MenusSimilaireComponent } from './catalogue/show-details/menus-similaire/menus-similaire.component';
 import { BurgersSimilaireComponent } from './catalogue/show-details/burgers-similaire/burgers-similaire.component';
+import { CommandesComponent } from './commandes/commandes.component';
 // import { ProduitSimilaireComponent } from './catalogue/show-details/menus-similaire/menus-similaire.component';
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { BurgersSimilaireComponent } from './catalogue/show-details/burgers-simi
     InfoCommandeComponent,
     InfoProduitComponent,
     MenusSimilaireComponent,
-    BurgersSimilaireComponent
+    BurgersSimilaireComponent,
+    CommandesComponent
    
   ],
   imports: [

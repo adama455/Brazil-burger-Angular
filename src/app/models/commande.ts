@@ -1,4 +1,5 @@
 import { IZone } from "./catalogue.model";
+import { IClient } from "./user";
 
 export interface ICommande {
   reference: string;
@@ -24,6 +25,7 @@ export interface Commande {
   produits: FormatCmde[];
   zone: string;
 }
+
 export interface FormatCmde {
   quantiteCmde: number,
   produit: string,
@@ -32,11 +34,24 @@ export interface FormatCmde {
 export interface GetCommande{
   id:number
   produits: {quantiteCmde: number,produit:Produit}[],
-  client:string,
+  client:IClient,
   dateCmde:Date,
   montantCommande: number,
   reference:string,
   etat:string,
   zone: IZone
+}
+export enum EtatCommande{
+  enAttente="enAttente",
+  valider="valider",
+  enCousDeLivraison="enCousDeLivraison",
+  annuler="annuler",
+  terminer="terminer",
+  modifier="modifier"
+}
 
+export interface UpdateCommande{
+  etat: string,
+  produits:FormatCmde[]
+  zone: string;
 }

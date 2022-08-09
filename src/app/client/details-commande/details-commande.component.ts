@@ -1,10 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, take } from 'rxjs';
-import { FormatCmde, GetCommande, ICommande } from 'src/app/models/commande';
+import { GetCommande, } from 'src/app/models/commande';
 import { IClient } from 'src/app/models/user';
 import { DataServiceService } from 'src/app/services/data-service.service';
-import { PanierService } from 'src/app/services/panier/panier.service';
 
 @Component({
   selector: 'app-details-commande',
@@ -27,8 +25,7 @@ export class DetailsCommandeComponent implements OnInit {
   
     })
 
-  }
-  
+  } 
 
 }
 

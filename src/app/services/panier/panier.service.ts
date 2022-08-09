@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-import { TmplAstBoundAttribute } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, take } from 'rxjs';
 import { IBurger, IMenu } from 'src/app/models/catalogue.model';
@@ -122,17 +121,13 @@ export class PanierService {
   }
 
   postCommande(body:Commande){
-    const headers={"Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTk4MTkyNDQsImV4cCI6MTY1OTg1NTI0NCwicm9sZXMiOlsiUk9MRV9DTElFTlQiLCJST0xFX1ZJU0lURVVSIl0sInVzZXJuYW1lIjoibG9tYmF5ZUBnbWFpbC5jb20ifQ.A6VAUYVFz5Ygdf2TSpEHR7jnVggHxmBookyVztFFfC9CQnnk16PbUpuC_xdyC97jxrhzqLaJPFM9rrHgBJCXVfR0abWIPLkLdTHprYrTP8HgaWCP-9MYPv5dNhi_RhrhfKDPyquBOqX3lsRB6IIxKmQfiwTGbeVVbxkI7s-qgBEc2N6BvisFVv1h3p-S-5j8lpwymWiFgEQ5ZBi-y751TsmyTD8AV3MqYh_tudKpFq8Vb541wbbLD3IQmUr9q01t6IceVnL_IlqC-xT2-1L1Fl3qLyvNJomE-95QljnmHc1ZKTBQkvmbX-C7DJ-XVpa7o1Mq-g3FRxbjmn3t-GFNmQ"}
+    const headers={"Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NjAwNTQzNzQsImV4cCI6MTY2MDA5MDM3NCwicm9sZXMiOlsiUk9MRV9DTElFTlQiLCJST0xFX1ZJU0lURVVSIl0sInVzZXJuYW1lIjoiZGlvdWZAZ21haWwuY29tIn0.ZeB7bdVv3LHwQxqatftlg8eWe__3s9uIE3YDjMyh0P_ykx-nfvAl7EjdtDCdN1OQWBjDbRqMOzRm4d8QR3c1XZUf1XNwjBEQTiCm6gA3WCpRvPkG1w6U57eCvsMbwSrQ4QLc-YdgIvN_e1ILfZTEDo8BGrAg6RaEq2k7Wh4DZiDBQkllp6AyVrhEMPyHoCDfeaiIc2_wErzkyMAWxSKYPIWRE20olXgYNIB34E71Nk2w52SpOkWr0I0OBv-xcM0y4onOOkRwcXldJ0KWjnxWSDDUAme2fpbCGrUARw6bs7yBUSRv0gaNyncjJHE0rMBN-TBRpcvFyYIBKOoHnpv_-A"}
     this.http.post<Commande>(this.commande_url,body,{headers}).subscribe();
   }
 
   getPanier(){
     return JSON.parse(localStorage.getItem('products') || '[]');
   }
-
- // annulerCommande(id:number, commande: UpdateCommande | {statut:string}){
-  //   this.http.put<UpdateCommande>(this.commande_url + "/" + id,commande).subscribe();
-    
-  // } 
+ 
   
 }

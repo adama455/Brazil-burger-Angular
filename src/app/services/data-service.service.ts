@@ -24,10 +24,20 @@ export class DataServiceService {
   private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
   private readonly burger_url:string = 'http://127.0.0.1:8000/api/burgers';
   private readonly menu_url:string = 'http://127.0.0.1:8000/api/menus';
+  commande_url:string = 'http://127.0.0.1:8000/api/commandes';
+
+
+  
 
   // Tableau qui stock pour chaque boisson sa somme et sa quantite:::::::::::::::
  
   constructor(private http:HttpClient,private sanitizer: DomSanitizer) { }
+
+
+  getCommandeObs(){
+    return this.http.get<any>(this.commande_url);
+
+  }
 
   getProduitsObs():Observable<any>{
     return this.http.get<any>(this.catalogue_url)
@@ -62,8 +72,8 @@ export class DataServiceService {
   }
 
 // return un burger:::::::::::::::::::::
-  getBurgersObs():Observable<any>{
-    return this.http.get<any>(this.burger_url);
+  getBurgersObs():Observable<IBurger>{
+    return this.http.get<IBurger>(this.burger_url);
     console.log;
   }
 
