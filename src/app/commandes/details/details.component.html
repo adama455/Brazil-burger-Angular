@@ -1,0 +1,50 @@
+<div class=" detail-cmd container py-5">
+    <table class="table fs-3  px-5"  >
+        <h1 class="text-center text-white">
+            DETAIL COMMANDE: {{commande.reference}}
+        </h1>
+        <tbody class="px-4">
+            <tr class="table-active d-flex justify-content-between mb-2  text-white">
+                <th scope="col">Client:</th>
+                <td> 
+                    <em class="text-white fw-bold">
+                        {{commande.client.nom | uppercase}} 
+                        {{commande.client.prenom}} 
+                    </em>  
+                    Tel: {{commande.client.telephone}}
+                </td>
+            </tr>
+            <tr class="table-active d-flex justify-content-between mb-2  text-white">
+                <th scope="col">Zone:</th>
+                <td> {{commande.zone.nom}}</td>
+            </tr>
+            <tr class="table-active d-flex justify-content-between mb-2  text-white">
+                <th scope="col">Montant Total:</th>
+                <td>{{commande.montantCommande }}</td>    
+            </tr>
+            <tr class="table-active d-flex justify-content-between  mb-2 text-white">
+                <th scope="col">Date:</th>
+                <td>{{commande.dateCmde | date}}</td>
+            </tr>
+            <tr class="table-active d-flex justify-content-between  mb-2 text-white">
+                <th scope="col">Etat: </th>
+                <td>{{commande.etat}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+        <h1 class="text-center text-white">Les Produits Commandés</h1>
+    <div class="card g-3 d-flex flex-row mb-2" *ngFor="let prod of commande.produits" >
+        <img [src]="convert(prod.produit.image)" class="col-md-3 mx-auto" >
+        <div class="card-body my-auto">
+            <div class="text-center d-flex flex-column">
+                <h5 class="card-title fs-1 text-center fw-bold">{{prod.produit.nom}}</h5>
+                <span class="me-1 fs-3"><em class="fw-bold fs-3">Prix: </em>{{prod.produit.prix}}</span>
+                <span class="fs-3"><em class="fw-bold fs-3">Quantité: </em> {{prod.quantiteCmde}}</span>
+            </div>
+            <div class="description fs-4">
+                <p class="mt-4 ms-5">Déscription: {{prod.produit.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

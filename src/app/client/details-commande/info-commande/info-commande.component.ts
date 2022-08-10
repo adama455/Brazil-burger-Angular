@@ -24,14 +24,12 @@ export class InfoCommandeComponent implements OnInit {
   disableBtnAnnuler(commande:GetCommande){
     const etat:string[]=['enCoursDeLivraison','annuler','valider'];
     if (etat.includes(commande.etat)) {
-      return true;
-      
-      
+      return true; 
     }
     return false;
   }
-  changeColor(newColor:any) {
-    var elem = document.getElementById('annuler');
-  }
+  // changeColor(newColor:any) {
+  //   var elem = document.getElementById('annuler');
+  // }
 
 }

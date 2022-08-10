@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Action } from 'rxjs/internal/scheduler/Action';
+import { Observable } from 'rxjs';
 import { EtatCommande, UpdateCommande } from 'src/app/models/commande';
 
 @Injectable({
@@ -8,14 +8,21 @@ import { EtatCommande, UpdateCommande } from 'src/app/models/commande';
 })
 export class CommandeService {
 
-  commande_url:string = 'http://127.0.0.1:8000/api/commandes';
+  commande_url:string = 'http://127.0.0.1:8000/api/commandes/';
 
   constructor( private http:HttpClient) { }
+
+  getCommandeObs(){
+    return this.http.get<any>(this.commande_url);
+  }
+  getOneCommande(id:number):Observable<any>{
+    return this.http.get<any>(this.commande_url+id);
+  }
 
 
   modifierCommande(id:number,action:EtatCommande, commandePut?: UpdateCommande | { etat:string }) {
     let body!:EtatCommande | { etat:string};
-    const headers={"Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NjAwNTQzNzQsImV4cCI6MTY2MDA5MDM3NCwicm9sZXMiOlsiUk9MRV9DTElFTlQiLCJST0xFX1ZJU0lURVVSIl0sInVzZXJuYW1lIjoiZGlvdWZAZ21haWwuY29tIn0.ZeB7bdVv3LHwQxqatftlg8eWe__3s9uIE3YDjMyh0P_ykx-nfvAl7EjdtDCdN1OQWBjDbRqMOzRm4d8QR3c1XZUf1XNwjBEQTiCm6gA3WCpRvPkG1w6U57eCvsMbwSrQ4QLc-YdgIvN_e1ILfZTEDo8BGrAg6RaEq2k7Wh4DZiDBQkllp6AyVrhEMPyHoCDfeaiIc2_wErzkyMAWxSKYPIWRE20olXgYNIB34E71Nk2w52SpOkWr0I0OBv-xcM0y4onOOkRwcXldJ0KWjnxWSDDUAme2fpbCGrUARw6bs7yBUSRv0gaNyncjJHE0rMBN-TBRpcvFyYIBKOoHnpv_-A"}
+    const headers={"Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NjAxMjAzODUsImV4cCI6MTY2MDE1NjM4NSwicm9sZXMiOlsiUk9MRV9DTElFTlQiLCJST0xFX1ZJU0lURVVSIl0sInVzZXJuYW1lIjoiZGlvdWZAZ21haWwuY29tIn0.QrtxKZp3ai71WS-UBR4QFhvjnjja4CIECWvbiNnED8k6q-qn2hBGbw7LItebXS8JBpmnZxGndjyGzD-42Gp5M51cxPEtb1Qofih_ORk08BJMdY_Jg3OEE5hV46f-Fsw6o9ImflU6lpXLV6StMzUcN9Q-F0CW7dyXq3yJHx_GvlmllCXp7wtFyW07R5XidbKy4gbk-P8TmtMm37SXIRxMImYQ3ewteWH0qmJwEwHVeQoC7Mfu6XummbW2vLn94WBzUOadHhax9dJW_6hela07WthLnJLq1gOrVOY301LX5EBYM80Cxxg_Mtchdq1bBqnqVY48vLYZ1yvak2MZmh_xjw"}
     if (action==EtatCommande.modifier) {
       if (commandePut) {
         body = commandePut;
@@ -26,7 +33,7 @@ export class CommandeService {
       body = {etat: action.toString()}
     }
 
-    this.http.put<{etat:string}>(this.commande_url + "/" + id, body, {headers}).subscribe();
+    this.http.put<{etat:string}>(this.commande_url + id, body, {headers}).subscribe();
   }
 
   etat(commande:UpdateCommande){
@@ -40,6 +47,8 @@ export class CommandeService {
       return "modifié";
     }else if(commande.etat==EtatCommande.annuler.toString()){
       return "annulé";
+    }else if(commande.etat==EtatCommande.enCousDeLivraison.toString()){
+      return "en cours";
     }else{
       return "terminé";
     }

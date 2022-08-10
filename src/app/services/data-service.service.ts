@@ -18,13 +18,13 @@ export class DataServiceService {
 
   private readonly catalogue_url:string = 'http://127.0.0.1:8000/api/catalogues';
   private readonly complement_url:string = 'http://127.0.0.1:8000/api/complements';
-  private readonly zone_url='http://127.0.0.1:8000/api/zones';
+  private readonly zone_url='http://127.0.0.1:8000/api/zones/';
   private readonly quartier_url='http://127.0.0.1:8000/api/quartiers';
   private readonly client_url:string = 'http://127.0.0.1:8000/api/clients/';
   private readonly boissons_url:string = 'http://127.0.0.1:8000/api/boissons';
   private readonly burger_url:string = 'http://127.0.0.1:8000/api/burgers';
   private readonly menu_url:string = 'http://127.0.0.1:8000/api/menus';
-  commande_url:string = 'http://127.0.0.1:8000/api/commandes';
+  private readonly commande_url:string = 'http://127.0.0.1:8000/api/commandes';
 
 
   
@@ -36,8 +36,11 @@ export class DataServiceService {
 
   getCommandeObs(){
     return this.http.get<any>(this.commande_url);
-
   }
+  getOneCommande(id:number):Observable<any>{
+    return this.http.get<any>(this.commande_url+id);
+  }
+
 
   getProduitsObs():Observable<any>{
     return this.http.get<any>(this.catalogue_url)
@@ -50,6 +53,9 @@ export class DataServiceService {
   getZonesObs():Observable<any>{
     return this.http.get<any>(this.zone_url);
     // console.log;
+  }
+  getOneZoneObs(id:number):Observable<any>{
+    return this.http.get<any>(this.zone_url+id);
   }
   getQuartiersObs():Observable<any>{
     return this.http.get<any>(this.quartier_url);

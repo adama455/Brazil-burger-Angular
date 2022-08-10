@@ -40,6 +40,9 @@ import { InfoProduitComponent } from './client/details-commande/info-produit/inf
 import { MenusSimilaireComponent } from './catalogue/show-details/menus-similaire/menus-similaire.component';
 import { BurgersSimilaireComponent } from './catalogue/show-details/burgers-similaire/burgers-similaire.component';
 import { CommandesComponent } from './commandes/commandes.component';
+import { DetailsComponent } from './commandes/details/details.component';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { AdminModule } from './admin/admin.module';
 // import { ProduitSimilaireComponent } from './catalogue/show-details/menus-similaire/menus-similaire.component';
 @NgModule({
   declarations: [
@@ -76,7 +79,8 @@ import { CommandesComponent } from './commandes/commandes.component';
     InfoProduitComponent,
     MenusSimilaireComponent,
     BurgersSimilaireComponent,
-    CommandesComponent
+    CommandesComponent,
+    DetailsComponent,
    
   ],
   imports: [
@@ -85,7 +89,9 @@ import { CommandesComponent } from './commandes/commandes.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule, 
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,5 @@
+import { GetCommande } from "./commande";
+
 // Type personnalisé par class
 export interface IBurger{
     id:number,
@@ -87,5 +89,6 @@ export interface IZone{
     etat: number,
     prixDeLivraison:number,
     quartiers:IQuartier[],
+    commandes:GetCommande[]
 }
 

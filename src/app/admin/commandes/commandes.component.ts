@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EtatCommande, GetCommande } from '../models/commande';
-import { CommandeService } from '../services/commande/commande.service';
-import { DataServiceService } from '../services/data-service.service';
+import { EtatCommande, GetCommande } from 'src/app/models/commande';
+import { CommandeService } from 'src/app/services/commande/commande.service';
+import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-commandes',
@@ -46,11 +46,11 @@ export class CommandesComponent implements OnInit {
   
    // fonction pour aller dans detail commande
    detailCommande(commande:GetCommande){
-    this.router.navigateByUrl("detail/" +commande.id);
+    this.router.navigateByUrl("admin/commandes/" +commande.id);
   }
 
   // changeColor(newColor:any) {
-  //   var elem = document.getElementById('annuler');
+  //   var elem = document.getElementById('annuler');commandescommandescommandes
   // }
 
 }

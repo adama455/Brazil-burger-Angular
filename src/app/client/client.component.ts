@@ -17,7 +17,7 @@ export class ClientComponent implements OnInit {
 
 
 
-  constructor( private dataService: DataServiceService,private router: Router,) { }
+  constructor( private dataService: DataServiceService,private router: Router) { }
 
   ngOnInit(): void {
 

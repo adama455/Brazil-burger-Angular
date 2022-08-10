@@ -1,0 +1,37 @@
+<div class="container mb-5" style="margin-top: 15vh; height:72vh">
+    <div class="title my-3 py-3">
+      <h1 class="my-auto text-center title">LISTE DES COMMANDES CLIENTS</h1>
+    </div>
+    <div class="card px-5 py-4  border border-dark border-4">
+      <!--<div class="active-pink-3 active-pink-4 mb-4">
+        <input class="form-control" [(ngModel)]="searchDate" type="date" placeholder="Search" aria-label="Search">
+      </div>-->
+      <table class="table mx-auto commande" id="datatable">
+        <thead class="mx-auto">
+          <tr>
+            <th scope="col " class="text-center text-white fs-4">Numéro</th>
+            <th scope="col " class="text-center text-white fs-4">Réference</th>
+            <th scope="col " class="text-center text-white fs-4">Heure</th>
+            <th scope="col " class="text-center text-white fs-4">Etat</th>
+            <th scope="col " class="text-center text-white fs-4">Client</th>
+            <th scope="col " class="text-center text-white fs-4">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let commande of commandes ; let i=index">
+            <th scope="row" class="text-center">{{i}}</th>
+            <td class="text-center">{{commande.reference | uppercase}}</td>
+            <td class="text-center">{{commande.dateCmde | date: 'hh:mm'}}</td>
+            <td class="text-center">{{commande.etat}}</td>
+            <td class="text-center">{{commande.client.telephone}}</td>
+            <td class="d-flex justify-content-evenly">
+              <button type="button" class="btn btn-info" (click)="validerCommande(commande)" *ngIf="(commande.etat=='enCours')" >Valider</button>
+              <button type="button" id="annuler" class="btn btn-success" (click)=" annulerCommande(commande) " *ngIf="commande.etat!='annuler'" >Annuler</button>
+              <button type="button" class="btn btn-info" (click)="detailCommande(commande)">Détail</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
