@@ -9,9 +9,17 @@ import { EtatCommande, UpdateCommande } from 'src/app/models/commande';
 export class CommandeService {
 
   commande_url:string = 'http://127.0.0.1:8000/api/commandes/';
+  livreur_url:string = 'http://127.0.0.1:8000/api/livreurs/';
+  livraison_url:string = 'http://127.0.0.1:8000/api/livraisons/';
 
   constructor( private http:HttpClient) { }
 
+  getLivreursObs(){
+    return this.http.get<any>(this.livreur_url);
+  }
+  getLivraisonsObs(){
+    return this.http.get<any>(this.livraison_url);
+  }
   getCommandeObs(){
     return this.http.get<any>(this.commande_url);
   }

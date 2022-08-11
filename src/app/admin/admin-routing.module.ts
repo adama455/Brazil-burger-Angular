@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommandesComponent } from '../admin/commandes/commandes.component';
 import { DetailCommandeComponent } from '../admin/commandes/detail-commande/detail-commande.component';
+import { ListeZonesComponent } from './commandes/liste-zones/liste-zones.component';
 import { OnZoneComponent } from './commandes/on-zone/on-zone.component';
 // import { DetailsComponent } from '../commandes/details/details.component';
 import { LivraisonsComponent } from './livraisons/livraisons.component';
+import { NewLivraisonComponent } from './livraisons/new-livraison/new-livraison.component';
 import { ProduitsComponent } from './produits/produits.component';
 
-export const routes: Routes = [ 
+ const routes: Routes = [ 
   { 
     path: "commandes",children:[
       { 
@@ -15,11 +17,15 @@ export const routes: Routes = [
         component: CommandesComponent 
       },
       { 
+        path: "zone", 
+        component:  ListeZonesComponent
+      },
+      { 
         path: ":id", 
         component:  DetailCommandeComponent 
       },
       { 
-        path: "zone/:id", 
+        path: "zone/:id",
         component: OnZoneComponent
       },
     ] 
@@ -32,13 +38,18 @@ export const routes: Routes = [
         component: LivraisonsComponent  
       },
       { 
+        path: "new", 
+        component: NewLivraisonComponent  
+      },
+      { 
         path: ":id",
         component: LivraisonsComponent
       },
       { 
-        path: ":idLivreur", 
+        path: "livreur/:id", 
         component: LivraisonsComponent 
       },
+      
     ]
   },
 

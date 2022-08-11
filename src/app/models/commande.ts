@@ -1,4 +1,4 @@
-import { IZone } from "./catalogue.model";
+import { IQuartier} from "./catalogue.model";
 import { IClient } from "./user";
 
 export interface ICommande {
@@ -30,6 +30,14 @@ export interface FormatCmde {
   quantiteCmde: number,
   produit: string,
 }
+export interface IZone{
+  id: number,
+  nom: string,
+  etat: number,
+  prixDeLivraison:number,
+  quartiers:IQuartier[],
+  commandes:GetCommande[]
+}
 
 export interface GetCommande{
   id:number
@@ -39,8 +47,19 @@ export interface GetCommande{
   montantCommande: number,
   reference:string,
   etat:string,
-  zone: IZone
+  zone:{id: number,nom: string,etat: number},
 }
+export interface IGetCommande{
+  id:number
+  produits: {quantiteCmde: number,produit:Produit}[],
+  client:IClient,
+  dateCmde:Date,
+  montantCommande: number,
+  reference:string,
+  etat:string,
+  zone:{id:number, nom:string, etat:number},
+}
+
 export enum EtatCommande{
   enAttente="enAttente",
   valider="valider",
@@ -55,4 +74,20 @@ export interface UpdateCommande{
   etat: string,
   produits:FormatCmde[]
   zone: string;
+}
+export interface ILivreur{
+  id: number,
+  nom: string,
+  prenom: string
+  telephone: string,
+  login: string,
+  matriculeMoto:string,
+  is_disponible:boolean
+  
+}
+export interface ILivraison{
+  id:number
+  commandes:GetCommande[],
+  zone:IZone,
+  livreur:ILivreur,
 }

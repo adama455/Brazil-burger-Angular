@@ -7,6 +7,12 @@ import { LivraisonsComponent } from './livraisons/livraisons.component';
 import { ProduitsComponent } from './produits/produits.component';
 import { DetailCommandeComponent } from './commandes/detail-commande/detail-commande.component';
 import { OnZoneComponent } from './commandes/on-zone/on-zone.component';
+import { ListeZonesComponent } from './commandes/liste-zones/liste-zones.component';
+import { NewLivraisonComponent } from './livraisons/new-livraison/new-livraison.component';
+import { CommandesALivrerComponent } from './livraisons/commandes-a-livrer/commandes-a-livrer.component';
+import { FilterZonePipe } from './pipes/filter-zone.pipe';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -15,11 +21,17 @@ import { OnZoneComponent } from './commandes/on-zone/on-zone.component';
     LivraisonsComponent,
     ProduitsComponent,
     DetailCommandeComponent,
-    OnZoneComponent
+    OnZoneComponent,
+    ListeZonesComponent,
+    NewLivraisonComponent,
+    CommandesALivrerComponent,
+    FilterZonePipe,
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
+    Ng2SearchPipeModule,
   ]
 })
 export class AdminModule { }

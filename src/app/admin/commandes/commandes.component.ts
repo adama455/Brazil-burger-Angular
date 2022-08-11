@@ -21,7 +21,7 @@ export class CommandesComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getCommandeObs().subscribe(data => {
-      // console.log(data);
+      console.log(data);
       this.commandes=data;  
     })
     

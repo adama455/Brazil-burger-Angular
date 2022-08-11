@@ -1,57 +1,66 @@
-<div class=" detail-cmd container py-5">
-    <table class="table fs-3  px-5"  >
-        <h1 class="text-center text-white">
-            LES COMMANDES DE LA: {{zone.nom|uppercase}}
-        </h1>
-        <tbody class="px-4 py-4 my-5 border border-3 border-white" *ngFor="let commande of zone.commandes">
-            
-            <tr class="table-active d-flex justify-content-between mb-2  text-white">
-                <th scope="col">Client:</th>
-                <td> 
-                    <em class="text-white fw-bold">
-                        {{commande.client.nom | uppercase}} {{commande.client.prenom}}
-                    </em>  
-
+<div class="container" style="margin-top: 20vh;">
+    <div class="card p-5">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-success py-2 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 7rem;">
+            Choisir Livreur
+        </button>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"class="text-center">Numéro</th>
+                <th scope="col"class="text-center">Client</th>
+                <th scope="col"class="text-center fs-4">Reference</th>
+                <th scope="col"class="text-center fs-4">Montant Total</th>
+                <th scope="col"class="text-center fs-4">Date</th>
+                <th scope="col"class="text-center fs-4">Etat</th>
+                <th scope="col"class="text-center fs-4">Zone</th>
+                <th scope="col"class="text-center fs-4">Prix Livraison</th>
+                <th scope="col"class="text-center fs-4">Choix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let commande of zone.commandes;let i=index">
+                <th scope="row">{{i+1}}</th>
+                <td class="text-center">                            
+                    {{commande.client.nom|uppercase}} {{commande.client.prenom}}
                 </td>
-            </tr>
-            <tr class="table-active d-flex justify-content-between mb-2  text-white">
-                <th scope="col">Réference Commande::</th>
-                <td> 
-                    <em class="text-white fw-bold">
-                        {{commande.reference}}
-                    </em>  
+                <td class="text-center">{{commande.reference}}</td>
+                <td class="text-center">{{commande.montantCommande}}</td>
+                <td class="text-center">{{commande.dateCmde}}</td>
+                <td class="text-center">{{commande.etat}}</td>
+                <td class="text-center">{{zone.nom|uppercase}}</td>
+                <td class="text-center">{{zone.prixDeLivraison}}</td>
 
+                <td class="text-center">
+                    <!---->
+                    <input type="checkbox" name=""  class="" id="" style="height: 2rem; width: 2rem">
                 </td>
-            </tr>
-            <tr class="table-active d-flex justify-content-between mb-2  text-white">
-                <th scope="col">Montant Total:</th>
-                <td>{{commande.montantCommande}}</td>
-            </tr>
-            <tr class="table-active d-flex justify-content-between  mb-2 text-white">
-                <th scope="col">Date:</th>
-                <td>{{commande.dateCmde | date}}</td>
-            </tr>
-            <tr class="table-active d-flex justify-content-between  mb-2 text-white">
-                <th scope="col">Etat: </th>
-                <td>{{commande.etat}}</td>
-
-            </tr>
-            <h1 class="text-center text-white">Les Produits Commandés</h1>
-            <div class="card g-3 d-flex flex-row mb-2" *ngFor="let prod of commande.produits" >
-                <img [src]="convert(prod.produit.image)" class="col-md-3 mx-auto" >
-                <div class="card-body my-auto">
-                    <div class="text-center d-flex flex-column">
-                        <h5 class="card-title fs-1 text-center fw-bold"></h5>
-                        <span class="me-1 fs-3"><em class="fw-bold fs-3">Prix: </em> {{prod.produit.nom | uppercase}} </span>
-                        <span class="fs-3"><em class="fw-bold fs-3">Quantité: </em>{{prod.quantiteCmde}} </span>
-                    </div>
-                    <div class="description fs-4">
-                        <p class="mt-4 ms-5">Déscription: </p>
-                    </div>
-                </div>
-            </div>
-        </tbody>
-
-    </table>
+              </tr>
+            </tbody>
+          </table>
+    </div>
 </div>
+
+<!--==================================Modal===============================--> 
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        ...
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Livrer</button>
+    </div>
+    </div>
+</div>
+</div>
+  
+  
+  
 

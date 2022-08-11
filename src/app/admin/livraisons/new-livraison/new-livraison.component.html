@@ -1,0 +1,66 @@
+<div class="container d-flex align-items-center flex-column">
+    <select  [(ngModel)]="searchCmd" name="" id="" class="w-50 my-3 " style="height: 5vh;">
+        <option value="" selected disabled>--selectionner--</option>
+        <option *ngFor="let zone of zones " class="text-center " value="{{zone.id}}">
+            ------------------------------------------------------------
+            <em class="fw-bold">{{zone.nom | uppercase}}</em>
+            ------------------------------------------------------------
+        </option>
+    </select>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-success py-2 mb-3 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        style="width: 7rem;">
+        Choisir Livreur
+    </button>
+
+</div>
+
+<div class="container">
+    <div class="card p-5">
+        <table class="table">
+            <thead>
+                <tr class="row">
+                    <th  class="col-1 text-center fs-4">Numéro</th>
+                    <th  class="col-2 text-center fs-4">Nom</th>
+                    <th  class="col-2 text-center fs-4">Réference</th>
+                    <th  class="col-2 text-center fs-4">Montant</th>
+                    <th  class="col-2 text-center fs-4">Date</th>
+                    <th  class="col-2 text-center fs-4">État</th>
+                    <th  class="col-1 text-center fs-4">Choix</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+
+                <app-commandes-a-livrer *ngFor="let commande of tousLesCommandes | filterZone:searchCmd " [commande]="commande">
+                </app-commandes-a-livrer>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--==================================Commande d'une zone===============================
+    <app-commandes-a-livrer class="" ></app-commandes-a-livrer>
+    -->
+
+<!--==================================Modal===============================-->
+<!-- Modal -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Livrer</button>
+            </div>
+        </div>
+    </div>
+</div>
