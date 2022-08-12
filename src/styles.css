@@ -5,4 +5,5 @@
   body{
     overflow: scroll;
     margin-top:13vh;
+    height: auto;
   }

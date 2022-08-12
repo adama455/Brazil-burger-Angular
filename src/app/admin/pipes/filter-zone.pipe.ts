@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { GetCommande, IGetCommande, IZone } from 'src/app/models/commande';
+import { GetCommande} from 'src/app/models/commande';
 
 @Pipe({
   name: 'filterZone',
@@ -13,7 +13,6 @@ export class FilterZonePipe implements PipeTransform {
         //si la zone qui se trouve dans commande est = à nom de la zone
         tab.push(cmd);
         // console.log(cmd);
-        
       }
     });
     return tab;

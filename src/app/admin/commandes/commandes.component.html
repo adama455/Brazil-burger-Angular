@@ -1,11 +1,15 @@
-<div class="container mb-5" style="margin-top: 15vh; height:72vh">
+<div class="container " style="margin-top: 10vh; ">
     <div class="title my-3 py-3">
-      <h1 class="my-auto text-center title">LISTE DES COMMANDES CLIENTS</h1>
+      <h1 class="text-center title">LISTE DES COMMANDES</h1>
     </div>
     <div class="card px-5 py-4  border border-dark border-4">
-      <!--<div class="active-pink-3 active-pink-4 mb-4">
-        <input class="form-control" [(ngModel)]="searchDate" type="date" placeholder="Search" aria-label="Search">
-      </div>-->
+      <div class="active-pink-3 active-pink-4 ">
+        <input class="form-control py-3" [(ngModel)]="searchDate" type="date" placeholder="Search" aria-label="Search">
+      </div>
+      <div class=" d-flex justify-content-between my-3">
+        <h2 class="text-center">Les Commandes du......{{searchDate}}</h2>
+        <button type="submit" class="btn btn-success" routerLink="/admin/livraisons/new">Voir Zones</button>
+      </div>
       <table class="table mx-auto commande" id="datatable">
         <thead class="mx-auto">
           <tr>
@@ -32,6 +36,9 @@
           </tr>
         </tbody>
       </table>
+      
+      <!--Les Zones ayant une commande-->
+
     </div>
   </div>
   

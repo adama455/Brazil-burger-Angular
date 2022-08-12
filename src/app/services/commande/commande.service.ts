@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EtatCommande, UpdateCommande } from 'src/app/models/commande';
+import { EtatCommande, FormatLiv, GetCommande, ILivraison, UpdateCommande } from 'src/app/models/commande';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,10 @@ import { EtatCommande, UpdateCommande } from 'src/app/models/commande';
 export class CommandeService {
 
   commande_url:string = 'http://127.0.0.1:8000/api/commandes/';
-  livreur_url:string = 'http://127.0.0.1:8000/api/livreurs/';
-  livraison_url:string = 'http://127.0.0.1:8000/api/livraisons/';
+  livreur_url:string  = 'http://127.0.0.1:8000/api/livreurs';
+  livraison_url:string = 'http://127.0.0.1:8000/api/livraisons';
+  commandeALivre:GetCommande[]=[];
+
 
   constructor( private http:HttpClient) { }
 
@@ -58,10 +60,25 @@ export class CommandeService {
     }else if(commande.etat==EtatCommande.enCousDeLivraison.toString()){
       return "en cours";
     }else{
-      return "terminé";
+      return "termine";
     }
 
   }
 
-  
+   // ajouter dans livraison==================
+   ajouterDansLivraison(commande:GetCommande){
+    this.commandeALivre.push(commande);
+
+  }
+  // retirer dans livraison==================
+  retirerDansLivraison(commande:GetCommande){
+    this.commandeALivre.splice(this.commandeALivre.indexOf(commande,1));
+
+  }
+
+  postLivraison(body:FormatLiv){
+    const headers={"Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NjAzMTExMzcsImV4cCI6MTY2MDM0NzEzNywicm9sZXMiOlsiUk9MRV9DTElFTlQiLCJST0xFX1ZJU0lURVVSIl0sInVzZXJuYW1lIjoiZGlvdWZAZ21haWwuY29tIn0.Zz3PSahMUHmnKCTWJrDJXqprQcPBIMweHBicjYpkpIFqAw9AwFY8zm2wL0_Ip4yCOg7hlP8ngHPS-I9od72JJqNJm5RqBGjRiLt1IXxl0QBve0oxdNLjt6Y7Y-bI5z1DJ-6DmVfT1QpPnYLDzgXM0UqaTYSKiHqhrso_ZFYn2rE_-SIggGE3OCYJEiCzCNlYB_EsLkYXcKX-Rqa1XeiDz0Cfpo5OeJgmGBcxMtlGDwLKlYj_7XxNKWTXode-es5-vQHokNL-6SKdVw2zOpu-SAQzsVauF9-spnrbxtBN3Nq_SL2RZELpv_XZ3JE44YHs6M0BlahIk2jUG2oe8Q4biw"}
+    this.http.post<any>(this.livraison_url,body,{headers}).subscribe();
+  }
+ 
 }

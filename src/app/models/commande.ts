@@ -49,16 +49,7 @@ export interface GetCommande{
   etat:string,
   zone:{id: number,nom: string,etat: number},
 }
-export interface IGetCommande{
-  id:number
-  produits: {quantiteCmde: number,produit:Produit}[],
-  client:IClient,
-  dateCmde:Date,
-  montantCommande: number,
-  reference:string,
-  etat:string,
-  zone:{id:number, nom:string, etat:number},
-}
+
 
 export enum EtatCommande{
   enAttente="enAttente",
@@ -83,6 +74,7 @@ export interface ILivreur{
   login: string,
   matriculeMoto:string,
   is_disponible:boolean
+  etat:number
   
 }
 export interface ILivraison{
@@ -90,4 +82,11 @@ export interface ILivraison{
   commandes:GetCommande[],
   zone:IZone,
   livreur:ILivreur,
+}
+
+export interface FormatLiv {
+  zone:string,
+  livreur:string,
+  commandes:string[],
+
 }

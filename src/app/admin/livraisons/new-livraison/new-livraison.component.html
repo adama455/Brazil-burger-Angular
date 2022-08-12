@@ -1,6 +1,8 @@
 <div class="container d-flex align-items-center flex-column">
-    <select  [(ngModel)]="searchCmd" name="" id="" class="w-50 my-3 " style="height: 5vh;">
-        <option value="" selected disabled>--selectionner--</option>
+
+    <h2 class="accordion-header" id="headingOne">------------------selectionner une Zone------------------</h2>
+    <select  [(ngModel)]="searchCmd" name="" id="" class="w-50 my-3" style="height: 5vh;">
+        <option value="" selected>------------------selectionner une Zone------------------</option>
         <option *ngFor="let zone of zones " class="text-center " value="{{zone.id}}">
             ------------------------------------------------------------
             <em class="fw-bold">{{zone.nom | uppercase}}</em>
@@ -30,10 +32,8 @@
                 </tr>
             </thead>
             <tbody class="tbody">
-
                 <app-commandes-a-livrer *ngFor="let commande of tousLesCommandes | filterZone:searchCmd " [commande]="commande">
                 </app-commandes-a-livrer>
-
             </tbody>
         </table>
     </div>
@@ -47,19 +47,38 @@
 <!-- Modal -->
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <div class="modal-header bg-dark text-white">
+                <h4 class="modal-title mx-auto" id="exampleModalLabel">LISTE DES LIVREURS</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                ...
+            <div class="modal-body" >
+                <table class="table">
+                    <thead>
+                        <tr class="row" >
+                            <th  class="col-3 text-center fs-4">Nom</th>
+                            <th  class="col-3 text-center fs-4">Prenom</th>
+                            <th  class="col-3 text-center fs-4">Télépnone</th>
+                            <th  class="col-3 text-center fs-4">choix</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                        <tr class="row" *ngFor="let livreur of livreurrs">
+                            <td class="col-3  text-center">{{livreur.nom | uppercase}}</td>
+                            <td class="col-3 text-center">{{livreur.prenom }}</td>
+                            <td class="col-3 text-center">{{livreur.telephone }}</td>
+                            <td class="col-3 text-center">
+                                <input type="radio" name="livreur" id=""   #input value="{{livreur.id}}" (input)="idLivreurSelectionne(input)"   class="" style="height: 1.5em;width: 1.5em">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer bg-dark">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Livrer</button>
+                <button type="button"  class="btn btn-success"  data-bs-dismiss="modal" [disabled]="" (click)="addLivraison()">Livrer</button>
             </div>
         </div>
     </div>

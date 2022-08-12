@@ -4,11 +4,11 @@
                 <td class="col-2 text-center">{{commande.client.nom|uppercase}} {{commande.client.prenom}}</td>
                 <td class="col-2 text-center">{{commande.reference}}</td>
                 <td class="col-2  text-center">{{commande.montantCommande}}</td>
-                <td class="col-2  text-center">{{commande.dateCmde}}</td>
+                <td class="col-2  text-center">{{commande.dateCmde | date}}</td>
                 <td class="col-2  text-center">{{commande.etat}}</td>
         
                 <td class="col-1  text-center">
-                    <input type="checkbox" name="" class="" id="" style="height: 2rem; width: 2rem">
+                    <input type="checkbox" #input name="" class="" id="" (click)="ajoutEtRetraitLivraison(commande,input)"  style="height: 2rem; width: 2rem">
                 </td>
               </tr>
            

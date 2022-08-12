@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { EtatCommande, GetCommande } from 'src/app/models/commande';
+import { map, take } from 'rxjs';
+import { EtatCommande, GetCommande, IZone } from 'src/app/models/commande';
 import { CommandeService } from 'src/app/services/commande/commande.service';
 import { DataServiceService } from 'src/app/services/data-service.service';
 
@@ -11,7 +12,10 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 })
 export class CommandesComponent implements OnInit {
   commandes:GetCommande[]=[];
-  searchDate:any
+  searchDate:any;
+  searchCmd!:number
+  zones:IZone[]=[];
+  zone!: IZone;
 
   constructor(
     private dataService: DataServiceService,
@@ -23,7 +27,21 @@ export class CommandesComponent implements OnInit {
     this.dataService.getCommandeObs().subscribe(data => {
       console.log(data);
       this.commandes=data;  
-    })
+    });
+
+    this.dataService.getZonesObs().pipe(
+      take(1),
+      map((data:any) =>{
+        data.filter((z:IZone)=>{
+          if (z.commandes.length > 0) {
+            // console.log(z.commandes);  
+            // this.tousLesCommandes=[...z.commandes]
+            this.zones.push(z);
+            // console.log(this.tousLesCommandes);
+          }      
+        })
+      })
+    ).subscribe();
     
   }
 
