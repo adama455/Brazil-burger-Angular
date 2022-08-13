@@ -1,33 +1,33 @@
-<div class="container " style="margin-top: 10vh; ">
+  <div class="contenu" style="margin-top: 10vh; ">
     <div class="title my-3 py-3">
       <h1 class="text-center title">LISTE DES COMMANDES</h1>
     </div>
     <div class="card px-5 py-4  border border-dark border-4">
       <div class="active-pink-3 active-pink-4 ">
-        <input class="form-control py-3" [(ngModel)]="searchDate" type="date" placeholder="Search" aria-label="Search">
+        <input class="form-control py-3 fs-4" [(ngModel)]="searchDate" type="date" placeholder="Search" aria-label="Search">
       </div>
       <div class=" d-flex justify-content-between my-3">
         <h2 class="text-center">Les Commandes du......{{searchDate}}</h2>
         <button type="submit" class="btn btn-success" routerLink="/admin/livraisons/new">Voir Zones</button>
       </div>
-      <table class="table mx-auto commande" id="datatable">
+      <table class="table mx-auto commande rounded rounded-4" id="datatable">
         <thead class="mx-auto">
-          <tr>
-            <th scope="col " class="text-center text-white fs-4">Numéro</th>
-            <th scope="col " class="text-center text-white fs-4">Réference</th>
-            <th scope="col " class="text-center text-white fs-4">Heure</th>
-            <th scope="col " class="text-center text-white fs-4">Etat</th>
-            <th scope="col " class="text-center text-white fs-4">Client</th>
-            <th scope="col " class="text-center text-white fs-4">Action</th>
-          </tr>
-        </thead>
+            <tr>
+              <th scope="col " class="text-center text-white fs-4"> <em> Numéro</em></th>
+              <th scope="col " class="text-center text-white fs-4"> <em> Réference</em></th>
+              <th scope="col " class="text-center text-white fs-4"> <em> Heure</em></th>
+              <th scope="col " class="text-center text-white fs-4"> <em> Etat</em></th>
+              <th scope="col " class="text-center text-white fs-4"> <em> Client</em></th>
+              <th scope="col " class="text-center text-white fs-4"> <em> Action</em></th>
+            </tr>
+          </thead>
         <tbody>
-          <tr *ngFor="let commande of commandes ; let i=index">
+          <tr *ngFor="let commande of commandes ; let i=index" class="fs-5">
             <th scope="row" class="text-center">{{i}}</th>
             <td class="text-center">{{commande.reference | uppercase}}</td>
             <td class="text-center">{{commande.dateCmde | date: 'hh:mm'}}</td>
             <td class="text-center">{{commande.etat}}</td>
-            <td class="text-center">{{commande.client.telephone}}</td>
+            <td class="text-center text-primary">{{commande.client.login}}</td>
             <td class="d-flex justify-content-evenly">
               <button type="button" class="btn btn-info" (click)="validerCommande(commande)" *ngIf="(commande.etat=='enCours')" >Valider</button>
               <button type="button" id="annuler" class="btn btn-success" (click)=" annulerCommande(commande) " *ngIf="commande.etat!='annuler'" >Annuler</button>

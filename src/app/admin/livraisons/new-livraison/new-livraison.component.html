@@ -1,24 +1,35 @@
-<div class="container d-flex align-items-center flex-column">
+<div class=" d-flex align-items-center flex-column">
 
     <h2 class="accordion-header" id="headingOne">------------------selectionner une Zone------------------</h2>
-    <select  [(ngModel)]="searchCmd" name="" id="" class="w-50 my-3" style="height: 5vh;">
-        <option value="" selected>------------------selectionner une Zone------------------</option>
+    <!--<select  [(ngModel)]="searchCmd" name="" id="" class="form-select w-25 my-3" style="height: 5vh;">
+        <option value="" selected class=""></option>
         <option *ngFor="let zone of zones " class="text-center " value="{{zone.id}}">
-            ------------------------------------------------------------
             <em class="fw-bold">{{zone.nom | uppercase}}</em>
-            ------------------------------------------------------------
         </option>
+    </select>-->
+    <select  [(ngModel)]="searchCmd" class="form-select form-select-lg py-3 mb-3 text-white" aria-label=".form-select-lg example">
+        <option selected><h1 class="">
+            ====
+            ZONE AYANT DES COMMANDES TERMINER
+            ====
+
+        </h1></option>
+        <option value="1" *ngFor="let zone of zones ">
+            <em class="fw-bold">{{zone.nom | uppercase}}=========================> Prix de Livraison: <span class="prix">{{zone.prixDeLivraison}}</span> F cfa</em>
+        </option>
+
     </select>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-success py-2 mb-3 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal"
-        style="width: 7rem;">
+    <button type="button"  class="btn btn-success py-2 mb-3 fw-bold"  data-bs-toggle="modal" data-bs-target="#exampleModal"
+        style="width: 7rem;" [disabled]="" >
         Choisir Livreur
     </button>
 
 </div>
 
-<div class="container">
+<div class="">
     <div class="card p-5">
+        <span><em>{{nbreCmdeChoisie}}</em> Commande(s) sélectionné</span>
         <table class="table">
             <thead>
                 <tr class="row">
@@ -50,7 +61,7 @@
 <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-dark text-white">
+            <div class="modal-header text-white">
                 <h4 class="modal-title mx-auto" id="exampleModalLabel">LISTE DES LIVREURS</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -70,15 +81,15 @@
                             <td class="col-3 text-center">{{livreur.prenom }}</td>
                             <td class="col-3 text-center">{{livreur.telephone }}</td>
                             <td class="col-3 text-center">
-                                <input type="radio" name="livreur" id=""   #input value="{{livreur.id}}" (input)="idLivreurSelectionne(input)"   class="" style="height: 1.5em;width: 1.5em">
+                                <input type="radio" name="livreur" id=""  #input value="{{livreur.id}}" (input)="idLivreurSelectionne(input)"   class="" style="height: 1.5em;width: 1.5em">
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="modal-footer bg-dark">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button"  class="btn btn-success"  data-bs-dismiss="modal" [disabled]="" (click)="addLivraison()">Livrer</button>
+                <button type="button"  class="btn btn-success"  data-bs-dismiss="modal" [disabled]="disableBtnValider()" (click)="addLivraison()">Valider</button>
             </div>
         </div>
     </div>

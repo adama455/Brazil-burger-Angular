@@ -1,0 +1,75 @@
+<div class=" detail-cmd card container border border-dark border-3 bg-white py-3">
+    <h2 class="text-center">
+        DETAIL LIVRAISON: {{oneLiv.id}}
+    </h2>
+    <i class="fa-solid  fs-3 fa-xmark position-absolute" routerLink="/admin/livraisons"></i>
+    <table class="table fs-5 detail rounded rounded-5 "  >
+        <tbody class=" ">
+            <h3>Infos Livreur</h3>
+            <tr class="d-flex justify-content-between mx-3 ">
+                <th scope="col">Nom</th>
+                <td> 
+                    <em class="fw-bold">
+                        {{oneLiv.livreur.nom| uppercase}} 
+                        {{oneLiv.livreur.prenom}} 
+                    </em>  
+                </td>
+            </tr>
+            <tr class="d-flex justify-content-between mx-3 ">
+                <th scope="col">Téléphone:</th>
+                <td> 
+                    <em class=" fw-bold"> 
+                        Tel: {{oneLiv.livreur.telephone}}
+                    </em>  
+                </td>
+            </tr>
+            <tr class="d-flex justify-content-between mx-3">
+                <th scope="col">Matricule Moto:</th>
+                <td> 
+                    <em class="fw-bold"> 
+                        {{oneLiv.livreur.matriculeMoto}}
+                    </em>  
+                </td>
+            </tr>
+
+            <h3>Infos Client</h3>
+            <tr class="d-flex justify-content-between mx-3">
+                <th scope="col">Nom: </th>
+                <td>
+                    <em class="fw-bold">
+                        {{commandeLiv.client.nom| uppercase}}  
+                    </em> 
+                    {{commandeLiv.client.nom| uppercase}} 
+                </td> 
+            </tr>
+            <tr class=" d-flex justify-content-between mx-3">
+                <th scope="col">Téléphone: </th>
+                <td>
+                    {{commandeLiv.client.telephone}}
+                </td>
+            </tr>
+            <h3>Infos Zone</h3>
+            <tr class=" d-flex justify-content-between mx-3 ">
+                <th scope="col">Nom zone:</th>
+                <td> {{oneLiv.zone.nom}} </td>
+            </tr>
+            <tr class=" d-flex justify-content-between  mx-3">
+                <th scope="col">Prix de Livraison:</th>
+                <td>{{oneLiv.zone.prixDeLivraison}} FCFA</td> 
+            </tr>
+
+            <h3>Infos Commande</h3>
+            <tr class=" d-flex justify-content-between mx-3 ">
+                <th scope="col">Montant Total:</th>
+                <td>{{commandeLiv.montantCommande}}</td>    
+            </tr>
+            <tr class=" d-flex mb-4 justify-content-between mx-3 " >
+                <th scope="col">Date:</th>
+                <td>{{commandeLiv.dateCmde}}</td>
+            </tr>
+                
+        </tbody>
+
+    </table>
+</div>
+

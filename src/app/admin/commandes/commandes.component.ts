@@ -62,8 +62,8 @@ export class CommandesComponent implements OnInit {
     return false;
   }
   
-   // fonction pour aller dans detail commande
-   detailCommande(commande:GetCommande){
+  // fonction pour aller dans detail commande
+  detailCommande(commande:GetCommande){
     this.router.navigateByUrl("admin/commandes/" +commande.id);
   }
 

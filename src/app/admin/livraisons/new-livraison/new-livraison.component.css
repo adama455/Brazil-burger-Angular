@@ -19,3 +19,23 @@ p{
 table:active{
     background: none;
 }
+select{
+    background-color: #BA631F;
+    border: none;
+    /* padding: 0 55rem; */
+    text-align: center;
+}
+option{
+    max-width: 50px; width: 50px !important; 
+    text-align: center;
+}
+select:focus {
+    width:auto; 
+}
+.prix{
+    font-weight: bold;
+}
+.modal-header, .modal-footer{
+    background-color: #BA631F;
+
+}

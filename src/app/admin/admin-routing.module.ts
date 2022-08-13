@@ -4,6 +4,8 @@ import { CommandesComponent } from '../admin/commandes/commandes.component';
 import { DetailCommandeComponent } from '../admin/commandes/detail-commande/detail-commande.component';
 import { ListeZonesComponent } from './commandes/liste-zones/liste-zones.component';
 import { OnZoneComponent } from './commandes/on-zone/on-zone.component';
+import { DetailLivraisonComponent } from './livraisons/detail-livraison/detail-livraison.component';
+import { ListeLivraisonsComponent } from './livraisons/liste-livraisons/liste-livraisons.component';
 // import { DetailsComponent } from '../commandes/details/details.component';
 import { LivraisonsComponent } from './livraisons/livraisons.component';
 import { NewLivraisonComponent } from './livraisons/new-livraison/new-livraison.component';
@@ -35,7 +37,7 @@ import { ProduitsComponent } from './produits/produits.component';
     path: "livraisons",children:[
       { 
         path: "", 
-        component: LivraisonsComponent  
+        component: ListeLivraisonsComponent  
       },
       { 
         path: "new", 
@@ -43,7 +45,7 @@ import { ProduitsComponent } from './produits/produits.component';
       },
       { 
         path: ":id",
-        component: LivraisonsComponent
+        component: DetailLivraisonComponent
       },
       { 
         path: "livreur/:id", 

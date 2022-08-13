@@ -11,7 +11,9 @@ export class CommandeService {
   commande_url:string = 'http://127.0.0.1:8000/api/commandes/';
   livreur_url:string  = 'http://127.0.0.1:8000/api/livreurs';
   livraison_url:string = 'http://127.0.0.1:8000/api/livraisons';
+  oneLivraison_url:string = 'http://127.0.0.1:8000/api/livraisons/';
   commandeALivre:GetCommande[]=[];
+
 
 
   constructor( private http:HttpClient) { }
@@ -21,6 +23,9 @@ export class CommandeService {
   }
   getLivraisonsObs(){
     return this.http.get<any>(this.livraison_url);
+  }
+  getOneLivraison(id:number):Observable<any>{
+    return this.http.get<any>(this.oneLivraison_url+id);
   }
   getCommandeObs(){
     return this.http.get<any>(this.commande_url);
@@ -65,15 +70,14 @@ export class CommandeService {
 
   }
 
-   // ajouter dans livraison==================
-   ajouterDansLivraison(commande:GetCommande){
+  // ajouter dans livraison==================
+  ajouterDansLivraison(commande:GetCommande){
     this.commandeALivre.push(commande);
 
   }
   // retirer dans livraison==================
   retirerDansLivraison(commande:GetCommande){
     this.commandeALivre.splice(this.commandeALivre.indexOf(commande,1));
-
   }
 
   postLivraison(body:FormatLiv){

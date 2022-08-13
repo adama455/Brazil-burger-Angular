@@ -13,6 +13,8 @@ import { CommandesALivrerComponent } from './livraisons/commandes-a-livrer/comma
 import { FilterZonePipe } from './pipes/filter-zone.pipe';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DetailLivraisonComponent } from './livraisons/detail-livraison/detail-livraison.component';
+import { ListeLivraisonsComponent } from './livraisons/liste-livraisons/liste-livraisons.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NewLivraisonComponent,
     CommandesALivrerComponent,
     FilterZonePipe,
+    DetailLivraisonComponent,
+    ListeLivraisonsComponent,
   ],
   imports: [
     CommonModule,

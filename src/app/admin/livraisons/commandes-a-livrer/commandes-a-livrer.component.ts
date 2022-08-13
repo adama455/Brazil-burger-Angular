@@ -11,6 +11,7 @@ import { CommandeService } from 'src/app/services/commande/commande.service';
 export class CommandesALivrerComponent implements OnInit {
   zone!:IZone;
   @Input() commande!:GetCommande
+
   constructor( private commandeService:CommandeService ) { }
 
   ngOnInit(): void {
