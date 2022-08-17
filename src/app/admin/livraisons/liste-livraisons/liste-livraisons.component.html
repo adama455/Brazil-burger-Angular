@@ -30,7 +30,7 @@
                 <td class="text-center">{{livraison.livreur.telephone}}</td>
                 <td class="text-center">{{livraison.zone.nom}}</td>
                 <td class="text-center">{{livraison.zone.prixDeLivraison}}</td>
-                <td class="text-center">{{nbreDeCmde}}</td>
+                <td class="text-center">{{nombreCmdLiv(livraison)}}</td>
                
                 <td class="d-flex justify-content-evenly">
                   <button type="button" class="btn btn-info" (click)="detailLivraison(livraison)" >Détail</button>

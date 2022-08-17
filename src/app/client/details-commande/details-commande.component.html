@@ -1,7 +1,6 @@
-<div class=" detail-cmd container py-5 ">
+<div class=" detail-cmd container py-5 content1">
 
-    <div class="my-3 container" *ngFor="let commande of client.commandes ">
-
+    <div class="my-3 container " *ngFor="let commande of client.commandes ">
         <app-info-commande class="col-12" [commande]="commande"></app-info-commande>
 
         <h2 class="text-center  title text-white">Les produits commandés:</h2>
@@ -11,5 +10,4 @@
             
         </div>
     </div>
-
 </div>

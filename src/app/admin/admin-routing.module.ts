@@ -9,6 +9,7 @@ import { ListeLivraisonsComponent } from './livraisons/liste-livraisons/liste-li
 // import { DetailsComponent } from '../commandes/details/details.component';
 import { LivraisonsComponent } from './livraisons/livraisons.component';
 import { NewLivraisonComponent } from './livraisons/new-livraison/new-livraison.component';
+import { NewProduitComponent } from './produits/new-produit/new-produit.component';
 import { ProduitsComponent } from './produits/produits.component';
 
  const routes: Routes = [ 
@@ -62,8 +63,8 @@ import { ProduitsComponent } from './produits/produits.component';
         component:  ProduitsComponent 
       },
       { 
-        path: ":new", 
-        component:  ProduitsComponent  
+        path: "new", 
+        component:  NewProduitComponent 
       }
     ] 
   },

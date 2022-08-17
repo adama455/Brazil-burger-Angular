@@ -26,6 +26,7 @@ export class InfoCommandeComponent implements OnInit {
     if (etat.includes(commande.etat)) {
       return true; 
     }
+    // location.reload();
     return false;
   }
   // changeColor(newColor:any) {

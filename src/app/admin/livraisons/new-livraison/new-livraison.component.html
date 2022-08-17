@@ -1,35 +1,36 @@
 <div class=" d-flex align-items-center flex-column">
 
-    <h2 class="accordion-header" id="headingOne">------------------selectionner une Zone------------------</h2>
+    <h2 class="accordion-header mb-3" id="headingOne">------------------selectionner une Zone------------------</h2>
     <!--<select  [(ngModel)]="searchCmd" name="" id="" class="form-select w-25 my-3" style="height: 5vh;">
-        <option value="" selected class=""></option>
         <option *ngFor="let zone of zones " class="text-center " value="{{zone.id}}">
             <em class="fw-bold">{{zone.nom | uppercase}}</em>
         </option>
     </select>-->
-    <select  [(ngModel)]="searchCmd" class="form-select form-select-lg py-3 mb-3 text-white" aria-label=".form-select-lg example">
-        <option selected><h1 class="">
-            ====
+    <select #select [(ngModel)]="searchCmd" class="form-select form-select-lg py-3 mb-3 text-white" aria-label=".form-select-lg example">
+        <option selected disabled><h1 class="">
+            ====-------------
             ZONE AYANT DES COMMANDES TERMINER
-            ====
-
+            ---------------====
         </h1></option>
-        <option value="1" *ngFor="let zone of zones ">
+        <option (click)="idZoneLiv(select)"  value="{{zone.id}}" *ngFor="let zone of zones ">
             <em class="fw-bold">{{zone.nom | uppercase}}=========================> Prix de Livraison: <span class="prix">{{zone.prixDeLivraison}}</span> F cfa</em>
         </option>
 
     </select>
     <!-- Button trigger modal -->
-    <button type="button"  class="btn btn-success py-2 mb-3 fw-bold"  data-bs-toggle="modal" data-bs-target="#exampleModal"
-        style="width: 7rem;" [disabled]="" >
+    <button type="button"  class="btn btn-success py-2 me-4 mb-3 fw-bold"  data-bs-toggle="modal" data-bs-target="#exampleModal"
+        style="width: 7rem;" [disabled]="disableBtnChoisirLiv()" >
         Choisir Livreur
     </button>
-
+    <button type="button"  class="btn btn-success  listeLiv py-2 mb-3 fw-bold"
+    routerLink="/admin/livraisons">
+        Voir Liste Livraisons
+    </button>
 </div>
 
 <div class="">
     <div class="card p-5">
-        <span><em>{{nbreCmdeChoisie}}</em> Commande(s) sélectionné</span>
+        <span><em>{{nbreCmdeChoisie()}}</em> Commande(s) sélectionné</span>
         <table class="table">
             <thead>
                 <tr class="row">

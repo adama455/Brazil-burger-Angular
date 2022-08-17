@@ -1,5 +1,5 @@
 
-    <div class="card">
+   <!-- <div class="card">
         <h5 class="card-title text-center  fs-6 fw-bold">{{ produit.nom | uppercase }}</h5>
         <img [src]="convert(produit.image)" class="col-md-12 mx-auto" alt="..."  (click)="showDetails()">
         <div class="card-body mt-3">
@@ -18,5 +18,30 @@
                 <a  class="btn btn-warning col-4 detail" (click)="showDetails()">Détail</a>
             </div>
         </div>
+    </div>-->
+
+<div class="card  card1 m-0" style="max-width: 28rem;">
+    <div class="col-md-12 mx-auto image">
+        <div class="card-header bg-transparent border-success">{{ produit.nom | uppercase }}</div>
+        <div class=" d-flex justify-content-center">
+            <img [src]="convert(produit.image)" class="col-md-10 mx-auto" alt="..."  (click)="showDetails()">
+        </div>
     </div>
+    <div class="card-body text">
+        <h5 class="card-title">{{ produit.description }}</h5>
+        <div class="prix d-flex justify-content-between">
+        <p class="col-6 fs-5 fw-bold">Prix:</p>
+        <p class=" col-6 card-teproduit.nom.substr(0,1)==='B'xt prix fs-5 "><em class="fw-bold">{{produit.prix}} F CFA</em></p>
+    </div>
+    </div>
+</div>
+<div class=" card card2 mt-1 ">
+    <div class="d-flex justify-content-between w-100" >
+        <a (click)="addBurgerToCart(produit)" class="btn panier col-3 " *ngIf="produit.nom.substr(0,1)==='B'" >
+            <i *ngIf="disabled" class="fa-solid fa-cart-arrow-down fs-4"></i>
+            <i *ngIf="!disabled" class="fas fa-check-double text-success fs-4"></i>
+        </a>
+        <a  class="btn btn-warning col-4 detail" (click)="showDetails()">Détail</a>
+    </div>
+</div>
 

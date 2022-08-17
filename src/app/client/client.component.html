@@ -6,22 +6,22 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">Numéro</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Prenom</th>
-                <th scope="col">Téléphone</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="text-center" >Numéro</th>
+                <th scope="col" class="text-center" >Nom</th>
+                <th scope="col" class="text-center" >Prenom</th>
+                <th scope="col" class="text-center" >Téléphone</th>
+                <th scope="col" class="text-center" >Action</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let client of clients;let i=index">
-                <th scope="row">{{i+1}}</th>
-                <td>{{client.nom}}</td>
-                <td>{{client.prenom}}</td>
-                <td>{{client.telephone}}</td>
-                <td>
+                <th class="text-center"  scope="row">{{i+1}}</th>
+                <td class="text-center" >{{client.nom}}</td>
+                <td class="text-center" >{{client.prenom}}</td>
+                <td class="text-center" >{{client.telephone}}</td>
+                <td class="text-center" >
                     <!---->
-                    <button type="button" class="btn btn-outline-info" (click)="detailCommande(client)" >Détail</button>
+                    <button type="button" class="btn btn-outline-info" (click)="detailCommande(client)" >MES COMMANDES</button>
                 </td>
               </tr>
             </tbody>

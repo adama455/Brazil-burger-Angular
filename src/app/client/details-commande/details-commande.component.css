@@ -2,18 +2,19 @@
     overflow-y: hidden;
     overflow-x:scroll;
 }
+
 .container{
+    background-color: #e4aa7b;
     /* background-color: aliceblue; */
     color: black;
     border: 3px solid white;
     padding: 15px;
-    background-color: black;
 }
 .title{
     text-shadow: 1px 1px 2px rgb(187, 183, 183);
 }
 .detail-cmd{
-    background-color: #e4aa7b;
+    background-color: #fefdfc;
     height: 75vh;
     overflow-x: hidden;
     overflow-y: auto;

@@ -25,3 +25,8 @@ i{
     right: 3%;
     cursor: pointer;
 }
+.container{
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

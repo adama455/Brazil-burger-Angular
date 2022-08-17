@@ -4,7 +4,7 @@
     </div>
     <div class="card px-5 py-4  border border-dark border-4">
       <div class="active-pink-3 active-pink-4 ">
-        <input class="form-control py-3 fs-4" [(ngModel)]="searchDate" type="date" placeholder="Search" aria-label="Search">
+        <input class="form-control py-3 fs-4" [(ngModel)]="searchDate" max="searchDate" type="date" placeholder="Search" aria-label="Search">
       </div>
       <div class=" d-flex justify-content-between my-3">
         <h2 class="text-center">Les Commandes du......{{searchDate}}</h2>
@@ -22,16 +22,18 @@
             </tr>
           </thead>
         <tbody>
-          <tr *ngFor="let commande of commandes ; let i=index" class="fs-5">
+          <tr *ngFor="let commande of commandes  | filter:searchDate; let i=index" class="fs-5">
             <th scope="row" class="text-center">{{i}}</th>
             <td class="text-center">{{commande.reference | uppercase}}</td>
             <td class="text-center">{{commande.dateCmde | date: 'hh:mm'}}</td>
             <td class="text-center">{{commande.etat}}</td>
             <td class="text-center text-primary">{{commande.client.login}}</td>
             <td class="d-flex justify-content-evenly">
-              <button type="button" class="btn btn-info" (click)="validerCommande(commande)" *ngIf="(commande.etat=='enCours')" >Valider</button>
-              <button type="button" id="annuler" class="btn btn-success" (click)=" annulerCommande(commande) " *ngIf="commande.etat!='annuler'" >Annuler</button>
-              <button type="button" class="btn btn-info" (click)="detailCommande(commande)">Détail</button>
+
+              <button type="button" class="btn btn-success" (click)="validerCommande(commande)" *ngIf="(commande.etat=='enAttente')" >Valider</button>
+              <button type="button" id="annuler" class="btn btn-danger" (click)=" annulerCommande(commande) " *ngIf="commande.etat!='enAttente'">Annuler</button>
+              <button type="button" class="btn btn-info" (click)="detailCommande(commande);disableBtnAnnuler(commande)">Détail</button>
+
             </td>
           </tr>
         </tbody>

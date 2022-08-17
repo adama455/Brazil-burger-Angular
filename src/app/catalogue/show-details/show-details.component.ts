@@ -1,4 +1,4 @@
-import { transition } from '@angular/animations';
+// import { transition } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 // import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -48,7 +48,7 @@ export class ShowDetailsComponent implements OnInit {
   disabled!:boolean;
   menuu!:IMenu
   menuSimilaires:IMenu[]=[];
-  burgerSimilaires:IBurger[]=[];
+  burgerSimilaires:any[]=[];
 
   quantiteBoissonChoisi: number=0;
 
@@ -82,23 +82,28 @@ export class ShowDetailsComponent implements OnInit {
           if (this.id == product.id) {
             this.produit = product;
             // console.log(product);
-            this.data.getProduitsObs().pipe(
-              take(1),
-              map((cata:ICatalogue) =>{
-                cata.burgers.forEach((product:IBurger)=>{
-                  console.log(cata);
-                  if (product.id !== this.produit.id ) {
+          }
+          
+          this.data.getProduitsObs().pipe(
+            take(1),
+            map((cata:ICatalogue) =>{
+              cata.burgers.forEach((produit:IBurger)=>{   // console.log(cata);
+                this.produits.forEach((prod)=>{
+
+                  if (produit.id !== prod.id ) {
     
-                    this.burgerSimilaires.push(product);
+                    this.burgerSimilaires.push(prod);
+                    console.log(this.burgerSimilaires);
+                    
                     
                   }
                 })
-              }
-            ))
-            
-            return;
-          }
-
+              })
+            }
+          ))
+          
+          return;
+          
         });
 
         
@@ -199,9 +204,6 @@ export class ShowDetailsComponent implements OnInit {
       
   //   }
   // }
-
-
-
   
   addMenuToCart(prod:any){
     this.panierService.putToPanier(prod) ;

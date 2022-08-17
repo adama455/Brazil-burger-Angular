@@ -27,6 +27,8 @@ export class ClientComponent implements OnInit {
         data.filter((y:IClient)=>{
           if (y.commandes.length > 0) {
             this.clients.push(y);
+            console.log(this.clients);
+            
           }
         })
       })

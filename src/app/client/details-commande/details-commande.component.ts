@@ -22,6 +22,7 @@ export class DetailsCommandeComponent implements OnInit {
 
     this.dataService.getOneClient(this.id).subscribe((data) => {
       this.client = data;
+      this.client.commandes.reverse();
   
     })
 

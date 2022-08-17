@@ -42,7 +42,7 @@
                 </div>
                 <!--=================== Fin des Complements========================= -->
                 </section>
-            <!-- ======================Partie droite du panier =========================-->
+                <!-- ======================Partie droite du panier =========================-->
                 <div class="col-md-5 resumeCmde">
                     <div class="card grand-card right mx-3 py-2 fs-4">
                         <div class="total d-flex mx-3 mb-5">
@@ -51,7 +51,7 @@
                             <div class="total-content d-block justify-content-between">
                                 <div class="btn-total mb-2 py-2 h-75 d-flex">
                                     <span class="btn-total fs-2 fw-bold col-4 text-white text-center">Total:</span>
-                                    <p class=" col-7 fw-bold fs-3 my-auto text-center">{{ getTotal() | currency: "$"}}</p> 
+                                    <p class=" col-7 fw-bold fs-3 my-auto text-center">{{ ( getTotal() + getPrixLIvraison(livrer,zonee) ) | currency: "$"}}</p> 
                                 </div>
                             </div>      
                          <hr class="line">
@@ -110,13 +110,12 @@
                                     alt="" />
                                 </div>
                             </div>-->
-                            <button class=" btn w-100 fs-4 fw-bold mt-2 py-3 btn-liv" [disabled]="peutCommander(emporte,zonee)" (click)="postCommande()" type="submit">
+                            <button class=" btn w-100 fs-4 fw-bold mt-2 py-3 btn-liv" [disabled]="peutCommander(emporte,zonee)" (click)="postCommande()" type="submit" routerLink="/commandes/:id">
                                 <marquee scrollamount="25" > COMMANDEZ-LIVRAISON</marquee>
                             </button>
                         </div>
                     </div>
-                </div>
-                
+                </div>                
             </div>
             
         </div>

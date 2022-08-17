@@ -22,12 +22,16 @@ export class ListeLivraisonsComponent implements OnInit {
       map((data:ILivraison[])=>{
         // console.log(data);
         this.livraisons=data;
-        this.livraisons.forEach((oneLiv)=>{
-         this.nbreDeCmde= oneLiv.commandes.length;
-        })
-      
+        // this.livraisons.forEach((oneLiv)=>{
+        //  this.nbreDeCmde= oneLiv.commandes.length;
+        // }) 
       })
     ).subscribe()
+  }
+
+  // nombre de commandes dans la livraison::::::::::::::
+  nombreCmdLiv(zo:ILivraison){
+    return this.nbreDeCmde=zo.commandes.length
   }
 
   detailLivraison(livraison:ILivraison){

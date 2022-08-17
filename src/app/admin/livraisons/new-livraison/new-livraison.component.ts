@@ -22,12 +22,14 @@ export class NewLivraisonComponent implements OnInit {
   livreurrs: ILivreur[]=[];
   id:number = +this.route.snapshot.params['id'];
   idLivreur: any;
+  idZone:any
   disabled:boolean=false
-  nbreCmdeChoisie= this. commandeService.commandeALivre.length
   
   constructor(private dataService:DataServiceService,private commandeService:CommandeService, private route: ActivatedRoute) { }
 
-  
+  nbreCmdeChoisie(){
+    return this. commandeService.commandeALivre.length
+  }
   
   ngOnInit(): void {
     /* ***************************** par zone ************************/
@@ -35,6 +37,7 @@ export class NewLivraisonComponent implements OnInit {
       take(1),
       map((data:any) =>{
         data.filter((z:IZone)=>{
+          // this.idZone = z.id;
           if (z.commandes.length > 0) {
             // console.log(z.commandes);  
             // this.tousLesCommandes=[...z.commandes]
@@ -53,6 +56,7 @@ export class NewLivraisonComponent implements OnInit {
           if (z.etat =='terminer') {
             // console.log(z.commandes);
             this.tousLesCommandes.push(z);
+            this.tousLesCommandes.reverse();
             // this.zones.push(z);
             // console.log(this.tousLesCommandes);
           }     
@@ -67,6 +71,7 @@ export class NewLivraisonComponent implements OnInit {
           this.livreurs.forEach((l)=>{
             if (l.is_disponible && l.etat==1) {
               this.livreurrs.push(l); 
+              this.livreurrs.reverse();
             }
         })
         // console.log(this.livreurs);
@@ -81,11 +86,20 @@ export class NewLivraisonComponent implements OnInit {
       return this.idLivreur=input.value;
       // console.log(this.idLivreur);  
     }
+    // Récuperation Id du zone:::::::::::::::::
+    idZoneLiv(select:HTMLSelectElement){
+      console.log(this.idZone=select.value);
+      
+      return this.idZone=select.value;
+
+    }
+
+
     
     // Debut Validation livraison client:::::::::::::::::::::::::::
     addLivraison(){
       // console.log(this.idLivreurSelectionne(input));  
-      let tabLiv:string[]=[];
+      let tabLiv:string[]=[]; 
       // console.log(this.commandeService.commandeALivre); 
       this.commandeService.commandeALivre.forEach((cmd)=>{
         tabLiv.push("/api/commandes/"+cmd.id);
@@ -94,13 +108,12 @@ export class NewLivraisonComponent implements OnInit {
       let body:FormatLiv = {
         "livreur":'/api/livreurs/'+this.idLivreur,
         "commandes":tabLiv,
-        "zone":'/api/zones/1',
+        "zone":'/api/zones/'+this.idZone,
       }
       console.log(body);
       console.log(this.nbreCmdeChoisie);
       // console.log(this.commandeService.commandeALivre.length);  
-      this.commandeService.postLivraison(body); 
-    
+      this.commandeService.postLivraison(body);
     }
 
     // desactiver et activer le Valider Livraison:::::::::::::::::::::::::::::
@@ -112,15 +125,16 @@ export class NewLivraisonComponent implements OnInit {
     }
     disableBtnChoisirLiv(){
 
-      if (this.nbreCmdeChoisie!=0) {
-        return false;
+      if (this.commandeService.commandeALivre.length == 0) {
+        return true;
       }
-      return true;
+      return false;
     }
 
      // Ajouter et retirer Commandes à livrer===============================
      ajoutEtRetraitLivraison(commande:GetCommande,input:HTMLInputElement){
       if (input.checked) {
+        // this.idZone = commande.zone.id;
         this.commandeService.ajouterDansLivraison(commande)
         
       }else{

@@ -1,46 +1,46 @@
-<div class=" detail-cmd card container border border-dark border-3 bg-white py-3">
+<div class="detail-cmd card container border border-dark border-3 bg-white pb-2 pt-5">
     <h2 class="text-center">
         DETAIL LIVRAISON: {{oneLiv.id}}
     </h2>
     <i class="fa-solid  fs-3 fa-xmark position-absolute" routerLink="/admin/livraisons"></i>
-    <table class="table fs-5 detail rounded rounded-5 "  >
+    <table class="table fs-5 detail rounded rounded-5 ">
         <tbody class=" ">
-            <h3>Infos Livreur</h3>
+            <h3 class="text-white">Infos Livreur:</h3>
             <tr class="d-flex justify-content-between mx-3 ">
                 <th scope="col">Nom</th>
-                <td> 
+                <td>
                     <em class="fw-bold">
-                        {{oneLiv.livreur.nom| uppercase}} 
-                        {{oneLiv.livreur.prenom}} 
-                    </em>  
+                        {{oneLiv.livreur.nom| uppercase}}
+                        {{oneLiv.livreur.prenom}}
+                    </em>
                 </td>
             </tr>
             <tr class="d-flex justify-content-between mx-3 ">
                 <th scope="col">Téléphone:</th>
-                <td> 
-                    <em class=" fw-bold"> 
+                <td>
+                    <em class=" fw-bold">
                         Tel: {{oneLiv.livreur.telephone}}
-                    </em>  
+                    </em>
                 </td>
             </tr>
             <tr class="d-flex justify-content-between mx-3">
                 <th scope="col">Matricule Moto:</th>
-                <td> 
-                    <em class="fw-bold"> 
+                <td>
+                    <em class="fw-bold">
                         {{oneLiv.livreur.matriculeMoto}}
-                    </em>  
+                    </em>
                 </td>
             </tr>
 
-            <h3>Infos Client</h3>
+            <h3 class="text-white">Infos Client:</h3>
             <tr class="d-flex justify-content-between mx-3">
                 <th scope="col">Nom: </th>
                 <td>
                     <em class="fw-bold">
-                        {{commandeLiv.client.nom| uppercase}}  
-                    </em> 
-                    {{commandeLiv.client.nom| uppercase}} 
-                </td> 
+                        {{commandeLiv.client.nom| uppercase}}
+                    </em>
+                    {{commandeLiv.client.nom | uppercase}}
+                </td>
             </tr>
             <tr class=" d-flex justify-content-between mx-3">
                 <th scope="col">Téléphone: </th>
@@ -48,28 +48,40 @@
                     {{commandeLiv.client.telephone}}
                 </td>
             </tr>
-            <h3>Infos Zone</h3>
+            <h3 class="text-white">Infos Zone:</h3>
             <tr class=" d-flex justify-content-between mx-3 ">
                 <th scope="col">Nom zone:</th>
                 <td> {{oneLiv.zone.nom}} </td>
             </tr>
             <tr class=" d-flex justify-content-between  mx-3">
                 <th scope="col">Prix de Livraison:</th>
-                <td>{{oneLiv.zone.prixDeLivraison}} FCFA</td> 
+                <td>{{oneLiv.zone.prixDeLivraison}} FCFA</td>
             </tr>
 
-            <h3>Infos Commande</h3>
-            <tr class=" d-flex justify-content-between mx-3 ">
-                <th scope="col">Montant Total:</th>
-                <td>{{commandeLiv.montantCommande}}</td>    
-            </tr>
-            <tr class=" d-flex mb-4 justify-content-between mx-3 " >
-                <th scope="col">Date:</th>
-                <td>{{commandeLiv.dateCmde}}</td>
-            </tr>
-                
+            <h3 class="text-white">Infos Commandes:</h3>
+            <div class="" *ngFor="let cmdeLivrees of oneLiv.commandes ;let i=index">
+                <p><em class="fw-bold"> Commande n°{{i+1}}:</em></p>
+                <tr class=" d-flex justify-content-between mx-3 ">
+                    <th scope="col">Reference:</th>
+                    <td>{{cmdeLivrees.reference}}</td>
+                </tr>                
+                <tr class=" d-flex justify-content-between mx-3 ">
+                    <th scope="col">Montant Total:</th>
+                    <td>{{cmdeLivrees.montantCommande}}</td>
+                </tr>
+                <tr class=" d-flex mb-2 justify-content-between mx-3 ">
+                    <th scope="col">Etat:</th>
+                    <td><em class="fw-bold">{{cmdeLivrees.etat}}</em></td>
+                </tr>
+                <tr class=" d-flex mb-2 justify-content-between mx-3 ">
+                    <th scope="col">Date:</th>
+                    <td><em class="fw-bold">{{cmdeLivrees.dateCmde | date:"MM/dd/yyyy à hh:mm" }}</em></td>
+                </tr>
+                <div class="w-100 d-flex mb-4">
+                    <button type="submit" (click)="validerLivraison(cmdeLivrees)" class="btn p-3 btn-success btnCmdLIv me-2">Livré</button>
+                    <button type="submit" (click)="annulerCmdLivraison(cmdeLivrees)" [disabled]="disabledBtn(cmdeLivrees)" class="btn p-3 btn-danger btnCmdLIv ">Annuler</button>
+                </div>
+            </div>
         </tbody>
-
     </table>
 </div>
-

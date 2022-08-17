@@ -1,9 +1,22 @@
-.card{
+.card1{
     box-shadow: lightgray 4px 4px 20px;
     padding: 10px 30px;
+    border: #BA631F 2px solid;
+    border-bottom: none;
+  }
+  .card2{
+    box-shadow: lightgray 4px 4px 20px;
+    padding: 6px 3px;
+    border: #BA631F 2px solid;
+    border-top: none;
   }
   .card-body{
     padding: 0;
+  }
+  .card-footer{
+    width: 100%;
+    padding: 0;
+    border: none;
   }
   .panier{
     color: aliceblue;
@@ -27,6 +40,9 @@
   i{
     color: #BA631F;
   }
+  .text{
+    color: #BA631F;
+  }
   .panier:active{
     transform: translate(2px, 2px);
     box-shadow: lightgray 0 0 5px;
@@ -48,7 +64,7 @@
       font-weight: 300;
       font-size: 16px;
     }
-  .card img{
+  .card image{
     cursor: pointer;
     box-shadow: lightgray 0 0 5px;
   }

@@ -54,6 +54,7 @@ export interface GetCommande{
 export enum EtatCommande{
   enAttente="enAttente",
   valider="valider",
+  livrer="livrer",
   enCours="enCours",
   enCousDeLivraison="enCousDeLivraison",
   annuler="annuler",

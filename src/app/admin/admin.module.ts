@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DetailLivraisonComponent } from './livraisons/detail-livraison/detail-livraison.component';
 import { ListeLivraisonsComponent } from './livraisons/liste-livraisons/liste-livraisons.component';
+import { NewProduitComponent } from './produits/new-produit/new-produit.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ListeLivraisonsComponent } from './livraisons/liste-livraisons/liste-li
     FilterZonePipe,
     DetailLivraisonComponent,
     ListeLivraisonsComponent,
+    NewProduitComponent,
   ],
   imports: [
     CommonModule,

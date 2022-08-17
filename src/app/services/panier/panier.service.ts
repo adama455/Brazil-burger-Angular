@@ -69,6 +69,10 @@ export class PanierService {
       ).subscribe();
   }
 
+  // Supprimer Panier:::::::::::::::::::::::
+  // supprimerP(){
+  //   localStorage.removeItem('products');
+  // }
   exixtInTab(tab: IBurger[] | IMenu[], idProd: number) {
     return tab.find((prod) => {
       return prod.id === idProd;
@@ -107,7 +111,6 @@ export class PanierService {
     )).subscribe();
   }
 
- 
   getLineComde(){
     this.items$.subscribe((produits:any) => {
       produits.forEach((product: any) =>{
@@ -121,13 +124,13 @@ export class PanierService {
   }
 
   postCommande(body:Commande){
-    const headers={"Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NjAzMTExMzcsImV4cCI6MTY2MDM0NzEzNywicm9sZXMiOlsiUk9MRV9DTElFTlQiLCJST0xFX1ZJU0lURVVSIl0sInVzZXJuYW1lIjoiZGlvdWZAZ21haWwuY29tIn0.Zz3PSahMUHmnKCTWJrDJXqprQcPBIMweHBicjYpkpIFqAw9AwFY8zm2wL0_Ip4yCOg7hlP8ngHPS-I9od72JJqNJm5RqBGjRiLt1IXxl0QBve0oxdNLjt6Y7Y-bI5z1DJ-6DmVfT1QpPnYLDzgXM0UqaTYSKiHqhrso_ZFYn2rE_-SIggGE3OCYJEiCzCNlYB_EsLkYXcKX-Rqa1XeiDz0Cfpo5OeJgmGBcxMtlGDwLKlYj_7XxNKWTXode-es5-vQHokNL-6SKdVw2zOpu-SAQzsVauF9-spnrbxtBN3Nq_SL2RZELpv_XZ3JE44YHs6M0BlahIk2jUG2oe8Q4biw"}
+    const headers={"Authorization": "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NjA3MjQxMjIsImV4cCI6MTY2NDMyNDEyMiwicm9sZXMiOlsiUk9MRV9DTElFTlQiLCJST0xFX1ZJU0lURVVSIl0sInVzZXJuYW1lIjoiZGlvdWZAZ21haWwuY29tIn0.GqCo6-MB_2WO5nOofYeJW5R6yRFVo7qScJM6-jDh5wlqTz1XQ5zbd9XPW_yG0rRmpRYgI_1ww903n-4la6Qa0btMSog-2RElHcLFOEmWfDIDVOslbD-eGCHzxsG_OeFV9CNpHcHxEkeYF65liUojFCYiSGiAwSoJ3ilFBBLrVrqefE9Et8ZlCcmq_Aj_zs8jRL4OkuVbez7Z7Tu2P6J9v2C_3svyn13TPq9Xq9CbWGNIXFBU38nBZDPghoVuYJid9AeVleCmNKRL4xD2NEEOiDmED8YTwm2oQmpM56SxAZ9q07--2qb6MqvQm8IabdG-QxY5WhxUjvdhG0uc1pXCOA"}
     this.http.post<Commande>(this.commande_url,body,{headers}).subscribe();
+    
   }
 
   getPanier(){
     return JSON.parse(localStorage.getItem('products') || '[]');
   }
- 
-  
+
 }

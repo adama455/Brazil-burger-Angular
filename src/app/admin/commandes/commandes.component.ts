@@ -12,7 +12,7 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 })
 export class CommandesComponent implements OnInit {
   commandes:GetCommande[]=[];
-  searchDate:any;
+  searchDate = this.commandeService.formateDateToday();
   searchCmd!:number
   zones:IZone[]=[];
   zone!: IZone;
@@ -27,6 +27,7 @@ export class CommandesComponent implements OnInit {
     this.dataService.getCommandeObs().subscribe(data => {
       console.log(data);
       this.commandes=data;  
+      this.commandes.reverse();
     });
 
     this.dataService.getZonesObs().pipe(
@@ -46,12 +47,13 @@ export class CommandesComponent implements OnInit {
   }
 
   annulerCommande(commande:GetCommande){
-    const annuler=document.getElementById('annuler');
+    // const annuler=document.getElementById('annuler');
     this.commandeService.modifierCommande(commande.id,EtatCommande.annuler);
-      console.log(annuler);
+    location.reload();
   }
   validerCommande(commande:GetCommande){
-    this.commandeService.modifierCommande(commande.id,EtatCommande.valider);
+    this.commandeService.modifierCommande(commande.id,EtatCommande.terminer);
+    location.reload();
   }
 
   disableBtnAnnuler(commande:GetCommande){

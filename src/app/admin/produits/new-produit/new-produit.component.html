@@ -1,0 +1,31 @@
+<div class="container px-5 mx-auto ">
+    <div class="card px-5 py-2">
+        <h1 class="mx-auto pb-4">AJOUTER PRODUIT</h1>
+        <form #form="ngForm" class="formulaire p-3 flex-column d-flex justify-content-center align-items-center">
+            <div class="col-md-6 my-3">
+                <input type="text" class="form-control" placeholder="nom produit">
+            </div>
+            <div class="col-md-6 my-3">
+                <input type="text" class="form-control" placeholder="prix produit">
+            </div>
+            <div class="col-md-6 my-3">
+                <input type="text" class="form-control" placeholder="description">
+            </div>
+            <div class="col-md-6 my-3">
+                <select class="w-100 p-2" name="" id="">
+                    <option selected value=""disabled="">autres produits</option>
+                    <option value="">Burger</option>
+                    <option value="">Boisson</option>
+                    <option value="">Frite</option>
+                </select>
+            </div>
+            <div class="col-md-6 my-3">
+                <input type="file" class="form-control" placeholder="description">
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </div>
+        </form>
+
+    </div>
+</div>
